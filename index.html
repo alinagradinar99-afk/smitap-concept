@@ -448,7 +448,7 @@ section.about .ac-blob{left:-220px;top:-200px;width:640px;height:640px}
 /* ===== вариант по макету: декор первого экрана, лента, карточка, лёгкий блок обучения ===== */
 .hm-grid{position:relative;max-width:1120px}
 .hm-sun{position:absolute;z-index:0;width:66px;height:66px;pointer-events:none;animation:spin 18s linear infinite}
-.hm-sun.s1{left:33%;top:-6%}
+.hm-sun.s1{left:30%;top:-15%}
 .hm-sun.s2{right:-3%;top:16%;animation-direction:reverse}
 .hm-sun.s3{left:50%;top:72%;width:60px;height:60px;animation-duration:22s}
 .hm-swirl{position:absolute;z-index:0;left:44%;top:9%;width:132px;pointer-events:none;animation:hfloat 5s ease-in-out infinite}
@@ -608,6 +608,81 @@ section.learn.learn-cards{background:#fff;color:var(--ink);border-radius:0;box-s
   .h-tel,.header .hdr-cta{display:none!important}
   .burger{width:40px;height:40px}.burger i{left:12px;right:12px}.burger i:first-child{top:15px}.burger i:last-child{top:23px}.burger[aria-expanded="true"] i{top:19px!important}
 }
+
+
+/* ===== карточка курса: текст слева, фото справа, всё по одной сетке ===== */
+section.about.ax{background:#fff;box-shadow:none;border-radius:0;overflow:visible;padding:24px 0 40px;margin-top:0}
+section.about.ax>.wrap{max-width:none;padding:0 60px}
+.ax-card{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:stretch;min-height:600px;border-radius:44px;overflow:hidden;background:#FF702D;color:#fff;isolation:isolate}
+.ax-arrow{position:absolute;z-index:-1;right:6%;top:-18%;width:min(44vw,600px);transform:rotate(28deg);opacity:.14;pointer-events:none}
+.ax-body{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:64px 0 64px 72px}
+.ax-badge{display:inline-block;padding:9px 16px;border-radius:999px;background:var(--turq);color:var(--graphite);font-weight:700;font-size:15px}
+.ax-title{margin-top:22px;font-weight:700;font-size:clamp(34px,3.5vw,52px);line-height:1.06;letter-spacing:-.03em}
+.ax-lead{margin-top:20px;max-width:560px;font-size:18px;line-height:1.5;color:rgba(255,255,255,.9)}
+.ax-facts{display:grid;grid-template-columns:repeat(3,auto);gap:0;margin-top:32px;border-radius:24px;background:rgba(255,255,255,.14)}
+.ax-facts div{padding:16px 26px}
+.ax-facts div+div{border-left:1px solid rgba(255,255,255,.22)}
+.ax-facts dt{font-size:14px;color:rgba(255,255,255,.8)}
+.ax-facts dd{margin-top:4px;font-weight:700;font-size:24px;letter-spacing:-.02em;white-space:nowrap}
+.ax-facts small{font-size:15px;font-weight:600;color:rgba(255,255,255,.75);margin-left:2px}
+.ax-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.ax-cta .btn{height:60px;padding:0 32px;font-weight:600;font-size:17px}
+.ax-rate{display:flex;gap:22px;flex-wrap:wrap;list-style:none;margin-top:28px;font-size:15px;color:rgba(255,255,255,.85)}
+.ax-rate b{font-weight:700;color:#fff;margin-right:4px}
+.ax-art{position:relative;min-height:100%}
+.ax-photo{position:absolute;left:50%;bottom:0;height:94%;width:auto;max-width:none;transform:translateX(-50%);pointer-events:none}
+.ax-timer{position:absolute;right:32px;bottom:32px;z-index:1;display:flex;flex-direction:column;gap:4px;padding:14px 18px;border-radius:20px;background:#fff;color:var(--graphite);box-shadow:0 20px 40px -20px rgba(80,30,0,.5)}
+.ax-timer span{font-size:13px;color:#7a7a7a}
+.ax-timer b{font-weight:700;font-size:22px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+@media (max-width:1200px){
+  .ax-body{padding:56px 0 56px 48px}
+  .ax-facts div{padding:14px 18px}
+  .ax-facts dd{font-size:20px}
+}
+@media (max-width:980px){
+  section.about.ax>.wrap{padding:0 24px}
+  .ax-card{grid-template-columns:1fr;border-radius:32px}
+  .ax-art{order:-1;height:380px}
+  .ax-photo{height:100%}
+  .ax-timer{right:20px;bottom:20px}
+  .ax-body{padding:32px 32px 40px}
+  .ax-arrow{right:-20%;top:-6%;width:520px}
+}
+@media (max-width:640px){
+  section.about.ax>.wrap{padding:0 12px}
+  .ax-art{height:300px}
+  .ax-timer{right:12px;bottom:12px;padding:10px 14px}
+  .ax-timer b{font-size:18px}
+  .ax-body{padding:24px 18px 30px}
+  .ax-title{font-size:30px}
+  .ax-title br{display:none}
+  .ax-lead{font-size:16px}
+  .ax-facts{grid-template-columns:1fr;width:100%}
+  .ax-facts div+div{border-left:0;border-top:1px solid rgba(255,255,255,.22)}
+  .ax-cta{flex-direction:column;width:100%}
+  .ax-cta .btn{width:100%;height:56px}
+}
+
+/* ===== блок обучения: заголовок слева, подзаголовок справа; рамка плашки тоньше; закрепление и карточки по скроллу ===== */
+.lc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:48px}
+.lc-head p{margin-top:0;max-width:400px;padding-bottom:10px}
+.lc-pop{inset:5px}
+@media (max-width:1280px){.lc-pop{inset:5px}}
+section.learn.learn-cards.pinned{padding:0;height:calc(100vh + 260vh);overflow:visible}
+.pinned .lc-pin{position:sticky;top:72px;height:calc(100vh - 72px);display:flex;align-items:center;overflow:clip}
+.pinned .lc-pin>.wrap{width:100%}
+.pinned .lc-row{margin-top:64px}
+.pinned .lc{transition:transform .25s ease-out,box-shadow .35s}
+.pinned .lc:hover,.pinned .lc.open{transition:transform .45s cubic-bezier(.3,1.3,.5,1),box-shadow .35s}
+.lc-steps{display:none}
+.pinned .lc-steps{display:flex;gap:8px;margin-top:40px}
+.lc-steps i{width:28px;height:4px;border-radius:4px;background:#E6E6E6;overflow:hidden;position:relative}
+.lc-steps i::after{content:"";position:absolute;inset:0;background:var(--orange);transform-origin:left;transform:scaleX(var(--s,0))}
+@media (max-width:980px){
+  .lc-head{flex-direction:column;align-items:flex-start;gap:16px}
+  .lc-head p{padding-bottom:0}
+}
+@media (max-width:640px){.lc-pop{inset:5px}}
 
 /* ================= 2. КАК ПРОХОДИТ ОБУЧЕНИЕ ================= */
 .learn{background:var(--cream);color:var(--ink);padding:120px 0 110px;position:relative;border-radius:56px 56px 0 0;margin-top:-56px;z-index:6;box-shadow:0 -28px 60px -34px rgba(58,58,58,.35)}
@@ -818,6 +893,23 @@ body.tz-on .sw::after{transform:translateX(18px)}
   .tz,.tz-toggle{display:none!important}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.tile{opacity:1;transform:none}}
+
+/* ===== одна сетка для всех блоков: контент не шире 1360 px, на больших экранах центрируется ===== */
+:root{--wrap:1440px}
+@media (min-width:981px){
+  :root{--g:40px}
+  .header .wrap{max-width:var(--wrap);padding:0 var(--g)}
+  section.about.ax>.wrap{max-width:var(--wrap);padding:0 var(--g)}
+  .hero-m>.wrap{max-width:var(--wrap)}
+}
+
+/* солнышки первого экрана: сбрасываем старые общие правила .s1/.s2/.s3, чтобы не налезали на заголовок */
+.hero-m .hm-sun{width:66px;height:66px;right:auto;left:auto;bottom:auto}
+.hero-m .hm-sun.s1{left:30%;top:-15%}
+.hero-m .hm-sun.s2{right:-3%;top:16%}
+.hero-m .hm-sun.s3{left:50%;top:72%;width:60px;height:60px}
+@media (max-width:980px){.hero-m .hm-sun.s1{left:4%;top:2%}.hero-m .hm-sun.s2{right:4%;top:4%}.hero-m .hm-sun.s3{left:auto;right:8%;top:38%}}
+@media (max-width:640px){.hero-m .hm-sun{width:44px;height:44px}.hero-m .hm-sun.s3{width:40px;height:40px}}
 </style>
 </head>
 <body>
@@ -876,25 +968,30 @@ body.tz-on .sw::after{transform:translateX(18px)}
 </div>
 
 <!-- ================= БЛОК 1б · О КУРСЕ (карточка по макету) ================= -->
-<section class="about" id="course">
+<section class="about ax" id="course">
   <div class="wrap">
-    <div class="ac">
-      <img class="ac-arrow" src="img/arrow-white.svg" alt="" aria-hidden="true">
-      <span class="ac-blob" aria-hidden="true"></span>
-      
-      <img class="ac-photo" src="img/elya.png" alt="Эля Смит — преподаватель истории" width="760" height="792" loading="lazy">
-      <div class="ac-body">
-        <h2 class="ac-title">Подготовка к ЕГЭ<span class="ac-badge">120 000+ выпускников</span><br> по истории с Элей Смит</h2>
-        <p class="ac-lead" data-p="Годовой онлайн-курс для вашего ребёнка: живые вебинары с Элей, практика по критериям ЕГЭ, проверка домашних заданий и пробники в формате экзамена">Годовой онлайн-курс: живые вебинары с Элей, практика по критериям ЕГЭ, домашки с проверкой и пробники в формате экзамена</p>
-        <div class="ac-facts">
-          <div><span>Длительность</span><b>9 месяцев</b></div>
-          <div><span>Старт</span><b>1 сентября</b></div>
-          <div><span>Цена</span><b>от 4 290 ₽<small>/мес</small></b></div>
-        </div>
-        <div class="ac-cta">
+    <div class="ax-card">
+      <img class="ax-arrow" src="img/arrow-white.svg" alt="" aria-hidden="true">
+      <div class="ax-body">
+        <span class="ax-badge">120 000+ выпускников</span>
+        <h2 class="ax-title">Подготовка к ЕГЭ <br>по истории с Элей Смит</h2>
+        <p class="ax-lead" data-p="Годовой онлайн-курс для вашего ребёнка: живые вебинары с Элей, практика по критериям ЕГЭ, проверка домашних заданий и пробники в формате экзамена">Годовой онлайн-курс: живые вебинары с Элей, практика по критериям ЕГЭ, домашки с проверкой и пробники в формате экзамена</p>
+        <dl class="ax-facts">
+          <div><dt>Длительность</dt><dd>9 месяцев</dd></div>
+          <div><dt>Старт</dt><dd>1 сентября</dd></div>
+          <div><dt>Цена</dt><dd>от 4 290 ₽<small>/мес</small></dd></div>
+        </dl>
+        <div class="ax-cta">
           <a class="btn btn-w" href="#" data-toast="Переход к тарифам">Выбрать тариф →</a>
           <a class="btn btn-wo" href="#" data-toast="Форма бесплатного доступа">Попробовать бесплатно</a>
         </div>
+        <ul class="ax-rate">
+          <li><b>5/5</b> Яндекс</li><li><b>4.9/5</b> Отзовик</li><li><b>4.9/5</b> Т-Банк</li>
+        </ul>
+      </div>
+      <div class="ax-art">
+        <img class="ax-photo" src="img/elya.png" alt="Эля Смит — преподаватель истории" width="760" height="792" loading="lazy">
+        <div class="ax-timer"><span>Цена вырастет через</span><b id="axTimer">00 : 00 : 00</b></div>
       </div>
     </div>
   </div>
@@ -902,6 +999,7 @@ body.tz-on .sw::after{transform:translateX(18px)}
 
 <!-- ================= БЛОК 2 · КАК ПРОХОДИТ ОБУЧЕНИЕ ================= -->
 <section class="learn learn-cards" id="learn">
+  <div class="lc-pin">
   <div class="wrap">
     <div class="lc-head">
       <h2>Как проходит обучение</h2>
@@ -942,6 +1040,8 @@ body.tz-on .sw::after{transform:translateX(18px)}
         </article>
       </div>
     </div>
+    <div class="lc-steps" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  </div>
   </div>
 </section>
 
@@ -1516,23 +1616,37 @@ function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1
   d.addEventListener('click',()=>{ d.classList.remove('jump'); void d.offsetWidth; d.classList.add('jump'); });
 })();
 
-/* карточки «Как проходит обучение»: выезжают снизу вверх в такт прокрутке, по тапу открывается описание */
-(function(){ const slots=[...document.querySelectorAll('.lc-slot')]; if(!slots.length) return;
-  const cards=slots.map(x=>x.querySelector('.lc'));
+/* карточки «Как проходит обучение»: блок закрепляется, с каждым шагом скролла подъезжает следующая карточка; по тапу — описание */
+(function(){ const sec=document.querySelector('.learn-cards'), slots=[...document.querySelectorAll('.lc-slot')]; if(!sec||!slots.length) return;
+  const cards=slots.map(x=>x.querySelector('.lc')), steps=[...document.querySelectorAll('.lc-steps i')];
   cards.forEach(c=>c.addEventListener('click',()=>{ const o=c.classList.contains('open'); cards.forEach(x=>x.classList.remove('open')); if(!o) c.classList.add('open'); }));
   if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   const cl=v=>Math.max(0,Math.min(1,v)), ease=t=>1-Math.pow(1-t,3);
+  const canPin=()=>innerWidth>1100&&innerHeight>=640;
   let tick=false;
-  function upd(){ tick=false; const H=innerHeight, W=innerWidth, row=W>640;
+  function upd(){ tick=false; const H=innerHeight, W=innerWidth, pin=canPin();
+    sec.classList.toggle('pinned',pin);
+    if(pin){ const r=sec.getBoundingClientRect(), span=r.height-(H-72), p=cl(-r.top/span), N=cards.length;
+      cards.forEach((c,i)=>{ const q=cl((p/.92)*N-i), e=ease(q);
+        c.style.setProperty('--y',((1-e)*H*.95).toFixed(1)+'px'); c.style.setProperty('--o',q>0?1:0);
+        if(steps[i]) steps[i].style.setProperty('--s',q.toFixed(3)); });
+      return; }
+    const row=W>640;
     slots.forEach((sl,i)=>{ const r=sl.getBoundingClientRect();
-      const st=row?(i%(W>1100?4:2))*.14:0;
+      const st=row?(i%2)*.14:0;
       const base=(H-r.top)/(r.height+80), q=cl(row?(base-st)/.58:base/.8), e=ease(q);
       cards[i].style.setProperty('--y',((1-e)*(row?340:160)).toFixed(1)+'px');
-      cards[i].style.setProperty('--o',cl(q*2.2).toFixed(3));
-    }); }
-  const go=()=>{ if(!tick){ tick=true; requestAnimationFrame(upd); } };
+      cards[i].style.setProperty('--o',cl(q*2.2).toFixed(3)); }); }
+  const go=()=>upd();
   addEventListener('scroll',go,{passive:true}); addEventListener('resize',go); upd();
 })();
+
+/* таймер в карточке курса */
+(function(){ const el=document.getElementById('axTimer'); if(!el) return;
+  const end=new Date('2026-11-30T23:59:59+03:00').getTime(), p=n=>String(n).padStart(2,'0');
+  function t(){ let s=Math.max(0,Math.floor((end-Date.now())/1000)); const d=Math.floor(s/86400); s%=86400;
+    el.textContent=`${d} дн ${p(Math.floor(s/3600))}:${p(Math.floor(s%3600/60))}:${p(s%60)}`; }
+  t(); setInterval(t,1000); })();
 
 /* ===== пометки ТЗ, тосты ===== */
 $('#tzToggle').onclick=()=>{ const on=document.body.classList.toggle('tz-on'); $('#tzToggle').setAttribute('aria-pressed',on); };

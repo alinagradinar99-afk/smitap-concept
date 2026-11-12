@@ -668,7 +668,7 @@ section.about.ax>.wrap{max-width:none;padding:0 60px}
 .lc-head p{margin-top:0;max-width:400px;padding-bottom:10px}
 .lc-pop{inset:5px}
 @media (max-width:1280px){.lc-pop{inset:5px}}
-section.learn.learn-cards.pinned{padding:0;height:calc(100vh + 260vh);overflow:visible}
+section.learn.learn-cards.pinned{padding:0;height:calc(100vh + 560vh);overflow:visible}
 .pinned .lc-pin{position:sticky;top:72px;height:calc(100vh - 72px);display:flex;align-items:center;overflow:clip}
 .pinned .lc-pin>.wrap{width:100%}
 .pinned .lc-row{margin-top:64px}
@@ -991,6 +991,64 @@ body.tz-on .sw::after{transform:translateX(18px)}
 @media (max-width:980px){.hx-art{margin-right:0;aspect-ratio:540/560}}
 /* параллакс украшений по движению мыши (translate не мешает их собственной анимации transform) */
 [data-depth]{translate:var(--px,0px) var(--py,0px);transition:translate .5s cubic-bezier(.2,.8,.3,1)}
+
+/* ===== первый экран: композиция фигур ===== */
+/* левая колонка: бирюзовое солнце вверху слева, зелёная точка — над стыком колонок, лиловая — внизу у стыка, искорки у заголовка и кнопок */
+.hx-d.sun-t{left:-3%;top:-112px;width:70px}
+.hx-d.dot-g{left:62%;top:-96px;width:34px;height:34px}
+.hx-d.dot-l{left:calc(100% - 10px);top:calc(100% + 44px);width:40px;height:40px}
+.hx-d.spk{width:26px;height:26px;animation:twinkle 2.6s ease-in-out infinite}
+.hx-d.spk.k1{left:calc(100% - 120px);top:-40px;width:32px;height:32px}
+.hx-d.spk.k2{left:-4%;top:calc(100% + 40px);width:38px;height:38px;animation-delay:-1.2s}
+@keyframes twinkle{0%,100%{transform:scale(.7) rotate(0)}50%{transform:scale(1.15) rotate(45deg)}}
+/* правая колонка: всё «держится» за карточку */
+.hx-art .hx-d.sun-o{left:-11%;top:44%;right:auto;width:78px;z-index:3}
+.hx-swirl{left:-30%;top:-4%;width:118px;z-index:2;transform:scaleX(-1) rotate(-8deg)}
+.hx-chip{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border-radius:16px;background:#fff;color:var(--graphite);font-weight:700;font-size:15px;white-space:nowrap;box-shadow:0 18px 36px -18px rgba(58,58,58,.45);animation:chip 5s ease-in-out infinite}
+.hx-chip i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.hx-chip.c1{left:-9%;top:9%;rotate:-6deg}
+.hx-chip.c2{right:-7%;bottom:12%;rotate:5deg;background:var(--apricot);animation-delay:-2.5s}
+@keyframes chip{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hx-d.ring{right:-9%;top:58%;width:44px;height:44px;border-radius:50%;border:7px solid var(--sky);z-index:2;animation:hfloat 6s ease-in-out infinite}
+.hx-d.spk.k3{left:8%;bottom:-9%;width:38px;height:38px;z-index:2;animation-delay:-.6s}
+.hx-art .hx-tri{right:-13%;top:-8%}
+@media (max-width:1200px){
+  .hx-chip{font-size:13px;padding:9px 13px}
+  .hx-swirl{display:none}
+  .hx-d.spk.k1{left:calc(100% - 60px)}
+}
+@media (max-width:980px){
+  .hx-d.sun-t{left:auto;right:4%;top:-24px;width:52px}
+  .hx-d.dot-g{left:66%;top:-30px;width:26px;height:26px}
+  .hx-d.spk.k1,.hx-d.spk.k2{display:none}
+  .hx-art .hx-d.sun-o{left:-8%;top:40%;width:54px}
+  .hx-chip.c1{left:-4%;top:6%}
+  .hx-chip.c2{right:-4%;bottom:8%}
+  .hx-d.ring{right:-6%;top:52%;width:34px;height:34px;border-width:6px}
+}
+@media (max-width:640px){
+  .hx-chip{font-size:12px;padding:8px 11px;border-radius:12px}
+  .hx-art .hx-d.sun-o{left:-3%;width:46px}
+  .hx-chip.c1{left:-2%}.hx-chip.c2{right:-2%}
+  .hx-d.ring{display:none}
+}
+@media (prefers-reduced-motion:reduce){.hx-chip,.hx-d.spk{animation:none}}
+
+/* ===== 8 карточек: на десктопе 4 в ряд, при закреплении ряд уезжает влево, а новые подъезжают снизу ===== */
+.lc-row{flex-wrap:wrap;row-gap:24px}
+.lc-slot{flex:0 0 calc(25% + 10.5px)}
+.lc-slot:nth-child(4n+1){margin-left:0}
+.lc-slot:nth-child(4n+2) .lc{z-index:2}.lc-slot:nth-child(4n+3) .lc{z-index:1}
+.pinned .lc-row{flex-wrap:nowrap;transform:translateX(var(--tx,0px));will-change:transform}
+.pinned .lc-slot:nth-child(4n+1){margin-left:-14px}
+.pinned .lc-slot:first-child{margin-left:0}
+.pinned .lc-slot .lc{z-index:auto}
+@media (max-width:1100px){
+  .lc-slot{flex:0 0 calc(50% + 7px)}
+  .lc-slot:nth-child(4n+1),.lc-slot:nth-child(4n+3){margin-left:0}
+  .lc-slot:nth-child(2n){margin-left:-14px}
+}
+@media (max-width:640px){.lc-slot,.lc-slot:nth-child(2n){margin-left:0}}
 </style>
 </head>
 <body>
@@ -1017,8 +1075,9 @@ body.tz-on .sw::after{transform:translateX(18px)}
       <div class="hx-text">
         <svg class="hx-d sun-t" data-depth=".9" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#B0F2EB"/></svg>
         <i class="hx-d dot-g" data-depth="1.6" aria-hidden="true"></i>
-        <svg class="hx-d sun-o" data-depth="1.2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#FFAA44"/></svg>
         <i class="hx-d dot-l" data-depth="2" aria-hidden="true"></i>
+        <svg class="hx-d spk k1" data-depth="1.4" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#EB99A9"/></svg>
+        <svg class="hx-d spk k2" data-depth="1.8" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#9AE0F1"/></svg>
         <h1 class="hx-title">Онлайн-школа<br> для подготовки<br> к <b class="tg t1">ЕГЭ</b> и <b class="tg t2">ОГЭ</b></h1>
         <div class="hx-cta">
           <a class="btn btn-a" href="#" data-toast="Переход к выбору предмета">Выбрать предмет →</a>
@@ -1028,6 +1087,12 @@ body.tz-on .sw::after{transform:translateX(18px)}
       <div class="hx-art">
         <span class="hx-glow" aria-hidden="true" data-depth="-.35"></span>
         <span class="hx-tri" aria-hidden="true" data-depth=".5"></span>
+        <svg class="hx-d sun-o" data-depth="1.2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#FFAA44"/></svg>
+        <svg class="hx-d hx-swirl" data-depth="1.1" viewBox="0 0 150 96" aria-hidden="true"><path d="M140 88 C 138 40, 98 14, 40 22" fill="none" stroke="#DBB9EE" stroke-width="12" stroke-linecap="round"/><path d="M52 2 L 20 24 L 50 48" fill="none" stroke="#DBB9EE" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="hx-chip c1" data-depth=".7"><i style="--c:#FF702D"></i>603 стобалльника</span>
+        <span class="hx-chip c2" data-depth=".9"><i style="--c:#3A3A3A"></i>Каждый 3-й — 80+</span>
+        <i class="hx-d ring" data-depth="1.5" aria-hidden="true"></i>
+        <svg class="hx-d spk k3" data-depth="1.3" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#B6D67D"/></svg>
         <div class="hx-card">
           <img class="hx-poster" src="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_lg/019e8e5f-621b-773c-bfb3-c0e23fe36900.jpg" alt="" aria-hidden="true">
           <iframe class="hx-video" src="https://kinescope.io/embed/rwCkE6ezEfagxHfXcmDTup?autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;playsinline=1" title="Видео СМИТАП" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" frameborder="0" loading="eager" tabindex="-1"></iframe>
@@ -1107,8 +1172,36 @@ body.tz-on .sw::after{transform:translateX(18px)}
           <div class="lc-pop"><b>Образовательная платформа</b><p>Уроки, домашние задания, банк заданий, календарь и напоминания всегда под рукой. Никакой путаницы с вкладками и ссылками — всё нужное для учёбы хранится в одном месте и помогает заниматься регулярно и без лишнего стресса.</p></div>
         </article>
       </div>
+      <div class="lc-slot">
+        <article class="lc" tabindex="0" style="--c:#2F6BEA;--r:-1.6deg;--oy:2px">
+          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path transform="translate(300 40) scale(2.3)" d="M0 -12 C0 -28 -26 -30 -26 -10 C-26 6 -6 18 0 26 C6 18 26 6 26 -10 C26 -30 0 -28 0 -12Z" fill="#FFAA44"/><path transform="translate(60 330) scale(1.6)" d="M0 -12 C0 -28 -26 -30 -26 -10 C-26 6 -6 18 0 26 C6 18 26 6 26 -10 C26 -30 0 -28 0 -12Z" fill="#FFAA44"/><path transform="translate(350 300) scale(1.2)" d="M0 -12 C0 -28 -26 -30 -26 -10 C-26 6 -6 18 0 26 C6 18 26 6 26 -10 C26 -30 0 -28 0 -12Z" fill="#FF9292"/><path d="M40.0 -22.0 L51.9 -4.4 L71.0 -13.7 L72.5 7.5 L93.7 9.0 L84.4 28.1 L102.0 40.0 L84.4 51.9 L93.7 71.0 L72.5 72.5 L71.0 93.7 L51.9 84.4 L40.0 102.0 L28.1 84.4 L9.0 93.7 L7.5 72.5 L-13.7 71.0 L-4.4 51.9 L-22.0 40.0 L-4.4 28.1 L-13.7 9.0 L7.5 7.5 L9.0 -13.7 L28.1 -4.4Z" fill="#B6D67D"/><circle cx="40" cy="40" r="26" fill="#2F6BEA"/><circle cx="250" cy="400" r="22" fill="#B0F2EB"/></svg>
+          <h3 class="lc-title">Достижения<br> и система жизней</h3>
+          <div class="lc-pop"><b>Достижения и система жизней</b><p data-p="Система жизней мотивирует соблюдать дедлайны и заниматься регулярно. Если ребёнок не успевает, срок можно перенести по согласованию с наставником. За регулярную учёбу можно получать уровни и достижения.">Система жизней мотивирует соблюдать дедлайны и заниматься регулярно. Если не успеваешь, срок можно перенести по согласованию с наставником. За регулярную учёбу можно получать уровни и достижения.</p></div>
+        </article>
+      </div>
+      <div class="lc-slot">
+        <article class="lc" tabindex="0" style="--c:#C44B76;--r:2.2deg;--oy:-8px">
+          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M250 -20 h170 v150 h-110 l-50 40 v-40 h-10 z" fill="#B0F2EB" transform="rotate(8 330 60)"/><path d="M-40 300 h160 v120 h-60 l-40 36 v-36 h-60 z" fill="#FFAA44" transform="rotate(-6 40 360)"/><circle cx="60" cy="70" r="20" fill="#FFAA44"/><circle cx="330" cy="370" r="26" fill="#DBB9EE"/></svg>
+          <h3 class="lc-title">Поддержка<br> и дружное<br> комьюнити</h3>
+          <div class="lc-pop"><b>Поддержка и дружное комьюнити</b><p data-p="На пути подготовки ребёнок не один! С ним — группа единомышленников, с которыми можно обсудить учёбу, поделиться переживаниями и найти друзей даже за пределами курса.">На пути подготовки ты не один! С тобой — группа единомышленников, с которыми можно обсудить учёбу, поделиться переживаниями и найти друзей даже за пределами курса.</p></div>
+        </article>
+      </div>
+      <div class="lc-slot">
+        <article class="lc" tabindex="0" style="--c:#4798A7;--r:-1.2deg;--oy:4px">
+          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g transform="rotate(-14 330 70)"><rect x="250" y="-30" width="170" height="120" rx="18" fill="#DBB9EE"/><rect x="270" y="20" width="170" height="120" rx="18" fill="#E4C1F7"/><rect x="290" y="70" width="170" height="120" rx="18" fill="#F1E3FA"/></g><path d="M-30 360 C 90 330, 200 420, 420 380 L420 460 L-30 460Z" fill="#B6D67D"/><circle cx="50" cy="80" r="24" fill="#FFAA44"/></svg>
+          <h3 class="lc-title">Большая база<br> дополнительных<br> материалов</h3>
+          <div class="lc-pop"><b>Большая база дополнительных материалов</b><p>Подготовили карточки Quizlet, структурированные методички по сложным темам, запоминалки, подборки и задания — ничего докупать не нужно.</p></div>
+        </article>
+      </div>
+      <div class="lc-slot">
+        <article class="lc" tabindex="0" style="--c:#FF5E5E;--r:1.8deg;--oy:-6px">
+          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g transform="translate(95 -70) scale(.78)"><g fill="none" stroke="#9AE0F1" stroke-width="36" stroke-linecap="round"><path d="M330 -30 A 120 120 0 1 1 210 90"/></g><path d="M196 50 l40 30 -48 20z" fill="#9AE0F1"/></g><path d="M70.0 320.0 L80.2 345.2 L100.4 326.9 L98.7 354.0 L124.7 346.4 L111.4 370.0 L138.2 374.4 L116.0 390.0 L138.2 405.6 L111.4 410.0 L124.7 433.6 L98.7 426.0 L100.4 453.1 L80.2 434.8 L70.0 460.0 L59.8 434.8 L39.6 453.1 L41.3 426.0 L15.3 433.6 L28.6 410.0 L1.8 405.6 L24.0 390.0 L1.8 374.4 L28.6 370.0 L15.3 346.4 L41.3 354.0 L39.6 326.9 L59.8 345.2Z" fill="#FFAA44"/><circle cx="360" cy="380" r="22" fill="#B0F2EB"/></svg>
+          <h3 class="lc-title">Системное<br> повторение<br> и пробники</h3>
+          <div class="lc-pop"><b>Системное повторение и регулярные пробники</b><p>Регулярно закрепляем пройденное на вебинарах, отслеживаем прогресс, а перед экзаменом повторяем всю программу на Финальном курсе.</p></div>
+        </article>
+      </div>
     </div>
-    <div class="lc-steps" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="lc-steps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div>
   </div>
 </section>
@@ -1702,8 +1795,11 @@ function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1
   let tick=false;
   function upd(){ tick=false; const H=innerHeight, W=innerWidth, pin=canPin();
     sec.classList.toggle('pinned',pin);
-    if(pin){ const r=sec.getBoundingClientRect(), span=r.height-(H-72), p=cl(-r.top/span), N=cards.length;
-      cards.forEach((c,i)=>{ const q=cl((p/.92)*N-i), e=ease(q);
+    if(pin){ const r=sec.getBoundingClientRect(), span=r.height-(H-72), p=cl(-r.top/span), N=cards.length, A=.42;
+      const row=sec.querySelector('.lc-row'), shift=N>4?slots[4].offsetLeft-slots[0].offsetLeft:0;
+      const pa=cl(p/A), pb=cl((p-A)/(.96-A));
+      row.style.setProperty('--tx',(-shift*(pb*pb*(3-2*pb))).toFixed(1)+'px');
+      cards.forEach((c,i)=>{ const q=i<4?cl(pa*4-i):cl(pb*4.3-(i-4)), e=ease(q);
         c.style.setProperty('--y',((1-e)*H*.95).toFixed(1)+'px'); c.style.setProperty('--o',q>0?1:0);
         if(steps[i]) steps[i].style.setProperty('--s',q.toFixed(3)); });
       return; }

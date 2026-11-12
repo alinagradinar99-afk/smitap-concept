@@ -7,7 +7,8 @@
 <meta name="description" content="Концепт лендинга курса подготовки к ЕГЭ по истории: блоки «О курсе», «Как проходит обучение», «Фишки».">
 <link rel="preconnect" href="https://kinescope.io">
 <link rel="preconnect" href="https://edge-ams-1.kinescopecdn.net" crossorigin>
-<link rel="preload" as="image" href="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp" imagesrcset="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_sm/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 640w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1280w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_lg/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1920w" imagesizes="(max-width:980px) 110vw, 1010px" fetchpriority="high">
+<link rel="preconnect" href="https://thb.tildacdn.com">
+<link rel="preload" as="image" href="https://thb.tildacdn.com/tild3266-6336-4336-a330-626238313261/-/resize/1100x/Frame_1321314832_1.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1061,6 +1062,272 @@ body.tz-on .sw::after{transform:translateX(18px)}
 /* видео: сначала мгновенно показывается лёгкая обложка (webp), плеер грузится после страницы и проявляется, когда уже играет */
 .hx-video{opacity:0;transition:opacity .6s ease}
 .hx-card.ready .hx-video{opacity:1}
+
+/* ===== первый экран: знакомство с преподавателями ===== */
+.hx-text .aud{margin:0 0 26px;display:inline-flex}
+.hx-title{font-size:clamp(40px,4.2vw,64px)}
+.hx-sub{position:relative;z-index:1;margin-top:26px;font-size:18px;line-height:1.45;color:#5b5b5b;max-width:520px;transition:opacity .25s}
+.hx-pick{position:relative;z-index:1;display:flex;align-items:flex-start;gap:10px;margin-top:16px}
+.hx-exam{display:flex;flex:none;padding:4px;border-radius:14px;background:#F2F2F2}
+.hx-exam button{height:36px;padding:0 14px;border:0;border-radius:10px;background:none;font:inherit;font-size:14px;font-weight:700;color:#7a7a7a;cursor:pointer;transition:background .2s,color .2s}
+.hx-exam button.on{background:var(--graphite);color:#fff}
+.hx-subj{display:flex;flex-wrap:wrap;gap:6px}
+.hx-subj button{position:relative;display:inline-flex;align-items:center;gap:7px;height:44px;padding:0 14px;border:1px solid #E6E6E6;border-radius:14px;background:#fff;font:inherit;font-size:14px;font-weight:600;color:var(--graphite);cursor:pointer;overflow:hidden;transition:background .25s,border-color .25s,transform .35s cubic-bezier(.3,1.6,.5,1)}
+.hx-subj button i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.hx-subj button:hover{transform:translateY(-2px);border-color:var(--c)}
+.hx-subj button.on{background:var(--c);border-color:var(--c)}
+.hx-subj button.on i{background:#fff}
+.hx-subj button b{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--graphite);opacity:.35}
+.hx-subj button.on.run b{animation:tcProg var(--dur,5s) linear forwards}
+@keyframes tcProg{to{width:100%}}
+.hx-subj button.vid{border-style:dashed}
+.hx-cta{margin-top:36px}
+/* стопка карточек */
+.tc-stack{position:absolute;inset:0}
+.tc{position:absolute;inset:0;opacity:0;transform:translateX(60px) rotate(5deg) scale(.94);transition:opacity .45s ease,transform .7s cubic-bezier(.2,1.2,.3,1);pointer-events:none}
+.tc.on{opacity:1;transform:none;pointer-events:auto;z-index:2}
+.tc.out{opacity:0;transform:translateX(-50px) rotate(-6deg) scale(.94);z-index:1}
+.tc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 20%}
+.tc-info{position:absolute;left:14px;right:14px;bottom:14px;padding:18px 20px 20px;border-radius:26px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transform:translateY(16px);opacity:0;transition:opacity .4s .25s,transform .6s cubic-bezier(.2,1.3,.3,1) .25s}
+.tc.on .tc-info{transform:none;opacity:1}
+.tc-info small{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:#7a7a7a}
+.tc-info small i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.tc-info b{display:block;margin-top:6px;font-weight:700;font-size:26px;letter-spacing:-.02em;color:var(--graphite)}
+.tc-info p{margin-top:6px;font-size:15px;line-height:1.4;color:#5b5b5b}
+.tc-vid{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s}
+.hx-card.show-vid .tc-vid{opacity:1;pointer-events:auto;z-index:3}
+.hx-chip{transition:opacity .25s}
+.hx-chip.swap{opacity:0}
+.hx-chip b{font-weight:800}
+@media (max-width:1200px){.hx-pick{flex-direction:column}}
+@media (max-width:980px){
+  .hx-text .aud{margin-bottom:20px}
+  .hx-subj{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:calc(-1 * var(--g));padding-right:var(--g)}
+  .hx-subj::-webkit-scrollbar{display:none}
+  .hx-subj button{flex:none}
+  .hx-pick{width:100%}
+}
+@media (max-width:640px){
+  .hx-sub{font-size:16px}
+  .tc-info{left:10px;right:10px;bottom:10px;padding:14px 16px;border-radius:20px}
+  .tc-info b{font-size:21px}
+  .tc-info p{font-size:13.5px}
+}
+
+/* правки раскладки после переноса переключателя */
+.header .h-login{margin-left:auto}
+.hx-d.sun-t{left:58%;top:-6px;width:62px}
+.hx-chip.c2{right:-8%;bottom:auto;top:44%}
+.hx-d.ring{top:auto;bottom:30%;right:-10%}
+@media (max-width:1320px){.header .hdr-cta{margin-left:auto}}
+@media (max-width:980px){.hx-d.sun-t{left:auto;right:2%;top:-10px;width:48px}.hx-chip.c2{right:-4%;top:40%}}
+
+@media (max-width:980px){.hx-grid{grid-template-columns:minmax(0,1fr)}.hx-text,.hx-pick,.hx-subj{min-width:0;max-width:100%}.hx-subj{margin-right:0;padding-right:0}}
+
+/* ===== закреплённые кнопки внизу экрана ===== */
+.dock-cta{position:fixed;left:50%;bottom:80px;z-index:70;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 32px);pointer-events:none}
+.dock-cta::before{content:"";position:absolute;inset:-26px -48px;z-index:-1;border-radius:999px;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  -webkit-mask:radial-gradient(closest-side,#000 62%,transparent);mask:radial-gradient(closest-side,#000 62%,transparent)}
+.dock-in{display:flex;gap:12px;justify-content:center;pointer-events:auto}
+.dock-in .btn{height:60px;padding:0 34px;font-size:17px;font-weight:600;white-space:nowrap}
+.dock-in .btn-o{background:rgba(255,255,255,.9)}
+body{padding-bottom:40px}
+@media (max-width:640px){
+  .dock-cta{bottom:calc(16px + env(safe-area-inset-bottom));width:calc(100vw - 24px)}
+  .dock-cta::before{inset:-14px -16px}
+  .dock-in{gap:8px}
+  .dock-in .btn{flex:1;height:52px;padding:0 12px;font-size:14.5px}
+}
+/* «Пометки по ТЗ» — выше, чтобы не спорить с кнопками на телефоне */
+@media (max-width:640px){.tz-toggle{bottom:84px}}
+
+/* ===== колода преподавателей ===== */
+.hx-sub{margin-top:24px}
+.tc.n1{opacity:1;transform:translate(26px,-14px) rotate(5deg) scale(.95);z-index:1;filter:saturate(.9) brightness(.97)}
+.tc.n2{opacity:.9;transform:translate(48px,-26px) rotate(9deg) scale(.9);z-index:0;filter:saturate(.8) brightness(.94)}
+.tc.n1 .tc-info,.tc.n2 .tc-info{opacity:0}
+.tc.out{opacity:0;transform:translateX(-120px) rotate(-10deg) scale(.96);z-index:3}
+.tc.out-r{opacity:0;transform:translate(48px,-26px) rotate(9deg) scale(.9);z-index:0}
+.tc{transition:opacity .45s ease,transform .75s cubic-bezier(.2,1.1,.3,1),filter .5s}
+.hx-card{overflow:visible;background:none;box-shadow:none}
+.tc{border-radius:40px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(58,58,58,.5)}
+.tc-stack{cursor:pointer;touch-action:pan-y}
+.tc-nav{position:absolute;left:50%;bottom:-78px;z-index:4;display:flex;align-items:center;gap:14px;transform:translateX(-50%)}
+.tc-nav button{position:relative;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid #E5E5E5;background:#fff;cursor:pointer;overflow:hidden;transition:transform .35s cubic-bezier(.3,1.6,.5,1),border-color .2s}
+.tc-nav button:hover{transform:scale(1.08);border-color:var(--graphite)}
+.tc-nav svg{position:relative;z-index:1;width:20px;height:20px;fill:none;stroke:var(--graphite);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.tc-prog{position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--orange) calc(var(--p,0)*1%),transparent 0);-webkit-mask:radial-gradient(closest-side,transparent 86%,#000 88%);mask:radial-gradient(closest-side,transparent 86%,#000 88%)}
+.tc-next.run .tc-prog{animation:tcRing 5s linear forwards}
+@property --p{syntax:"<number>";inherits:false;initial-value:0}
+@keyframes tcRing{from{--p:0}to{--p:100}}
+.tc-count{font-weight:700;font-size:15px;color:#9a9a9a;font-variant-numeric:tabular-nums}
+.tc-count b{color:var(--graphite)}
+.hero.hx{padding-bottom:120px}
+@media (max-width:980px){.tc-nav{bottom:-70px}.hero.hx{padding-bottom:110px}.tc.n2{display:none}}
+
+.tc-nav{position:relative;left:auto;bottom:auto;transform:none;z-index:1;margin-top:22px;justify-content:flex-start}
+@media (max-width:980px){.tc-nav{bottom:auto}}
+.hero.hx{padding-bottom:150px}
+
+/* ===== правки: плашки с цифрами, подпись без точки и тоньше, полоски по центру ===== */
+.tc-info small{display:block;font-weight:500;font-size:14px;color:#8a8a8a}
+.tc-info b{font-weight:600;font-size:25px}
+.tc-info p{font-weight:400}
+.hx-art .tc-stack{cursor:grab}
+/* плашка 1 — круглый стикер с большой цифрой */
+.hx-chip{gap:0;padding:0;box-shadow:none;background:none;white-space:normal;font-weight:400}
+.hx-chip.c1{left:-12%;top:7%;rotate:-10deg;width:124px;height:124px;border-radius:50%;background:var(--orange);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  box-shadow:0 0 0 5px #fff,0 22px 40px -18px rgba(255,112,45,.9)}
+.hx-chip.c1::before{content:"";position:absolute;inset:9px;border-radius:50%;border:1.5px dashed rgba(255,255,255,.55);animation:spin 26s linear infinite}
+.hx-chip.c1 b{font-weight:700;font-size:34px;line-height:1;letter-spacing:-.03em}
+.hx-chip.c1 span{margin-top:4px;max-width:88px;font-size:11.5px;line-height:1.15;font-weight:500;opacity:.92}
+/* плашка 2 — «стикер-записка» с цифрой слева */
+.hx-chip.c2{right:-9%;top:46%;bottom:auto;rotate:5deg;display:flex;align-items:center;gap:12px;max-width:230px;padding:12px 18px 12px 12px;border-radius:20px;background:var(--turq);color:var(--graphite);
+  box-shadow:0 22px 40px -24px rgba(40,120,110,.7)}
+.hx-chip.c2 b{flex:none;display:grid;place-items:center;min-width:54px;height:54px;padding:0 8px;border-radius:14px;background:#fff;font-weight:700;font-size:22px;letter-spacing:-.02em}
+.hx-chip.c2 span{font-size:13.5px;line-height:1.25;font-weight:500}
+.hx-chip.c2::after{content:"";position:absolute;left:50%;top:-7px;width:44px;height:14px;margin-left:-22px;border-radius:3px;background:rgba(255,255,255,.75);rotate:-4deg}
+@media (max-width:980px){
+  .hx-chip.c1{left:-4%;top:4%;width:96px;height:96px}.hx-chip.c1 b{font-size:26px}.hx-chip.c1 span{font-size:10px;max-width:70px}
+  .hx-chip.c2{right:-3%;top:42%;max-width:190px;padding:9px 12px 9px 9px}.hx-chip.c2 b{min-width:44px;height:44px;font-size:18px}.hx-chip.c2 span{font-size:12px}
+}
+/* полоски прогресса в блоке обучения — по центру */
+.pinned .lc-steps{justify-content:center}
+.lc-steps{justify-content:center}
+
+@media (max-width:640px){.hx-chip.c1{left:2%}.hx-chip.c2{right:0}}
+
+/* =====================================================================
+   ЕДИНАЯ СИСТЕМА: стили текста и отступы (все отступы кратны 4)
+   H1 — главный заголовок · H2 — заголовки блоков и баннеров · H3 — заголовки карточек и цифры
+   Body — основной текст · Body S — мелкий текст · Tag — плашки, подписи, метки · Button — кнопки
+   ===================================================================== */
+:root{
+  --h1:700 clamp(40px,4.4vw,64px)/1.12 var(--f);   --h1-ls:-.03em;
+  --h2:700 clamp(32px,3.4vw,48px)/1.12 var(--f);   --h2-ls:-.03em;
+  --h3:600 24px/1.2 var(--f);                      --h3-ls:-.02em;
+  --body:400 18px/1.5 var(--f);
+  --body-s:400 16px/1.5 var(--f);
+  --tag:500 14px/1.3 var(--f);
+  --btn:600 16px/1 var(--f);
+}
+/* H1 */
+.hx-title{font:var(--h1);letter-spacing:var(--h1-ls)}
+.hx-title .tg{font-weight:700}
+/* H2 */
+.ax-title,.lc-head h2{font:var(--h2);letter-spacing:var(--h2-ls)}
+/* H3 */
+.lc-title,.lc-pop b,.tc-info b,.ax-facts dd,.hx-chip b,.ax-count-c b{font:var(--h3);letter-spacing:var(--h3-ls)}
+/* Body */
+.hx-sub,.ax-lead,.lc-head p{font:var(--body);letter-spacing:0}
+/* Body S */
+.lc-pop p,.tc-info p,.nav>a,.dd-t,.dd-m a{font:var(--body-s);letter-spacing:0}
+/* Tag */
+.aud button,.ax-badge,.tc-info small,.ax-facts dt,.hx-chip span,.ax-count-l,.ax-count-c span,.hx-sound{font:var(--tag);letter-spacing:0}
+/* Button */
+.btn,.header .btn,.hx-cta .btn,.ax-cta .btn,.dock-in .btn,.ll-foot .btn{font:var(--btn);letter-spacing:0}
+
+/* кнопки: одна высота, без теней; основная — просто оранжевая */
+.btn{height:56px;padding:0 32px;box-shadow:none!important}
+.header .btn{height:44px;padding:0 20px}
+.btn-a,.header .btn-a,.dock-in .btn-a{background:var(--orange);color:#fff;box-shadow:none}
+.btn-a:hover{box-shadow:none;filter:brightness(1.05)}
+.dock-in .btn-o{background:#fff}
+
+/* закреплённые кнопки: без размытия и подложки */
+.dock-cta::before{display:none}
+.dock-in{gap:12px}
+
+/* шапка */
+.header .wrap{gap:24px}
+.nav{gap:24px}
+.dd-m{padding:12px;gap:4px}
+.dd-m a{padding:8px 12px}
+
+/* первый экран */
+.hero.hx{padding:56px 0 160px}
+.hx-text .aud{margin:0 0 24px;padding:4px}
+.aud button{height:36px;padding:0 16px}
+.hx-sub{margin-top:24px;color:#5b5b5b}
+.tc-info{left:16px;right:16px;bottom:16px;padding:20px 24px;border-radius:24px}
+.tc-info small{color:#8a8a8a}
+.tc-info b{margin-top:4px}
+.tc-info p{margin-top:8px;color:#5b5b5b}
+.hx-chip.c1{width:120px;height:120px}
+.hx-chip.c1 span{margin-top:4px;max-width:96px}
+.hx-chip.c2{gap:12px;padding:12px 20px 12px 12px;border-radius:20px}
+.hx-chip.c2 b{min-width:52px;height:52px;padding:0 8px;border-radius:12px}
+
+/* оранжевый баннер */
+.ax-card{min-height:600px}
+.ax-body{padding:64px 0 56px 72px}
+.ax-badge{margin-left:16px;padding:8px 16px;border-radius:16px;top:-.5em}
+.ax-lead{margin-top:20px;color:rgba(255,255,255,.9)}
+.ax-facts{gap:40px;margin-top:32px}
+.ax-facts dt{color:rgba(255,255,255,.8)}
+.ax-facts dd{margin-top:4px}
+.ax-facts small{font:var(--tag);color:rgba(255,255,255,.8);margin-left:4px}
+.ax-count{display:flex;align-items:center;gap:16px;margin-top:32px}
+.ax-count-l{color:rgba(255,255,255,.8);max-width:96px}
+.ax-count-c{display:flex;gap:8px}
+.ax-count-c div{display:flex;align-items:baseline;gap:4px;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.24)}
+.ax-count-c b{color:#fff;font-variant-numeric:tabular-nums;min-width:28px;text-align:right}
+.ax-count-c span{color:rgba(255,255,255,.8)}
+.ax-cta{gap:12px;margin-top:auto;padding-top:40px}
+
+/* блок «Как проходит обучение»: заголовок и текст выровнены по верху */
+.lc-head{align-items:flex-start;gap:48px}
+.lc-head p{max-width:400px;padding:8px 0 0;margin:0;color:#5c5c5c}
+.lc-pop{padding:24px 20px;gap:12px}
+.lc-title{padding:0 24px}
+.pinned .lc-row{margin-top:64px}
+.pinned .lc-steps{margin-top:40px;gap:8px}
+
+@media (max-width:1200px){.ax-body{padding:56px 0 48px 48px}.ax-facts{gap:24px}}
+@media (max-width:980px){.ax-body{padding:32px 32px 40px}.ax-count{flex-wrap:wrap;gap:12px}.ax-count-l{max-width:none;width:100%}.lc-head{gap:16px}.lc-head p{padding-top:0}.ax-cta{margin-top:32px;padding-top:0}}
+@media (max-width:640px){
+  :root{--h3:600 20px/1.2 var(--f);--body:400 16px/1.5 var(--f);--body-s:400 14px/1.5 var(--f)}
+  .hero.hx{padding:32px 0 120px}
+  .ax-body{padding:24px 20px 32px}
+  .ax-count-c div{padding:8px}
+  .btn{height:52px;padding:0 20px}
+  .dock-in .btn{height:52px;padding:0 12px}
+  .tc-info{left:12px;right:12px;bottom:12px;padding:16px;border-radius:20px}
+  .hx-chip.c1{width:108px;height:108px}.hx-chip.c1 span{max-width:84px}
+}
+
+.hx-chip.c1 b,.hx-chip.c2 b{font:var(--h3);letter-spacing:var(--h3-ls)}
+.hx-chip.c1 span,.hx-chip.c2 span{font:var(--tag)}
+
+/* закреплённые кнопки ниже */
+.dock-cta{bottom:40px}
+/* стикеры у карточек преподавателей: крупная цифра — отдельный стиль «Цифра» (700, 40 px), один на оба стикера */
+:root{--num:700 40px/1 var(--f)}
+.hx-chip.c1 b,.hx-chip.c2 b{font:var(--num);letter-spacing:-.04em}
+.hx-chip.c1{width:136px;height:136px;padding:20px;box-sizing:border-box}
+.hx-chip.c1::before{inset:8px}
+.hx-chip.c1 span{margin-top:4px;max-width:92px}
+.hx-chip.c2 b{min-width:72px;height:64px;padding:0 8px}
+.hx-chip.c2{max-width:260px}
+@media (max-width:980px){:root{--num:700 32px/1 var(--f)}.hx-chip.c1{width:116px;height:116px;padding:16px}.hx-chip.c1 span{max-width:80px}.hx-chip.c2 b{min-width:60px;height:52px}}
+@media (max-width:640px){:root{--num:700 28px/1 var(--f)}.hx-chip.c1{width:108px;height:108px;padding:12px}.hx-chip.c1 span{max-width:76px}}
+
+/* круглый стикер: текст гарантированно внутри пунктирного кольца */
+.hx-chip.c1{width:152px;height:152px;padding:24px}
+.hx-chip.c1 span{max-width:96px;line-height:1.2}
+@media (max-width:980px){.hx-chip.c1{width:128px;height:128px;padding:20px}.hx-chip.c1 span{max-width:84px}}
+@media (max-width:640px){.hx-chip.c1{width:116px;height:116px;padding:16px}.hx-chip.c1 span{max-width:76px;font-size:12px}}
+
+/* плавность: в закреплённом блоке карточки едут ровно за прокруткой, без запаздывания; анимируемое — на отдельном слое */
+.pinned .lc{transition:box-shadow .35s;will-change:transform}
+.pinned .lc-row{will-change:transform}
+.tc,.hx-chip,[data-depth]{will-change:transform}
+
+@media (max-width:640px){.hx-chip.c1{width:132px;height:132px;padding:16px}.hx-chip.c1 span{max-width:88px}}
+
+/* плашка по ховеру: заголовок и текст по центру */
+.lc-pop{align-items:center;justify-content:center;text-align:center}
+.lc-pop b,.lc-pop p{text-align:center}
 </style>
 </head>
 <body>
@@ -1069,7 +1336,6 @@ body.tz-on .sw::after{transform:translateX(18px)}
   <div class="wrap">
     <a class="logo" href="#"><img src="img/logo.svg" alt="СМИТАП"></a>
     <nav class="nav"><div class="dd"><button type="button" class="dd-t" aria-expanded="false">ЕГЭ<svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd-m c2"><a href="https://smitup.ru/ege-history">ЕГЭ по истории</a><a href="https://smitup.ru/ege-russian">ЕГЭ по русскому языку</a><a href="https://smitup.ru/ege-literature">ЕГЭ по литературе</a><a href="https://smitup.ru/ege-obshhestvoznanie">ЕГЭ по обществознанию</a><a href="https://smitup.ru/ege-english">ЕГЭ по английскому языку</a><a href="https://smitup.ru/ege-biology">ЕГЭ по биологии</a><a href="https://smitup.ru/ege-chemistry">ЕГЭ по химии</a><a href="https://smitup.ru/ege-math">ЕГЭ по математике</a><a href="https://smitup.ru/ege-physics">ЕГЭ по физике</a><a href="https://smitup.ru/ege-inf">ЕГЭ по информатике</a></div></div><div class="dd"><button type="button" class="dd-t" aria-expanded="false">ОГЭ<svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd-m"><a href="https://smitup.ru/oge-russian">ОГЭ по русскому языку</a><a href="https://smitup.ru/oge-math">ОГЭ по математике</a><a href="https://smitup.ru/oge-history">ОГЭ по истории</a><a href="https://smitup.ru/oge-english">ОГЭ по английскому языку</a></div></div><div class="dd"><button type="button" class="dd-t" aria-expanded="false">Бесплатная подготовка<svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd-m"><a href="https://smitup.ru/free-courses">Бесплатные курсы</a><a href="https://smitup.ru/free-vebinars">Бесплатные вебинары</a></div></div><a href="https://smitup.ru/blog">Блог</a><a href="https://lk.smitup.ru/trenazher/">Банк заданий</a></nav>
-    <div class="aud" role="radiogroup" aria-label="Для кого"><span class="aud-k" aria-hidden="true"></span><button type="button" role="radio" aria-checked="true" data-aud="s"><span class="lg">Я </span>ученик</button><button type="button" role="radio" aria-checked="false" data-aud="p"><span class="lg">Я </span>родитель</button></div>
     <a class="btn btn-line h-login" href="https://lk.smitup.ru/auth/login">Войти</a>
     <a class="btn btn-a hdr-cta" href="https://smitup.ru/eva_test">Подобрать формат</a>
     <a class="h-tel" href="tel:+78006003198" aria-label="Позвонить: +7 800 600-31-98"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.5l2.4 2.4c.5.5.5 1.2 0 1.7L8.3 8.9c1.2 2.6 3.2 4.6 5.8 5.8l1.3-1.3c.5-.5 1.2-.5 1.7 0l2.4 2.4c.5.5.5 1.2 0 1.7l-1.5 1.5c-.8.8-2 1-3 .6C9.8 17.6 6.4 14.2 4.4 9c-.4-1-.2-2.2.6-3l1.5-1.5c.2-.2.5-.3.7-.3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></a>
@@ -1090,11 +1356,9 @@ body.tz-on .sw::after{transform:translateX(18px)}
         <i class="hx-d dot-l" data-depth="2" aria-hidden="true"></i>
         <svg class="hx-d spk k1" data-depth="1.4" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#EB99A9"/></svg>
         <svg class="hx-d spk k2" data-depth="1.8" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#9AE0F1"/></svg>
+        <div class="aud" role="radiogroup" aria-label="Для кого"><span class="aud-k" aria-hidden="true"></span><button type="button" role="radio" aria-checked="true" data-aud="s"><span class="lg">Я </span>ученик</button><button type="button" role="radio" aria-checked="false" data-aud="p"><span class="lg">Я </span>родитель</button></div>
         <h1 class="hx-title">Онлайн-школа<br> для подготовки<br> к <b class="tg t1">ЕГЭ</b> и <b class="tg t2">ОГЭ</b></h1>
-        <div class="hx-cta">
-          <a class="btn btn-a" href="#" data-toast="Переход к выбору предмета">Выбрать предмет →</a>
-          <a class="btn btn-o" href="#" data-toast="Форма бесплатного доступа">Попробовать бесплатно</a>
-        </div>
+        <p class="hx-sub" data-p="Познакомьтесь с преподавателем вашего ребёнка — выберите экзамен и предмет">Познакомься со своим преподавателем — выбери экзамен и предмет</p>
       </div>
       <div class="hx-art">
         <span class="hx-glow" aria-hidden="true" data-depth="-.35"></span>
@@ -1106,9 +1370,12 @@ body.tz-on .sw::after{transform:translateX(18px)}
         <i class="hx-d ring" data-depth="1.5" aria-hidden="true"></i>
         <svg class="hx-d spk k3" data-depth="1.3" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#B6D67D"/></svg>
         <div class="hx-card">
-          <img class="hx-poster" src="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp" srcset="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_sm/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 640w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1280w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_lg/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1920w" sizes="(max-width:980px) 110vw, 1010px" width="1280" height="720" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+          <div class="tc-stack" id="tcStack" aria-live="polite"></div>
+          <div class="tc-vid">
+          <img class="hx-poster" src="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp" srcset="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_sm/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 640w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1280w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_lg/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1920w" sizes="(max-width:980px) 110vw, 1010px" width="1280" height="720" alt="" aria-hidden="true" loading="lazy" decoding="async">
           <iframe class="hx-video" data-src="https://kinescope.io/embed/rwCkE6ezEfagxHfXcmDTup?autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;playsinline=1" title="Видео СМИТАП" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" frameborder="0" tabindex="-1"></iframe>
           <a class="hx-sound" href="https://kinescope.io/rwCkE6ezEfagxHfXcmDTup" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Смотреть со звуком</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1130,6 +1397,10 @@ body.tz-on .sw::after{transform:translateX(18px)}
           <div><dt>Старт</dt><dd>1 сентября</dd></div>
           <div><dt>Цена</dt><dd>от 4 290 ₽<small>/мес</small></dd></div>
         </dl>
+        <div class="ax-count" aria-label="До повышения цены">
+          <span class="ax-count-l">До повышения цены</span>
+          <div class="ax-count-c"><div><b id="cD">00</b><span>дн</span></div><div><b id="cH">00</b><span>ч</span></div><div><b id="cM">00</b><span>мин</span></div><div><b id="cS">00</b><span>сек</span></div></div>
+        </div>
         <div class="ax-cta">
           <a class="btn btn-w" href="#" data-toast="Переход к тарифам">Выбрать тариф →</a>
           <a class="btn btn-wo" href="#" data-toast="Форма бесплатного доступа">Попробовать бесплатно</a>
@@ -1185,29 +1456,29 @@ body.tz-on .sw::after{transform:translateX(18px)}
         </article>
       </div>
       <div class="lc-slot">
-        <article class="lc" tabindex="0" style="--c:#2F6BEA;--r:-1.6deg;--oy:2px">
-          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path transform="translate(300 40) scale(2.3)" d="M0 -12 C0 -28 -26 -30 -26 -10 C-26 6 -6 18 0 26 C6 18 26 6 26 -10 C26 -30 0 -28 0 -12Z" fill="#FFAA44"/><path transform="translate(60 330) scale(1.6)" d="M0 -12 C0 -28 -26 -30 -26 -10 C-26 6 -6 18 0 26 C6 18 26 6 26 -10 C26 -30 0 -28 0 -12Z" fill="#FFAA44"/><path transform="translate(350 300) scale(1.2)" d="M0 -12 C0 -28 -26 -30 -26 -10 C-26 6 -6 18 0 26 C6 18 26 6 26 -10 C26 -30 0 -28 0 -12Z" fill="#FF9292"/><path d="M40.0 -22.0 L51.9 -4.4 L71.0 -13.7 L72.5 7.5 L93.7 9.0 L84.4 28.1 L102.0 40.0 L84.4 51.9 L93.7 71.0 L72.5 72.5 L71.0 93.7 L51.9 84.4 L40.0 102.0 L28.1 84.4 L9.0 93.7 L7.5 72.5 L-13.7 71.0 L-4.4 51.9 L-22.0 40.0 L-4.4 28.1 L-13.7 9.0 L7.5 7.5 L9.0 -13.7 L28.1 -4.4Z" fill="#B6D67D"/><circle cx="40" cy="40" r="26" fill="#2F6BEA"/><circle cx="250" cy="400" r="22" fill="#B0F2EB"/></svg>
+        <article class="lc" tabindex="0" style="--c:#1F66EE;--r:-1.6deg;--oy:2px">
+          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M80.0 -68.0 L92.2 -51.2 L109.8 -62.1 L114.7 -41.9 L135.2 -45.2 L131.9 -24.7 L152.1 -19.8 L141.2 -2.2 L158.0 10.0 L141.2 22.2 L152.1 39.8 L131.9 44.7 L135.2 65.2 L114.7 61.9 L109.8 82.1 L92.2 71.2 L80.0 88.0 L67.8 71.2 L50.2 82.1 L45.3 61.9 L24.8 65.2 L28.1 44.7 L7.9 39.8 L18.8 22.2 L2.0 10.0 L18.8 -2.2 L7.9 -19.8 L28.1 -24.7 L24.8 -45.2 L45.3 -41.9 L50.2 -62.1 L67.8 -51.2Z" fill="#B8D5FF"/><path d="M345.0 32.0 L357.2 48.8 L374.8 37.9 L379.7 58.1 L400.2 54.8 L396.9 75.3 L417.1 80.2 L406.2 97.8 L423.0 110.0 L406.2 122.2 L417.1 139.8 L396.9 144.7 L400.2 165.2 L379.7 161.9 L374.8 182.1 L357.2 171.2 L345.0 188.0 L332.8 171.2 L315.2 182.1 L310.3 161.9 L289.8 165.2 L293.1 144.7 L272.9 139.8 L283.8 122.2 L267.0 110.0 L283.8 97.8 L272.9 80.2 L293.1 75.3 L289.8 54.8 L310.3 58.1 L315.2 37.9 L332.8 48.8Z" fill="#B8D5FF"/><path d="M-10.0 213.0 L1.2 228.5 L17.6 218.5 L22.0 237.1 L40.9 234.1 L37.9 253.0 L56.5 257.4 L46.5 273.8 L62.0 285.0 L46.5 296.2 L56.5 312.6 L37.9 317.0 L40.9 335.9 L22.0 332.9 L17.6 351.5 L1.2 341.5 L-10.0 357.0 L-21.2 341.5 L-37.6 351.5 L-42.0 332.9 L-60.9 335.9 L-57.9 317.0 L-76.5 312.6 L-66.5 296.2 L-82.0 285.0 L-66.5 273.8 L-76.5 257.4 L-57.9 253.0 L-60.9 234.1 L-42.0 237.1 L-37.6 218.5 L-21.2 228.5Z" fill="#B8D5FF"/><path d="M250.0 335.0 L262.5 352.2 L280.6 341.1 L285.6 361.8 L306.6 358.4 L303.2 379.4 L323.9 384.4 L312.8 402.5 L330.0 415.0 L312.8 427.5 L323.9 445.6 L303.2 450.6 L306.6 471.6 L285.6 468.2 L280.6 488.9 L262.5 477.8 L250.0 495.0 L237.5 477.8 L219.4 488.9 L214.4 468.2 L193.4 471.6 L196.8 450.6 L176.1 445.6 L187.2 427.5 L170.0 415.0 L187.2 402.5 L176.1 384.4 L196.8 379.4 L193.4 358.4 L214.4 361.8 L219.4 341.1 L237.5 352.2Z" fill="#B8D5FF"/></svg>
           <h3 class="lc-title">Достижения<br> и система жизней</h3>
           <div class="lc-pop"><b>Достижения и система жизней</b><p data-p="Система жизней мотивирует соблюдать дедлайны и заниматься регулярно. Если ребёнок не успевает, срок можно перенести по согласованию с наставником. За регулярную учёбу можно получать уровни и достижения.">Система жизней мотивирует соблюдать дедлайны и заниматься регулярно. Если не успеваешь, срок можно перенести по согласованию с наставником. За регулярную учёбу можно получать уровни и достижения.</p></div>
         </article>
       </div>
       <div class="lc-slot">
-        <article class="lc" tabindex="0" style="--c:#C44B76;--r:2.2deg;--oy:-8px">
-          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M250 -20 h170 v150 h-110 l-50 40 v-40 h-10 z" fill="#B0F2EB" transform="rotate(8 330 60)"/><path d="M-40 300 h160 v120 h-60 l-40 36 v-36 h-60 z" fill="#FFAA44" transform="rotate(-6 40 360)"/><circle cx="60" cy="70" r="20" fill="#FFAA44"/><circle cx="330" cy="370" r="26" fill="#DBB9EE"/></svg>
+        <article class="lc" tabindex="0" style="--c:#FF5E5E;--r:2.2deg;--oy:-8px">
+          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="190" cy="215" r="178" fill="#B6D67D"/></svg>
           <h3 class="lc-title">Поддержка<br> и дружное<br> комьюнити</h3>
           <div class="lc-pop"><b>Поддержка и дружное комьюнити</b><p data-p="На пути подготовки ребёнок не один! С ним — группа единомышленников, с которыми можно обсудить учёбу, поделиться переживаниями и найти друзей даже за пределами курса.">На пути подготовки ты не один! С тобой — группа единомышленников, с которыми можно обсудить учёбу, поделиться переживаниями и найти друзей даже за пределами курса.</p></div>
         </article>
       </div>
       <div class="lc-slot">
-        <article class="lc" tabindex="0" style="--c:#4798A7;--r:-1.2deg;--oy:4px">
-          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g transform="rotate(-14 330 70)"><rect x="250" y="-30" width="170" height="120" rx="18" fill="#DBB9EE"/><rect x="270" y="20" width="170" height="120" rx="18" fill="#E4C1F7"/><rect x="290" y="70" width="170" height="120" rx="18" fill="#F1E3FA"/></g><path d="M-30 360 C 90 330, 200 420, 420 380 L420 460 L-30 460Z" fill="#B6D67D"/><circle cx="50" cy="80" r="24" fill="#FFAA44"/></svg>
+        <article class="lc" tabindex="0" style="--c:#5DA05C;--r:-1.2deg;--oy:4px">
+          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="lcg7" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4E9A55"/><stop offset="1" stop-color="#B6D67D"/></linearGradient></defs><rect width="380" height="430" fill="url(#lcg7)"/><g fill="none" stroke="#FF9B4C" stroke-linecap="round"><path d="M-40 215 C 100 110 240 40 400 -20" stroke-width="72"/><path d="M330 -10 C 410 130 400 300 300 450" stroke-width="64"/></g><ellipse cx="225" cy="335" rx="165" ry="58" transform="rotate(-38 225 335)" fill="#FF9B4C"/></svg>
           <h3 class="lc-title">Большая база<br> дополнительных<br> материалов</h3>
           <div class="lc-pop"><b>Большая база дополнительных материалов</b><p>Подготовили карточки Quizlet, структурированные методички по сложным темам, запоминалки, подборки и задания — ничего докупать не нужно.</p></div>
         </article>
       </div>
       <div class="lc-slot">
-        <article class="lc" tabindex="0" style="--c:#FF5E5E;--r:1.8deg;--oy:-6px">
-          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g transform="translate(95 -70) scale(.78)"><g fill="none" stroke="#9AE0F1" stroke-width="36" stroke-linecap="round"><path d="M330 -30 A 120 120 0 1 1 210 90"/></g><path d="M196 50 l40 30 -48 20z" fill="#9AE0F1"/></g><path d="M70.0 320.0 L80.2 345.2 L100.4 326.9 L98.7 354.0 L124.7 346.4 L111.4 370.0 L138.2 374.4 L116.0 390.0 L138.2 405.6 L111.4 410.0 L124.7 433.6 L98.7 426.0 L100.4 453.1 L80.2 434.8 L70.0 460.0 L59.8 434.8 L39.6 453.1 L41.3 426.0 L15.3 433.6 L28.6 410.0 L1.8 405.6 L24.0 390.0 L1.8 374.4 L28.6 370.0 L15.3 346.4 L41.3 354.0 L39.6 326.9 L59.8 345.2Z" fill="#FFAA44"/><circle cx="360" cy="380" r="22" fill="#B0F2EB"/></svg>
+        <article class="lc" tabindex="0" style="--c:#6849AA;--r:1.8deg;--oy:-6px">
+          <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="80" cy="45" r="25" fill="#A8DCC9"/><circle cx="290" cy="45" r="25" fill="#A8DCC9"/><circle cx="200" cy="105" r="25" fill="#A8DCC9"/><circle cx="325" cy="150" r="25" fill="#A8DCC9"/><circle cx="55" cy="180" r="25" fill="#A8DCC9"/><circle cx="355" cy="290" r="25" fill="#A8DCC9"/><circle cx="80" cy="330" r="25" fill="#A8DCC9"/><circle cx="250" cy="340" r="25" fill="#A8DCC9"/><circle cx="355" cy="375" r="25" fill="#A8DCC9"/><circle cx="150" cy="400" r="25" fill="#A8DCC9"/></svg>
           <h3 class="lc-title">Системное<br> повторение<br> и пробники</h3>
           <div class="lc-pop"><b>Системное повторение и регулярные пробники</b><p>Регулярно закрепляем пройденное на вебинарах, отслеживаем прогресс, а перед экзаменом повторяем всю программу на Финальном курсе.</p></div>
         </article>
@@ -1220,7 +1491,6 @@ body.tz-on .sw::after{transform:translateX(18px)}
 
 </main>
 
-<button class="tz-toggle" id="tzToggle" aria-pressed="false">Пометки по ТЗ <span class="sw"></span></button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -1293,17 +1563,19 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const s=document.createElement('script'); s.src='https://www.youtube.com/iframe_api'; document.head.appendChild(s);
 })();
 
-/* типограф: короткие предлоги, союзы и частицы не висят в конце строки, тире не начинает строку */
-(function(){
+/* типограф: короткие предлоги, союзы и частицы не висят в конце строки, тире не начинает строку.
+   Работает и для текста, который скрипты подставляют позже (карточки преподавателей, стикеры, «ученик/родитель») */
+window.typo=function(root){
   const SHORT='в|во|с|со|к|ко|о|об|обо|у|и|а|но|да|на|по|за|из|от|до|для|без|при|про|над|под|не|ни|же|ли|бы|что|как|или|это|их|её|ее|его|мы|вы|я|ты|он|она|оно|они|все|всё|уже|ещё|еще|так';
-  const rx=new RegExp('(^|[\\s(«"])('+SHORT+')\\s+','gi');
-  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>/^(SCRIPT|STYLE|TEXTAREA|INPUT)$/.test(n.parentNode.nodeName)?2:1});
+  const rx=new RegExp('(?<=^|[\\s(«"])('+SHORT+')[ \\t\\n]+','gi');
+  const w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>/^(SCRIPT|STYLE|TEXTAREA|INPUT)$/.test(n.parentNode.nodeName)?2:1});
   const list=[]; while(w.nextNode()) list.push(w.currentNode);
   list.forEach(n=>{ let t=n.nodeValue; if(!/\S/.test(t)) return;
-    t=t.replace(rx,(m,a,b)=>a+b+'\u00A0').replace(rx,(m,a,b)=>a+b+'\u00A0');   // дважды — для подряд идущих «и в»
+    t=t.replace(rx,(m,w)=>w+'\u00A0');   // дважды — для подряд идущих «и в»
     t=t.replace(/\s+—/g,'\u00A0—');
-    n.nodeValue=t; });
-})();
+    if(t!==n.nodeValue) n.nodeValue=t; });
+};
+new MutationObserver(ms=>{ for(const m of ms){ if(m.type==="characterData"){ const t=m.target; if(t.parentNode&&!/^(SCRIPT|STYLE)$/.test(t.parentNode.nodeName)){ const v=t.nodeValue.replace(/(?<=^|[\s(«"])(в|во|с|со|к|ко|о|об|у|и|а|но|да|на|по|за|из|от|до|для|без|при|про|над|под|не|ни|же|ли|бы|что|как|или|это|их|её|его|мы|вы|я|ты|он|она|оно|они|мой|наш|ваш|все|уже|ещё|еще)[ \t\n]+/gi,(x,w)=>w+"\u00A0"); if(v!==t.nodeValue) t.nodeValue=v; } } else m.addedNodes.forEach(n=>{ if(n.nodeType===1) typo(n); else if(n.nodeType===3&&n.parentNode) typo(n.parentNode); }); } }).observe(document.body,{childList:true,subtree:true,characterData:true});
 
 /* переход между блоками как на paaspop.nl: блок наезжает на предыдущий,
    тот уходит вглубь, объект на стыке поднимается быстрее фона */
@@ -1777,17 +2049,35 @@ function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1
   hero.addEventListener('pointerleave',()=>els.forEach(el=>{ el.style.setProperty('--px','0px'); el.style.setProperty('--py','0px'); }));
 })();
 
-/* видео на первом экране: плеер Kinescope подключается после загрузки страницы и только когда карточка на экране */
-(function(){ const card=document.querySelector('.hx-card'), fr=card&&card.querySelector('.hx-video'); if(!fr) return;
-  const c=navigator.connection; if(c&&(c.saveData||/2g/.test(c.effectiveType||''))) return;
-  let started=false;
-  function start(){ if(started) return; started=true;
-    fr.addEventListener('load',()=>setTimeout(()=>card.classList.add('ready'),1200),{once:true});
-    fr.src=fr.dataset.src; }
-  function whenIdle(){ setTimeout(()=>{ const r=card.getBoundingClientRect();
-    if(r.top<innerHeight*1.5) return start();
-    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); start(); } },{rootMargin:'300px'}); io.observe(card); },250); }
-  if(document.readyState==='complete') whenIdle(); else addEventListener('load',whenIdle,{once:true});
+/* видео на первом экране: плеер Kinescope грузится только когда выбрали «Видео о школе» */
+window.hxVideo=function(){ const card=document.querySelector('.hx-card'), fr=card&&card.querySelector('.hx-video'); if(!fr||fr.getAttribute('src')) return;
+  fr.addEventListener('load',()=>setTimeout(()=>card.classList.add('ready'),1200),{once:true}); fr.src=fr.dataset.src; };
+
+/* первый экран: колода преподавателей (данные и фото — с smitup.ru).
+   Листается прокруткой колёсиком/тачпадом над карточками, свайпом и кликом; сама — раз в 5 секунд */
+(function(){ const D=[{"c": "hist", "subj": "История", "name": "Эля Смит", "quote": "История интереснее, чем кажется, и я вам это докажу", "s1": ["603", "стобалльника"], "s2": ["80+", "у каждого 3-го выпускника"], "img": "https://thb.tildacdn.com/tild3266-6336-4336-a330-626238313261/-/resize/1100x/Frame_1321314832_1.jpg", "ex": "ЕГЭ"}, {"c": "rus", "subj": "Русский язык", "name": "Неля Лотман", "quote": "Русский — пусть и обязательный предмет ЕГЭ, но что мешает ему стать любимым?", "s1": ["161", "стобалльник"], "s2": ["81+", "у каждого 3-го выпускника"], "img": "https://thb.tildacdn.com/tild3465-3263-4237-b032-386630653366/-/resize/1100x/Frame_1321314835_2.jpg", "ex": "ЕГЭ"}, {"c": "soc", "subj": "Обществознание", "name": "Оля Вебер", "quote": "Обществознание для меня — не просто школьный предмет, это основа жизни", "s1": ["101", "стобалльник"], "s2": ["81+", "у каждого 4-го выпускника"], "img": "https://thb.tildacdn.com/tild6261-3231-4631-a336-653861653365/-/resize/1100x/Frame_1321314842_1.jpg", "ex": "ЕГЭ"}, {"c": "eng", "subj": "Английский язык", "name": "Регина Брайт", "quote": "ЕГЭ по английскому начинается с любви к языку", "s1": ["9-й", "год готовит к ЕГЭ"], "s2": ["80+", "у каждого 3-го выпускника"], "img": "https://thb.tildacdn.com/tild3961-6666-4162-b938-313938373132/-/resize/1100x/Frame_1321314837_1.jpg", "ex": "ЕГЭ"}, {"c": "lit", "subj": "Литература", "name": "Виля Брик", "quote": "Для меня литература — вдохновляющий предмет. Он говорит и о судьбах, и о жизни страны в целом", "s1": ["427", "стобалльников"], "s2": ["84+", "у каждого 2-го выпускника"], "img": "https://thb.tildacdn.com/tild3761-6334-4231-b065-636136663366/-/resize/1100x/Frame_1321314838_1.jpg", "ex": "ЕГЭ"}, {"c": "bio", "subj": "Биология", "name": "Миша Гис", "quote": "Влюбитесь в биологию и почувствуйте огонёк внутри себя", "s1": ["10-й", "год готовит к ЕГЭ"], "s2": ["80+", "у каждого 4-го выпускника"], "img": "https://thb.tildacdn.com/tild6635-3261-4361-a564-646165633038/-/resize/1100x/Frame_1321314839_1.jpg", "ex": "ЕГЭ"}, {"c": "chem", "subj": "Химия", "name": "Лана Сильвер", "quote": "Химия окружает нас каждый день, и именно это делает её особенной", "s1": ["100", "баллов на ЕГЭ — дважды"], "s2": ["6-й", "год в образовании"], "img": "https://thb.tildacdn.com/tild3832-6166-4835-b731-336462383632/-/resize/1100x/Frame_1321314814_1.jpg", "ex": "ЕГЭ"}, {"c": "math", "subj": "Математика", "name": "Кирилл Нэш", "quote": "Математика открывает дверь к бесконечным возможностям, давайте вместе найдём ключ", "s1": ["10-й", "год готовит к ЕГЭ"], "s2": ["80+", "у каждого 3-го выпускника"], "img": "https://thb.tildacdn.com/tild6266-3864-4231-a162-346463346262/-/resize/1100x/Frame_1321314841_1.jpg", "ex": "ЕГЭ"}, {"c": "phys", "subj": "Физика", "name": "Артём Вольт", "quote": "Физика — наука понимать природу", "s1": ["10-й", "год готовит к ЕГЭ"], "s2": ["80+", "у каждого 5-го выпускника"], "img": "https://thb.tildacdn.com/tild6135-3163-4133-a130-313161646339/-/resize/1100x/Frame_1321314836_1.jpg", "ex": "ЕГЭ"}, {"c": "inf", "subj": "Информатика", "name": "Даня Байт", "quote": "Кто владеет информацией, тот владеет миром", "s1": ["6-й", "год готовит к ЕГЭ"], "s2": ["80+", "у каждого 3-го выпускника"], "img": "https://thb.tildacdn.com/tild6362-6635-4466-a236-633730656339/-/resize/1100x/Frame_1321314834_2.jpg", "ex": "ЕГЭ"}, {"c": "rus", "subj": "Русский язык", "name": "Соня Руссо", "quote": "Русский язык — бушующий океан слов и предложений. А с моими уроками он станет тихой гаванью", "s1": ["94", "балла на ЕГЭ по русскому"], "s2": ["6-й", "год в онлайн-образовании"], "img": "https://thb.tildacdn.com/tild6234-3063-4633-b036-643636343238/-/resize/1100x/Frame_1321314809_1.jpg", "ex": "ОГЭ"}, {"c": "math", "subj": "Математика", "name": "Люба Кеплер", "quote": "Математика дисциплинирует ум, собирая хаос мыслей в стройные ряды и наводя порядок", "s1": ["92", "балла на ЕГЭ по профилю"], "s2": ["11-й", "год в образовании"], "img": "https://thb.tildacdn.com/tild3131-3061-4664-b233-633632666131/-/resize/1100x/Frame_1321314808_1.jpg", "ex": "ОГЭ"}, {"c": "hist", "subj": "История", "name": "Лера Глинская", "quote": "История — удивительный предмет, ведь, зная прошлое, можно управлять будущим", "s1": ["98", "баллов на ЕГЭ"], "s2": ["7-й", "год в онлайн-образовании"], "img": "https://thb.tildacdn.com/tild3335-3765-4838-a230-643036353337/-/resize/1100x/Frame_1321314833_2.jpg", "ex": "ОГЭ"}, {"c": "eng", "subj": "Английский язык", "name": "Аня Рэй", "quote": "Английский — невероятный предмет! Он делает далёкое ближе, а незнакомое понятнее", "s1": ["95+", "баллов на ЕГЭ"], "s2": ["8-й", "год в онлайн-образовании"], "img": "https://thb.tildacdn.com/tild3037-3837-4331-a635-313936613466/-/resize/1100x/Frame_1321314810_1.jpg", "ex": "ОГЭ"}];
+  const COL={hist:'#FF9B4C',rus:'#9AE0F1',soc:'#FF9292',eng:'#EB99A9',lit:'#DBB9EE',bio:'#B6D67D',chem:'#E4C1F7',math:'#B8D5FF',phys:'#9490DC',inf:'#B4C0CB'};
+  const stack=document.getElementById('tcStack'); if(!stack) return;
+  const art=document.querySelector('.hx-art'), c1=document.querySelector('.hx-chip.c1'), c2=document.querySelector('.hx-chip.c2');
+  const N=D.length, DUR=5000; let idx=0, timer=null, paused=false, lock=0, acc=0;
+  stack.innerHTML=D.map((t,i)=>`<article class="tc" style="--c:${COL[t.c]}"><img src="${t.img}" alt="${t.name} — ${t.subj}" ${i?'loading="lazy"':'fetchpriority="high"'} decoding="async"><div class="tc-info"><small>${t.subj}, ${t.ex}</small><b>${t.name}</b><p>«${t.quote}»</p></div></article>`).join('');
+  const slides=[...stack.children];
+  function chip(el,s){ if(!el) return; el.classList.add('swap'); setTimeout(()=>{ el.innerHTML=`<b>${s[0]}</b><span>${s[1]}</span>`; el.classList.remove('swap'); },220); }
+  function show(i,dir){ const old=idx; idx=(i+N)%N;
+    slides.forEach((s,k)=>{ const d=(k-idx+N)%N; s.className='tc'+(d===0?' on':d===1?' n1':d===2?' n2':(k===old&&old!==idx?(dir<0?' out-r':' out'):'')); });
+    chip(c1,D[idx].s1); chip(c2,D[idx].s2); run(); }
+  function run(){ clearTimeout(timer); if(!paused) timer=setTimeout(()=>show(idx+1,1),DUR); }
+  const step=d=>{ const now=Date.now(); if(now<lock) return; lock=now+550; show(idx+d,d); };
+  // колесо / тачпад над карточками: вниз или вправо — следующий, вверх или влево — предыдущий
+  art.addEventListener('wheel',e=>{ const v=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
+    e.preventDefault(); acc+=v; if(Math.abs(acc)>40){ step(acc>0?1:-1); acc=0; } },{passive:false});
+  stack.addEventListener('click',()=>step(1));
+  let x0=null,y0=null; stack.addEventListener('pointerdown',e=>{ x0=e.clientX; y0=e.clientY; });
+  stack.addEventListener('pointerup',e=>{ if(x0===null) return; const dx=e.clientX-x0, dy=e.clientY-y0; x0=null;
+    if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){ e.stopPropagation(); step(dx<0?1:-1); } },true);
+  art.addEventListener('mouseenter',()=>{ paused=true; run(); }); art.addEventListener('mouseleave',()=>{ paused=false; run(); });
+  addEventListener('load',()=>setTimeout(()=>D.forEach(t=>{ const im=new Image(); im.src=t.img; }),1500),{once:true});
+  show(0,1);
 })();
 
 /* «Я ученик / Я родитель»: подменяем обращение в текстах */
@@ -1838,6 +2128,12 @@ function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1
   addEventListener('scroll',go,{passive:true}); addEventListener('resize',go); upd();
 })();
 
+/* счётчик в оранжевом баннере: до повышения цены */
+(function(){ const D=document.getElementById('cD'); if(!D) return; const H=document.getElementById('cH'), M=document.getElementById('cM'), S=document.getElementById('cS');
+  const end=new Date('2026-11-30T23:59:59+03:00').getTime(), p=n=>String(n).padStart(2,'0');
+  function t(){ let s=Math.max(0,Math.floor((end-Date.now())/1000)); D.textContent=p(Math.floor(s/86400)); s%=86400; H.textContent=p(Math.floor(s/3600)); M.textContent=p(Math.floor(s%3600/60)); S.textContent=p(s%60); }
+  t(); setInterval(t,1000); })();
+
 /* таймер в карточке курса */
 (function(){ const el=document.getElementById('axTimer'); if(!el) return;
   const end=new Date('2026-11-30T23:59:59+03:00').getTime(), p=n=>String(n).padStart(2,'0');
@@ -1846,9 +2142,18 @@ function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1
   t(); setInterval(t,1000); })();
 
 /* ===== пометки ТЗ, тосты ===== */
-$('#tzToggle').onclick=()=>{ const on=document.body.classList.toggle('tz-on'); $('#tzToggle').setAttribute('aria-pressed',on); };
+if($('#tzToggle')) $('#tzToggle').onclick=()=>{ const on=document.body.classList.toggle('tz-on'); $('#tzToggle').setAttribute('aria-pressed',on); };
 let tt; function toast(m){const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),2200);}
 document.addEventListener('click',e=>{const a=e.target.closest('[data-toast]'); if(a){e.preventDefault(); toast(a.dataset.toast);}});
+
+/* финальный проход типографа по всей странице */
+typo(document.body);
 </script>
+<div class="dock-cta" role="region" aria-label="Быстрые действия">
+  <div class="dock-in">
+    <a class="btn btn-a" href="#" data-toast="Переход к выбору предмета">Выбрать предмет →</a>
+          <a class="btn btn-o" href="#" data-toast="Форма бесплатного доступа">Попробовать бесплатно</a>
+  </div>
+</div>
 </body>
 </html>

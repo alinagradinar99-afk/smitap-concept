@@ -910,6 +910,87 @@ body.tz-on .sw::after{transform:translateX(18px)}
 .hero-m .hm-sun.s3{left:50%;top:72%;width:60px;height:60px}
 @media (max-width:980px){.hero-m .hm-sun.s1{left:4%;top:2%}.hero-m .hm-sun.s2{right:4%;top:4%}.hero-m .hm-sun.s3{left:auto;right:8%;top:38%}}
 @media (max-width:640px){.hero-m .hm-sun{width:44px;height:44px}.hero-m .hm-sun.s3{width:40px;height:40px}}
+
+/* ===== Frame 9: первый экран ===== */
+.hero.hx{position:relative;height:auto;min-height:0;padding:56px 0 40px;background:#fff;overflow:clip}
+.hx-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;min-height:660px}
+.hx-text{position:relative;padding-left:8px}
+.hx-title{position:relative;z-index:1;font-family:var(--f);font-weight:700;font-size:clamp(44px,4.6vw,72px);line-height:1.18;letter-spacing:-.03em;color:var(--graphite)}
+.hx-title .tg{display:inline-block;padding:.04em .2em .1em;border-radius:.16em;line-height:1;vertical-align:.02em}
+.hx-title .t1{background:var(--orange);color:#fff;transform:rotate(-2deg)}
+.hx-title .t2{background:var(--turq);color:var(--graphite);transform:rotate(2deg)}
+.hx-cta{position:relative;z-index:1;display:flex;gap:14px;flex-wrap:wrap;margin-top:64px}
+.hx-cta .btn{height:64px;padding:0 42px;font-size:18px;font-weight:600}
+.hx-d{position:absolute;z-index:0;pointer-events:none}
+.hx-d.sun-t{left:24%;top:-130px;width:80px;animation:spin 20s linear infinite}
+.hx-d.sun-o{left:calc(100% + 34px);top:-10px;width:82px;animation:spin 16s linear infinite reverse}
+.hx-d.dot-g{left:88%;top:-150px;width:44px;height:44px;border-radius:50%;background:var(--lime);animation:hfloat 5s ease-in-out infinite}
+.hx-d.dot-l{left:100%;top:calc(100% + 60px);width:44px;height:44px;border-radius:50%;background:var(--lilac);animation:hfloat 6s ease-in-out infinite reverse}
+.hx-art{position:relative;justify-self:end;width:min(100%,540px);aspect-ratio:540/670}
+.hx-glow{position:absolute;inset:-14% -22% -10% -24%;z-index:0;border-radius:50%;filter:blur(56px);opacity:1;
+  background:radial-gradient(closest-side at 22% 52%,#9AE0F1,transparent),radial-gradient(closest-side at 40% 92%,#B6D67D,transparent),radial-gradient(closest-side at 70% 98%,#EB99A9,transparent),radial-gradient(closest-side at 96% 64%,#DBB9EE,transparent),radial-gradient(closest-side at 80% 12%,#B0F2EB,transparent)}
+.hx-tri{position:absolute;z-index:0;right:-16%;top:-9%;width:62%;aspect-ratio:1.25;background:linear-gradient(200deg,#B0F2EB 30%,rgba(176,242,235,0) 85%);clip-path:polygon(18% 0,100% 62%,0 100%);transform:rotate(-6deg);filter:blur(1px)}
+.hx-card{position:absolute;inset:0;z-index:1;border-radius:40px;background:#D9D9D9;transform:rotate(2.5deg);box-shadow:0 40px 80px -50px rgba(58,58,58,.45)}
+@media (max-width:1200px){.hx-grid{min-height:560px}.hx-d.sun-o{left:calc(100% + 6px);width:64px}}
+@media (max-width:980px){
+  .hero.hx{padding:32px 0 40px}
+  .hx-grid{grid-template-columns:1fr;gap:56px;min-height:0}
+  .hx-art{justify-self:center;width:min(78%,420px)}
+  .hx-d.sun-t{left:auto;right:4%;top:-20px;width:56px}
+  .hx-d.sun-o{left:auto;right:0;top:auto;bottom:-40px;width:54px}
+  .hx-d.dot-g{left:70%;top:-30px;width:30px;height:30px}
+  .hx-d.dot-l{display:none}
+  .hx-cta{margin-top:36px}
+}
+@media (max-width:640px){
+  .hx-title{font-size:clamp(34px,10vw,44px)}
+  .hx-cta{flex-direction:column}
+  .hx-cta .btn{width:100%;height:56px;padding:0 24px}
+  .hx-card{border-radius:28px}
+}
+
+/* ===== Frame 9: оранжевая карточка ===== */
+.ax-card{min-height:610px}
+.ax-body{justify-content:flex-start;padding:64px 0 56px 72px}
+.ax-title{margin-top:0;position:relative}
+.ax-badge{position:relative;top:-.55em;margin-left:16px;vertical-align:middle;padding:10px 18px;border-radius:16px;background:var(--sky);color:var(--graphite);font-size:18px;letter-spacing:0;transform:rotate(1.5deg);display:inline-block;line-height:1.2;white-space:nowrap}
+.ax-facts{display:flex;gap:40px;margin-top:40px;border-radius:0;background:none}
+.ax-facts div{padding:0}
+.ax-facts div+div{border-left:0}
+.ax-facts dt{font-size:17px;color:rgba(255,255,255,.82)}
+.ax-facts dd{font-size:28px}
+.ax-cta{margin-top:auto;padding-top:56px}
+.ax-photo{left:auto;right:6%;transform:none;height:96%}
+@media (max-width:1200px){.ax-body{padding:56px 0 48px 48px}.ax-facts{gap:24px}.ax-facts dd{font-size:22px}.ax-badge{font-size:15px}}
+@media (max-width:980px){.ax-card{min-height:0}.ax-photo{right:auto;left:50%;transform:translateX(-50%);height:100%}.ax-cta{margin-top:32px;padding-top:0}.ax-body{padding:32px 32px 40px}}
+@media (max-width:640px){.ax-badge{display:table;margin:0 0 14px;top:0;font-size:14px;padding:8px 14px}.ax-facts{flex-wrap:wrap;gap:14px 22px}.ax-facts dd{font-size:21px}.ax-body{padding:24px 18px 30px}}
+
+.hero.hx{display:block}
+.hero.hx>.wrap{width:100%;max-width:var(--wrap)}
+.hx-text{padding-left:0}
+.hx-d.sun-o{left:calc(100% - 70px);top:-20px}
+@media (min-width:981px){.ax-title{white-space:nowrap}}
+@media (max-width:1200px){.hx-d.sun-o{left:calc(100% - 50px);width:64px}}
+@media (max-width:980px){.hx-d.sun-o{left:auto;right:0;top:auto;bottom:-40px;width:54px}}
+
+/* видео в карточке первого экрана: 16:9 обрезается по центру под форму карточки */
+.hx-card{overflow:hidden;isolation:isolate}
+.hx-poster,.hx-video{position:absolute;top:0;left:50%;height:100%;width:auto;aspect-ratio:16/9;transform:translateX(-50%);border:0;pointer-events:none}
+.hx-poster{object-fit:cover}
+.hx-video{z-index:1}
+.hx-sound{position:absolute;left:20px;bottom:20px;z-index:2;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px 0 14px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--graphite);font-size:14px;font-weight:600;transition:transform .3s cubic-bezier(.3,1.6,.5,1),background .2s;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hx-sound svg{width:18px;height:18px;color:var(--orange)}
+.hx-sound:hover{transform:translateY(-2px) scale(1.03);background:#fff}
+
+/* отступы по бокам больше; карточка с видео ниже и дальше от края */
+@media (min-width:981px){ :root{--g:96px} }
+@media (min-width:981px) and (max-width:1280px){ :root{--g:56px} }
+.hx-art{aspect-ratio:540/590;width:min(100%,520px);margin-right:36px}
+.hx-grid{min-height:600px}
+@media (max-width:1200px){.hx-art{margin-right:20px}.hx-grid{min-height:520px}}
+@media (max-width:980px){.hx-art{margin-right:0;aspect-ratio:540/560}}
+/* параллакс украшений по движению мыши (translate не мешает их собственной анимации transform) */
+[data-depth]{translate:var(--px,0px) var(--py,0px);transition:translate .5s cubic-bezier(.2,.8,.3,1)}
 </style>
 </head>
 <body>
@@ -930,39 +1011,31 @@ body.tz-on .sw::after{transform:translateX(18px)}
 <main>
 <!-- ================= БЛОК 1 · ПЕРВЫЙ ЭКРАН ================= -->
 <div class="stack">
-<section class="hero hero-m" id="about">
+<section class="hero hx" id="about">
   <div class="wrap">
-    <div class="hm-grid">
-      <div class="hm-text">
-        <h1 class="hm-title">Онлайн-школа<br> для подготовки<br> к <b class="tg t1">ЕГЭ</b> и <b class="tg t2">ОГЭ</b></h1>
-        <div class="hm-cta">
+    <div class="hx-grid">
+      <div class="hx-text">
+        <svg class="hx-d sun-t" data-depth=".9" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#B0F2EB"/></svg>
+        <i class="hx-d dot-g" data-depth="1.6" aria-hidden="true"></i>
+        <svg class="hx-d sun-o" data-depth="1.2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#FFAA44"/></svg>
+        <i class="hx-d dot-l" data-depth="2" aria-hidden="true"></i>
+        <h1 class="hx-title">Онлайн-школа<br> для подготовки<br> к <b class="tg t1">ЕГЭ</b> и <b class="tg t2">ОГЭ</b></h1>
+        <div class="hx-cta">
           <a class="btn btn-a" href="#" data-toast="Переход к выбору предмета">Выбрать предмет →</a>
           <a class="btn btn-o" href="#" data-toast="Форма бесплатного доступа">Попробовать бесплатно</a>
         </div>
-        <span class="tz" style="left:0;top:-30px">Заголовок + кнопки «Выбрать предмет» и «Попробовать бесплатно»</span>
       </div>
-      <svg class="hm-sun s1" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#FFAA44"/></svg><svg class="hm-sun s2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#FFAA44"/></svg><svg class="hm-sun s3" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#B0F2EB"/></svg>
-      <svg class="hm-swirl" viewBox="0 0 150 96" aria-hidden="true"><path d="M140 88 C 138 40, 98 14, 40 22" fill="none" stroke="#DBB9EE" stroke-width="13" stroke-linecap="round"/><path d="M52 2 L 20 24 L 50 48" fill="none" stroke="#DBB9EE" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div class="hm-art" id="dancer" title="Потанцуем?">
-        <svg class="dancer" viewBox="0 0 472 508" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <defs><mask id="mEye" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="130" y="205" width="90" height="55">
-<path d="M174.462 205.21H130.466C130.438 205.965 130.417 206.727 130.417 207.489C130.417 236.049 150.293 259.197 174.812 259.197C199.331 259.197 219.207 236.049 219.207 207.489C219.207 206.727 219.186 205.965 219.158 205.21H174.462Z" fill="white"/>
-</mask></defs>
-  <path d="M421.253 311.821L381.92 311.695C378.648 311.695 374.306 314.513 372.23 317.994L349.578 355.922C347.501 359.404 348.466 362.229 351.738 362.229L408.137 362.243C411.409 362.243 415.751 359.425 417.827 355.943C417.827 355.943 425.874 330.383 428.244 320.91C429.643 315.317 424.525 311.821 421.253 311.821Z" fill="#B8D5FF"/><path d="M357.89 278.654L364.231 293.133C365.476 295.971 368.993 298.32 372.09 298.39L416.191 299.32C419.288 299.383 420.791 297.139 419.547 294.3L413.206 279.821C411.961 276.983 408.445 274.634 405.348 274.564L361.246 273.634C358.149 273.571 356.646 275.815 357.89 278.654Z" fill="#9AE0F1"/><path d="M330.302 206.531L348.808 253.108C350.269 256.785 353.975 259.826 357.093 259.91L401.439 261.071C404.55 261.155 405.892 258.239 404.431 254.562L385.925 207.986C384.464 204.308 380.758 201.267 377.64 201.183L333.294 200.022C330.183 199.939 328.841 202.854 330.302 206.531Z" fill="#B6D67D"/><path d="M392.079 167.624L340.958 166.478C337.372 166.401 333.177 168.946 331.597 172.169L325.172 185.256C323.592 188.479 325.221 191.157 328.808 191.241L379.928 192.388C383.515 192.464 387.71 189.92 389.29 186.697L395.715 173.609C397.295 170.386 395.666 167.708 392.079 167.624Z" fill="#EB99A9"/>
-  <path d="M333.228 501.202C331.48 501.202 329.844 500.097 329.256 498.35L285.617 369.199C284.875 367.003 286.05 364.626 288.245 363.878C290.441 363.137 292.818 364.312 293.566 366.507L337.206 495.658C337.947 497.853 336.772 500.23 334.577 500.978C334.129 501.125 333.675 501.202 333.235 501.202H333.228Z" fill="#FFAA44"/><g class="m-foot-r"><path d="M360.406 489.254C351.723 489.093 339.117 493.512 334.098 495.421C332.462 496.043 331.133 497.287 330.455 498.825C329.84 500.238 329.812 501.79 330.378 503.195C331.504 506.012 332.972 507.439 334.727 507.439H373.375C376.968 507.439 382.778 507.327 383.631 499.923C383.834 498.133 383.289 496.448 382.051 495.036C377.877 490.275 366.705 489.366 360.413 489.254H360.406Z" fill="#FFAA44"/></g>
-  <path d="M362.915 391.025C357.434 398.485 347.611 401.31 337.725 401.31L142.988 381.035C132.599 381.035 126.3 369.995 128.607 360.753C131.851 347.749 146.176 335.975 145.799 314.617C145.002 269.075 111.297 247.996 107.717 204.979C104.145 161.961 110.262 144.07 116.386 125.872C120.315 114.161 128.677 102.584 134.123 95.816C137.262 91.9148 142.331 89.8174 147.652 89.8174L348.289 98.9062C357.909 98.9062 367.068 102.64 367.396 111.379C367.613 117.154 366.634 125.431 363.055 137.198C353.232 169.442 341.137 170.148 343.276 204.972C345.423 239.796 373.528 255.904 382.043 315.449C387.133 351.014 371.004 380.007 362.915 391.018V391.025Z" fill="#FFAA44"/>
-  <path d="M200.91 497.609C197.191 496.211 187.857 492.974 181.46 493.107C176.713 493.19 168.282 493.883 165.08 497.539C164.08 498.679 163.646 500.042 163.807 501.489C164.478 507.362 169.204 507.446 171.84 507.446H200.54C201.966 507.446 203.147 506.39 204.042 504.3C204.553 503.104 204.553 501.783 204.035 500.566C203.469 499.224 202.329 498.147 200.903 497.609H200.91Z" fill="#FFAA44"/><path d="M202.843 507.578C201.535 507.578 200.242 506.97 199.424 505.823C178.52 476.53 157.476 433.924 166.97 410.266C176.73 385.943 197.858 382.58 208.009 380.958C209.715 380.685 211.841 380.35 212.414 380.091C214.469 379.021 216.986 379.832 218.056 381.888C219.126 383.943 218.308 386.481 216.252 387.551C214.609 388.404 212.4 388.753 209.331 389.243C199.389 390.823 182.75 393.472 174.758 413.384C167.096 432.477 185.714 472.153 206.254 500.943C207.597 502.831 207.163 505.446 205.276 506.795C204.535 507.319 203.689 507.578 202.843 507.578Z" fill="#FFAA44"/><path d="M418.342 257.505C417.034 257.505 415.734 257.421 414.44 257.26C405.75 256.149 400.22 251.674 394.865 247.34C390.313 243.655 386.021 240.18 379.512 238.237C368.221 234.867 354.511 237.796 338.773 246.934C336.767 248.095 334.201 247.417 333.04 245.41C331.88 243.403 332.558 240.838 334.564 239.677C352.385 229.33 368.312 226.142 381.917 230.197C390.013 232.616 395.396 236.971 400.15 240.817C404.995 244.739 409.183 248.13 415.51 248.934C424.844 250.129 435.219 245.333 446.335 234.685C448.006 233.084 450.663 233.14 452.264 234.811C453.865 236.482 453.809 239.139 452.138 240.74C440.511 251.877 429.164 257.498 418.349 257.498L418.342 257.505Z" fill="#FFAA44"/><path d="M52.9364 272.187C42.1208 272.187 30.7809 266.566 19.1473 255.429C17.4764 253.828 17.4204 251.171 19.0214 249.5C20.6225 247.829 23.2792 247.766 24.9501 249.374C36.0663 260.022 46.4415 264.818 55.7749 263.622C62.1021 262.818 66.2829 259.428 71.1349 255.506C75.889 251.66 81.2723 247.305 89.3683 244.886C102.966 240.831 118.9 244.019 136.721 254.366C138.727 255.527 139.405 258.099 138.245 260.099C137.084 262.105 134.518 262.784 132.512 261.623C116.774 252.485 103.064 249.556 91.7733 252.926C85.2644 254.869 80.9717 258.344 76.4203 262.028C71.072 266.356 65.5348 270.838 56.8446 271.949C55.5512 272.117 54.2508 272.194 52.9434 272.194L52.9364 272.187Z" fill="#FFAA44"/><g class="m-hand-l"><path d="M28.2657 244.956C27.1121 241.782 25.0217 239.419 22.372 238.314C18.5128 236.699 16.737 237.972 15.8701 239.111C12.5841 236.699 4.55806 231.386 1.76153 232.001C1.17426 232.134 0.719819 232.476 0.482114 232.987C-1.58033 237.314 3.43945 240.132 6.75334 241.992C7.57832 242.453 8.35436 242.893 8.92765 243.285C11.8081 245.256 12.2695 246.368 12.0807 246.718C10.0672 250.493 9.51492 251.668 9.11642 253.031C7.92789 257.086 9.0465 258.54 10.8922 260.309C12.4233 261.77 15.4995 262.686 18.5198 262.686C19.2818 262.686 20.0369 262.63 20.764 262.504C23.8192 261.994 26.0844 260.477 27.3149 258.107C29.4193 254.045 29.7758 249.137 28.2657 244.97V244.956Z" fill="#FFAA44"/></g><g class="m-hand-r"><path d="M471.278 218.297C471.04 217.794 470.586 217.444 469.999 217.312C467.202 216.689 459.169 222.01 455.89 224.422C455.023 223.282 453.248 222.01 449.388 223.625C446.739 224.729 444.648 227.092 443.495 230.267C441.984 234.433 442.341 239.341 444.445 243.403C445.676 245.773 447.941 247.29 450.996 247.801C451.723 247.92 452.478 247.983 453.241 247.983C456.261 247.983 459.337 247.074 460.868 245.606C462.714 243.844 463.832 242.382 462.644 238.335C462.245 236.978 461.693 235.797 459.68 232.021C459.498 231.679 459.952 230.567 462.833 228.596C463.406 228.204 464.189 227.764 465.007 227.302C468.328 225.442 473.341 222.632 471.278 218.297Z" fill="#FFAA44"/></g>
-  <path d="M174.464 205.21H130.468C130.44 205.965 130.419 206.727 130.419 207.489C130.419 236.049 150.295 259.197 174.814 259.197C199.333 259.197 219.209 236.049 219.209 207.489C219.209 206.727 219.188 205.965 219.16 205.21H174.464Z" fill="white"/>
-  <g mask="url(#mEye)"><path d="M184.012 234.957C194.634 234.957 203.245 225.964 203.245 214.871C203.245 203.778 194.634 194.785 184.012 194.785C173.389 194.785 164.778 203.778 164.778 214.871C164.778 225.964 173.389 234.957 184.012 234.957Z" fill="black"/></g>
-  <path d="M201.647 234.077C203.038 220.472 220.447 221.933 228.983 224.366L226.697 246.802C217.769 248.228 200.263 247.689 201.647 234.077Z" fill="#FFAA44"/><path d="M220.215 249.479C214.014 249.479 207.442 248.2 203.541 244.515C200.709 241.845 199.5 238.272 199.947 233.909C200.395 229.533 202.324 226.156 205.68 223.884C212.119 219.514 222.781 220.353 229.947 222.395C231.059 222.709 231.709 223.87 231.387 224.988C231.073 226.1 229.912 226.75 228.793 226.429C223.725 224.982 213.643 223.548 208.029 227.352C205.715 228.918 204.436 231.204 204.121 234.336C203.813 237.377 204.561 239.712 206.421 241.467C210.525 245.34 219.586 245.921 226.752 244.774C227.892 244.585 228.968 245.368 229.157 246.515C229.339 247.661 228.563 248.731 227.416 248.92C225.221 249.269 222.746 249.486 220.215 249.486V249.479Z" fill="black"/><path d="M222.894 273.942C206.5 273.942 198.523 265.273 198.103 264.797C197.334 263.93 197.404 262.609 198.271 261.833C199.131 261.064 200.452 261.134 201.228 261.994C201.704 262.518 213.086 274.648 237.562 267.475C262.235 260.246 265.688 242.823 265.723 242.649C265.933 241.509 267.024 240.754 268.163 240.964C269.303 241.173 270.058 242.264 269.848 243.404C269.701 244.222 265.87 263.553 238.744 271.502C232.78 273.25 227.509 273.935 222.894 273.935V273.942Z" fill="black"/><path d="M307.952 225.625C307.392 225.149 294.074 214.138 272.226 214.634C291.557 212.222 304.806 220.584 304.938 220.668C305.91 221.297 307.211 221.024 307.84 220.053C308.469 219.081 308.196 217.78 307.225 217.151C306.602 216.746 291.739 207.293 269.772 210.74C251.797 213.565 242.82 223.758 239.884 227.848C239.038 228.757 238.577 229.365 238.493 229.477C237.808 230.407 238.003 231.714 238.933 232.406C239.311 232.686 239.744 232.819 240.178 232.819C240.499 232.819 240.821 232.742 241.107 232.602C241.646 232.469 242.128 232.127 242.422 231.609C242.436 231.588 242.667 231.197 243.121 230.561C246.295 227.275 255.566 219.367 271.709 218.843C292.242 218.193 305.12 228.736 305.246 228.841C306.134 229.589 307.455 229.47 308.203 228.589C308.951 227.701 308.84 226.38 307.952 225.632V225.625Z" fill="black"/>
-  <g class="m-brows"><path d="M292.645 169.351C292.205 169.351 291.757 169.211 291.38 168.925C287.793 166.198 280.215 161.577 269.749 161.206C259.513 160.857 251.725 164.779 248.013 167.149C247.034 167.771 245.74 167.484 245.118 166.513C244.496 165.541 244.783 164.241 245.754 163.618C249.879 160.983 258.514 156.62 269.895 157.018C281.522 157.424 289.94 162.563 293.925 165.583C294.848 166.282 295.029 167.596 294.323 168.519C293.911 169.065 293.281 169.344 292.652 169.344L292.645 169.351Z" fill="black"/><path d="M202.272 160.374C201.783 160.374 201.293 160.207 200.895 159.857C197.497 156.907 190.233 151.789 179.809 150.74C169.602 149.713 161.596 153.124 157.73 155.25C156.716 155.809 155.437 155.439 154.885 154.425C154.325 153.411 154.696 152.132 155.71 151.579C160.002 149.223 168.888 145.434 180.228 146.574C191.806 147.741 199.867 153.418 203.642 156.697C204.516 157.459 204.607 158.78 203.852 159.654C203.44 160.13 202.852 160.374 202.265 160.374H202.272Z" fill="black"/></g>
-  <path d="M315.542 22.8062C314.661 23.8759 313.703 25.0574 312.669 26.3368C306.202 34.3209 296.938 45.7657 286.157 54.2742C280.473 45.2973 273.251 38.0333 265.351 33.447C244.412 21.2891 227.157 27.5183 219.984 38.4528C213.531 48.2896 213.888 64.2648 229.926 76.0732C240.427 83.8056 256.151 90.4124 275.803 83.9874C276.565 87.8746 276.81 91.8037 276.39 95.621C275.195 106.576 268.511 114.078 256.528 117.902C236.4 124.327 221.089 115.763 213.755 110.093C205.659 103.829 201.73 97.0192 200.66 93.5585H200.674C200.583 93.3907 200.709 93.167 200.919 93.181L235.177 93.9431C229.877 86.0988 221.557 76.6395 210.735 73.3466C202.793 70.9276 194.662 72.0951 187.209 76.7164C180.553 80.8483 175.771 90.3215 182.322 104.521C190.159 121.517 213.077 141.316 242.301 141.316C248.894 141.316 255.815 140.31 262.946 138.03C283.032 131.619 295.26 117.371 297.385 97.9141C298.217 90.3006 297.392 82.1137 295.05 73.9968C309.606 63.6845 321.205 49.3523 329.077 39.6343C330.07 38.4108 330.986 37.2713 331.839 36.2435L315.535 22.8132L315.542 22.8062ZM242.455 59.0563C237.707 55.5606 236.442 51.8692 237.651 50.0305C238.435 48.8349 240.322 47.954 243.084 47.954C246.055 47.954 250.033 48.9678 254.745 51.7084C259.262 54.3301 263.778 58.8465 267.525 64.4046C258.667 66.7677 250.502 64.9779 242.462 59.0563H242.455Z" fill="#B0F2EB"/><path d="M324.027 43.5141L321.972 62.6424L338.898 75.4715L348.056 10.7177L346.574 9.59911L346.602 9.57813C343.785 7.47374 338.136 3.20902 335.339 1.08366V1.11861L333.85 0L272.99 25.7491L289.979 38.5013L308.688 30.9227L308.723 30.9507" fill="#B0F2EB"/>
-</svg>
-        <span class="d-shadow" aria-hidden="true"></span>
+      <div class="hx-art">
+        <span class="hx-glow" aria-hidden="true" data-depth="-.35"></span>
+        <span class="hx-tri" aria-hidden="true" data-depth=".5"></span>
+        <div class="hx-card">
+          <img class="hx-poster" src="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_lg/019e8e5f-621b-773c-bfb3-c0e23fe36900.jpg" alt="" aria-hidden="true">
+          <iframe class="hx-video" src="https://kinescope.io/embed/rwCkE6ezEfagxHfXcmDTup?autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;playsinline=1" title="Видео СМИТАП" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" frameborder="0" loading="eager" tabindex="-1"></iframe>
+          <a class="hx-sound" href="https://kinescope.io/rwCkE6ezEfagxHfXcmDTup" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Смотреть со звуком</a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="hm-tape" aria-hidden="true"><div class="row"><span>120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ </span><span>120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ </span></div></div>
 </section>
 
 </div>
@@ -973,8 +1046,7 @@ body.tz-on .sw::after{transform:translateX(18px)}
     <div class="ax-card">
       <img class="ax-arrow" src="img/arrow-white.svg" alt="" aria-hidden="true">
       <div class="ax-body">
-        <span class="ax-badge">120 000+ выпускников</span>
-        <h2 class="ax-title">Подготовка к ЕГЭ <br>по истории с Элей Смит</h2>
+        <h2 class="ax-title">Подготовка к ЕГЭ<span class="ax-badge">120 000+ выпускников</span><br>по истории с Элей Смит</h2>
         <p class="ax-lead" data-p="Годовой онлайн-курс для вашего ребёнка: живые вебинары с Элей, практика по критериям ЕГЭ, проверка домашних заданий и пробники в формате экзамена">Годовой онлайн-курс: живые вебинары с Элей, практика по критериям ЕГЭ, домашки с проверкой и пробники в формате экзамена</p>
         <dl class="ax-facts">
           <div><dt>Длительность</dt><dd>9 месяцев</dd></div>
@@ -985,13 +1057,9 @@ body.tz-on .sw::after{transform:translateX(18px)}
           <a class="btn btn-w" href="#" data-toast="Переход к тарифам">Выбрать тариф →</a>
           <a class="btn btn-wo" href="#" data-toast="Форма бесплатного доступа">Попробовать бесплатно</a>
         </div>
-        <ul class="ax-rate">
-          <li><b>5/5</b> Яндекс</li><li><b>4.9/5</b> Отзовик</li><li><b>4.9/5</b> Т-Банк</li>
-        </ul>
       </div>
       <div class="ax-art">
         <img class="ax-photo" src="img/elya.png" alt="Эля Смит — преподаватель истории" width="760" height="792" loading="lazy">
-        <div class="ax-timer"><span>Цена вырастет через</span><b id="axTimer">00 : 00 : 00</b></div>
       </div>
     </div>
   </div>
@@ -1594,6 +1662,14 @@ function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1
   document.addEventListener('click',e=>{ if(!e.target.closest('.dd')) dds.forEach(x=>{x.classList.remove('open');x.querySelector('.dd-t').setAttribute('aria-expanded','false')}); });
   const bg=document.querySelector('.burger'), mm=document.querySelector('.mmenu');
   if(bg&&mm) bg.addEventListener('click',()=>{ const o=bg.getAttribute('aria-expanded')!=='true'; bg.setAttribute('aria-expanded',o); mm.hidden=!o; });
+})();
+
+/* параллакс первого экрана: кружки и звёздочки сдвигаются вслед за мышью, каждый на своей глубине */
+(function(){ const hero=document.querySelector('.hero.hx'); if(!hero||matchMedia('(hover:none),(prefers-reduced-motion:reduce)').matches) return;
+  const els=[...hero.querySelectorAll('[data-depth]')];
+  hero.addEventListener('pointermove',e=>{ const r=hero.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    els.forEach(el=>{ const k=+el.dataset.depth; el.style.setProperty('--px',(x*k*44).toFixed(1)+'px'); el.style.setProperty('--py',(y*k*34).toFixed(1)+'px'); }); });
+  hero.addEventListener('pointerleave',()=>els.forEach(el=>{ el.style.setProperty('--px','0px'); el.style.setProperty('--py','0px'); }));
 })();
 
 /* «Я ученик / Я родитель»: подменяем обращение в текстах */

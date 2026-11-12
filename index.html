@@ -1356,6 +1356,25 @@ body{padding-bottom:40px}
 /* наведение на карточку преподавателя: преподаватель поворачивается в другую сторону */
 
 
+
+/* переключатель: снова бирюзовый */
+.aud-k{background:var(--turq)}
+.aud button[aria-checked="true"]{color:var(--graphite)}
+/* первый экран по образцу: переключатель наверху колонки, заголовок ниже, фигуры между ними */
+@media (min-width:981px){
+  .hx-grid{align-items:start}
+  .hero.hx{padding-top:48px}
+  .hx-text{display:flex;flex-direction:column;align-items:flex-start}
+  .hx-text .aud{margin:0}
+  .hx-title{margin-top:168px}
+  .hx-d.sun-t{left:224px;top:96px;width:68px}
+  .hx-d.dot-g{left:412px;top:16px;width:36px;height:36px}
+  .hx-d.spk.k1{left:448px;top:140px;width:28px;height:28px}
+  .hx-d.spk.k2{left:-20px;top:568px;width:36px;height:36px}
+  .hx-d.dot-l{left:652px;top:560px;width:44px;height:44px}
+  .hx-art{margin-top:8px}
+}
+@media (min-width:981px) and (max-width:1200px){.hx-title{margin-top:136px}.hx-d.dot-l{left:auto;right:-20px}}
 </style>
 </head>
 <body>

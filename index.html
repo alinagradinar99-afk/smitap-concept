@@ -327,6 +327,81 @@ section.about .ac-blob{left:-220px;top:-200px;width:640px;height:640px}
 @media (max-width:980px){ section.about .ac{padding:56px 0 64px;min-height:0} section.about .ac-photo{right:auto;height:380px;margin-top:0} section.about .ac-body{padding:28px 0 0} }
 @media (max-width:640px){ section.about .ac{padding:40px 0 48px} section.about .ac-photo{height:300px} }
 
+
+/* ===== дофаминовый слой ===== */
+/* стикеры предметов: цветные, пружинят при наведении */
+.h-subj .sj{background:var(--c,#fff);color:var(--graphite);font-weight:700;pointer-events:auto;cursor:default;box-shadow:0 16px 30px -14px rgba(58,58,58,.45),inset 0 -3px 0 rgba(0,0,0,.08);transition:translate .4s ease-out,scale .35s cubic-bezier(.3,1.8,.5,1)}
+.h-subj .sj i{background:rgba(255,255,255,.75)}
+.h-subj .sj:hover{scale:1.1;animation-play-state:paused}
+.h-subj .sj.dash{background:#fff;border-color:rgba(58,58,58,.25)}
+.h-subj .s7{left:20%;right:auto;top:66%}
+/* брендовые фигуры */
+.h-fx{position:absolute;inset:0;z-index:1;pointer-events:none}
+.fx-shape{position:absolute;z-index:1;pointer-events:none;transition:translate .5s ease-out}
+.fx-burst{right:19%;top:57%;width:132px;height:132px;display:grid;place-items:center;color:#fff;text-align:center;animation:hfloat 7s ease-in-out infinite}
+.fx-burst svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite;filter:drop-shadow(0 14px 18px rgba(255,112,45,.35))}
+.fx-burst b{position:relative;display:block;font-weight:900;font-size:34px;line-height:.9;letter-spacing:-.03em}
+.fx-burst span{position:relative;display:block;font-size:12px;font-weight:700;margin-top:2px}
+.fx-dot{left:5%;top:69%;width:74px;height:74px;border-radius:50%;background:radial-gradient(circle at 32% 30%,#E6FFFB,#B0F2EB 45%,#6FD6C9);box-shadow:0 16px 26px -12px rgba(60,170,160,.55);animation:hfloat 5.5s ease-in-out infinite -1s}
+.fx-pill{right:4%;top:71%;width:118px;height:46px;border-radius:999px;background:linear-gradient(180deg,#F6B6C3,#EB99A9);rotate:-18deg;box-shadow:0 16px 26px -12px rgba(200,90,120,.5),inset 0 -4px 0 rgba(0,0,0,.07);animation:hfloat 6.5s ease-in-out infinite -2.2s}
+.fx-wave{left:39%;top:6%;width:132px;animation:hfloat 6s ease-in-out infinite -3s}
+.fx-wave path{stroke-dasharray:14 0}
+.spark{position:absolute;z-index:1;width:20px;height:20px;pointer-events:none;animation:twinkle 2.4s ease-in-out infinite}
+.spark svg{width:100%;height:100%}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.6) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(45deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* бегущие ленты внизу первого экрана */
+.hero{padding-bottom:150px}
+.h-tapes{position:absolute;left:0;right:0;bottom:22px;height:120px;z-index:3;pointer-events:none}
+.h-tape{position:absolute;left:-5%;width:110%;overflow:hidden;white-space:nowrap;padding:13px 0;font-weight:800;font-size:22px;letter-spacing:.01em;text-transform:uppercase;color:var(--ink)}
+.h-tape .row{display:inline-flex;animation:run 32s linear infinite}
+.h-tape .row span{padding-right:26px}
+.h-tape.t1{top:14px;background:var(--apricot);transform:rotate(-2.5deg);box-shadow:0 12px 24px -14px rgba(255,140,40,.6)}
+.h-tape.t2{top:34px;background:var(--turq);transform:rotate(2deg);box-shadow:0 12px 24px -14px rgba(60,170,160,.5)}
+.h-tape.t2 .row{animation-direction:reverse;animation-duration:38s}
+@keyframes run{to{transform:translateX(-50%)}}
+/* стикеры в оранжевом блоке */
+.ac-stk{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--graphite);border-radius:16px;padding:10px 16px;font-size:16px;font-weight:700;white-space:nowrap;rotate:var(--r);box-shadow:0 18px 30px -14px rgba(90,30,0,.5);animation:hfloat 6s ease-in-out infinite;animation-delay:var(--d);transition:scale .35s cubic-bezier(.3,1.8,.5,1)}
+.ac-stk:hover{scale:1.08}
+.ac-stk.k1{right:420px;top:44%}
+.ac-stk.k2{right:-10px;top:20%;background:var(--turq)}
+.ac-stk.k3{right:380px;bottom:16%;background:#FFE27A}
+.ac .spark{z-index:2}
+/* пружинящие карточки бенто */
+.tile.in{transition:opacity .6s,transform .5s cubic-bezier(.3,1.7,.5,1)}
+.tile.in:hover{transform:translateY(-10px) rotate(-1.2deg) scale(1.02)}
+.tile.in:nth-child(even):hover{transform:translateY(-10px) rotate(1.2deg) scale(1.02)}
+/* кнопки пружинят */
+.btn{transition:transform .35s cubic-bezier(.3,1.8,.5,1),box-shadow .2s}
+.btn:active{transform:scale(.94)}
+/* конфетти поверх страницы */
+.confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:95}
+@media (max-width:1200px){
+  .ac-stk.k1{right:360px}.ac-stk.k3{right:300px}
+}
+@media (max-width:980px){
+  .fx-burst{right:4%;top:62%;width:110px;height:110px}
+  .fx-burst b{font-size:28px}
+  .fx-wave{display:none}
+  .ac-stk.k1{right:auto;left:0;top:36px}
+  .ac-stk.k2{right:0;top:250px}
+  .ac-stk.k3{display:none}
+  .ac .spark{display:none}
+}
+@media (max-width:640px){
+  .hero{padding-bottom:120px}
+  .h-tapes{bottom:10px;height:96px}
+  .h-tape{font-size:15px;padding:9px 0}
+  .h-tape.t2{top:30px}
+  .fx-burst{width:84px;height:84px;right:3%;top:auto;bottom:150px}
+  .fx-burst b{font-size:21px}.fx-burst span{font-size:9px}
+  .fx-dot{width:46px;height:46px;left:4%;top:auto;bottom:170px}
+  .fx-pill{display:none}
+  .ac-stk{font-size:13px;padding:8px 12px}
+  .ac-stk.k2{top:200px}
+}
+@media (prefers-reduced-motion:reduce){.h-tape .row,.fx-burst svg{animation:none}}
+
 /* ================= 2. КАК ПРОХОДИТ ОБУЧЕНИЕ ================= */
 .learn{background:var(--cream);color:var(--ink);padding:120px 0 110px;position:relative;border-radius:56px 56px 0 0;margin-top:-56px;z-index:6;box-shadow:0 -28px 60px -34px rgba(58,58,58,.35)}
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:44px}
@@ -554,6 +629,15 @@ body.tz-on .sw::after{transform:translateX(18px)}
 <section class="hero" id="about">
   <div class="h-bg" aria-hidden="true"><span class="h-glow g1"></span><span class="h-glow g2"></span><img class="h-arrow" src="img/arrow.svg" alt=""></div>
 
+  <!-- брендовые фигуры и блёстки -->
+  <div class="h-fx" aria-hidden="true">
+    <div class="fx-shape fx-burst" data-depth="30"><svg viewBox="0 0 200 200"><path fill="#FF702D" d="M100 0l14 30 30-16 2 34 34-2-16 30 30 14-30 14 16 30-34-2-2 34-30-16-14 30-14-30-30 16-2-34-34 2 16-30L0 100l30-14-16-30 34 2 2-34 30 16z"/></svg><div><b>100</b><span>баллов</span></div></div>
+    <span class="fx-shape fx-dot" data-depth="20"></span>
+    <span class="fx-shape fx-pill" data-depth="24"></span>
+    <svg class="fx-shape fx-wave" data-depth="14" viewBox="0 0 132 30"><path d="M4 15 Q 20 0 36 15 T 68 15 T 100 15 T 128 15" fill="none" stroke="#B6D67D" stroke-width="8" stroke-linecap="round"/></svg>
+    <span class="spark" style="left:31%;top:24%;animation-delay:-.4s"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#FFAA44"/></svg></span><span class="spark" style="right:31%;top:20%;animation-delay:-1.3s;width:16px;height:16px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#9AE0F1"/></svg></span><span class="spark" style="left:16%;top:38%;animation-delay:-.9s;width:14px;height:14px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#EB99A9"/></svg></span><span class="spark" style="right:13%;top:36%;animation-delay:-1.8s"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#FFAA44"/></svg></span><span class="spark" style="left:47%;top:63%;animation-delay:-.2s;width:14px;height:14px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#B6D67D"/></svg></span>
+  </div>
+
   <!-- предметы-стикеры вдоль «маршрута» стрелки -->
   <div class="h-subj" aria-hidden="true">
     <span class="sj s1" data-depth="18" style="--c:#FF9B4C;--r:-8deg;--d:0s"><i>🏛️</i>История</span>
@@ -576,6 +660,12 @@ body.tz-on .sw::after{transform:translateX(18px)}
       <span class="tz" style="left:50%;top:-8px;transform:translateX(-50%)">Заголовок + кнопки «Выбрать предмет» и «Попробовать бесплатно»</span>
     </div>
   </div>
+
+  <!-- бегущие ленты -->
+  <div class="h-tapes" aria-hidden="true">
+    <div class="h-tape t1"><div class="row"><span>история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ </span><span>история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ </span></div></div>
+    <div class="h-tape t2"><div class="row"><span>120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ </span><span>120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ </span></div></div>
+  </div>
 </section>
 
 </div>
@@ -586,6 +676,10 @@ body.tz-on .sw::after{transform:translateX(18px)}
     <div class="ac">
       <img class="ac-arrow" src="img/arrow-white.svg" alt="" aria-hidden="true">
       <span class="ac-blob" aria-hidden="true"></span>
+      <span class="ac-stk k1" style="--r:-6deg;--d:-.8s">⚡ живые вебинары</span>
+      <span class="ac-stk k2" style="--r:5deg;--d:-2s">🔥 мемы и карты</span>
+      <span class="ac-stk k3" style="--r:-3deg;--d:-3.1s">🎯 ОС по критериям</span>
+      <span class="spark" style="left:44%;top:16%;animation-delay:-.5s"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#fff"/></svg></span><span class="spark" style="left:56%;top:70%;animation-delay:-1.4s;width:16px;height:16px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#FFE27A"/></svg></span><span class="spark" style="right:6%;top:58%;animation-delay:-2s;width:14px;height:14px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#fff"/></svg></span><span class="spark" style="left:38%;bottom:12%;animation-delay:-1s;width:16px;height:16px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#B0F2EB"/></svg></span>
       <img class="ac-photo" src="img/elya.png" alt="Эля Смит — преподаватель истории" width="760" height="792" loading="lazy">
       <div class="ac-body">
         <h2 class="ac-title">Подготовка к ЕГЭ<span class="ac-badge">120 000+ выпускников</span><br> по истории с Элей Смит</h2>
@@ -777,7 +871,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const hero=$('#about'), about=$('#course'), learn=$('#learn');
   if(!hero||!about||!learn) return;
   const HDR=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hdr'))||72, cl=v=>Math.max(0,Math.min(1,v));
-  const heroIn=[...hero.querySelectorAll(':scope>.wrap,:scope>.h-bg,:scope>.h-subj')], aboutIn=about.querySelector(':scope>.wrap');
+  const heroIn=[...hero.querySelectorAll(':scope>.wrap,:scope>.h-bg,:scope>.h-subj,:scope>.h-fx,:scope>.h-tapes')], aboutIn=about.querySelector(':scope>.wrap');
   function setTop(){ about.style.setProperty('--abTop',Math.min(HDR,innerHeight-about.offsetHeight)+'px'); }
   function frame(){
     const H=innerHeight;
@@ -1200,6 +1294,28 @@ $$('.count').forEach(c=>io.observe(c));
 let typed=false;
 function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1812 год, Кутузов, Бородино'; let i=0;
   (function step(){ el.textContent=txt.slice(0,++i); if(i<txt.length) setTimeout(step,70); })(); }
+
+/* конфетти брендовых цветов при клике на основные кнопки */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const cv=document.createElement('canvas'); cv.className='confetti'; cv.setAttribute('aria-hidden','true'); document.body.appendChild(cv);
+  const ctx=cv.getContext('2d'), COL=['#FF702D','#FFAA44','#B0F2EB','#9AE0F1','#EB99A9','#DBB9EE','#B6D67D','#FFE27A'];
+  let parts=[], run=false, last=0;
+  function size(){ const d=Math.min(2,devicePixelRatio||1); cv.width=innerWidth*d; cv.height=innerHeight*d; ctx.setTransform(d,0,0,d,0,0); }
+  size(); addEventListener('resize',size);
+  function burst(x,y){ for(let i=0;i<90;i++){ const a=-Math.PI/2+(Math.random()-.5)*Math.PI*1.5, v=300+Math.random()*650;
+      parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,r:Math.random()*6,vr:(Math.random()-.5)*14,w:6+Math.random()*6,h:9+Math.random()*8,c:COL[i%COL.length],round:i%5===0,life:1.6+Math.random()*.8}); }
+    if(!run){ run=true; last=performance.now(); requestAnimationFrame(tick); } }
+  function tick(t){ const dt=Math.min(.033,(t-last)/1000); last=t; ctx.clearRect(0,0,innerWidth,innerHeight);
+    parts=parts.filter(p=>p.life>0);
+    for(const p of parts){ p.vy+=1100*dt; p.vx*=.985; p.x+=p.vx*dt; p.y+=p.vy*dt; p.r+=p.vr*dt; p.life-=dt;
+      ctx.save(); ctx.globalAlpha=Math.min(1,p.life*1.5); ctx.translate(p.x,p.y); ctx.rotate(p.r); ctx.fillStyle=p.c;
+      if(p.round){ctx.beginPath();ctx.arc(0,0,p.w/2,0,7);ctx.fill();} else {ctx.scale(1,Math.cos(p.r*2));ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);}
+      ctx.restore(); }
+    if(parts.length) requestAnimationFrame(tick); else { run=false; ctx.clearRect(0,0,innerWidth,innerHeight); } }
+  document.addEventListener('click',e=>{ const b=e.target.closest('.btn-a,.btn-w,.btn-d'); if(!b) return;
+    const r=b.getBoundingClientRect(); burst(r.left+r.width/2,r.top+r.height/2); });
+})();
 
 /* ===== пометки ТЗ, тосты ===== */
 $('#tzToggle').onclick=()=>{ const on=document.body.classList.toggle('tz-on'); $('#tzToggle').setAttribute('aria-pressed',on); };

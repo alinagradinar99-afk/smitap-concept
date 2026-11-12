@@ -54,7 +54,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ================= 1. О КУРСЕ — светлый экран с пиньятой ================= */
 .stack{display:contents;--peek:0px}
-.hero{position:sticky;top:var(--hdr,72px);z-index:1;height:calc(100vh - 72px);min-height:560px;overflow:hidden;background:#fff;color:var(--graphite);display:flex;flex-direction:column;justify-content:center;padding:0 0 4vh}
+.hero{position:relative;z-index:1;height:calc(100vh - 72px);min-height:560px;overflow:hidden;background:#fff;color:var(--graphite);display:flex;flex-direction:column;justify-content:center;padding:0 0 4vh}
 .rise{position:relative;z-index:2;height:175vh;margin-top:calc(var(--peek) * -1)}
 .rise-pin{position:sticky;top:0;height:100vh;min-height:560px}
 .rise-bg{position:absolute;inset:0;overflow:hidden;border-radius:56px 56px 0 0;background:radial-gradient(55% 48% at 50% 48%,rgba(255,255,255,.7),rgba(255,255,255,0) 70%),linear-gradient(180deg,#B8D5FF 0%,#9AE0F1 100%);box-shadow:0 -24px 60px -30px rgba(58,58,58,.35)}
@@ -267,7 +267,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 
 /* ================= 1б. О КУРСЕ — оранжевая карточка (по макету) ================= */
-.about{background:#fff;padding:72px 0 120px;position:sticky;top:var(--abTop,72px);z-index:2;margin-top:-56px;border-radius:56px 56px 0 0;box-shadow:0 -28px 60px -34px rgba(58,58,58,.35)}
+.about{background:#fff;padding:72px 0 120px;position:relative;z-index:2;margin-top:-56px;border-radius:56px 56px 0 0;box-shadow:0 -28px 60px -34px rgba(58,58,58,.35)}
 .hero>.wrap,.hero>.h-bg,.hero>.h-subj,.about>.wrap{transform-origin:50% 0;will-change:transform}
 .seam{position:absolute;z-index:4;pointer-events:none;height:auto;max-width:none;filter:drop-shadow(0 26px 30px rgba(40,70,90,.28));will-change:transform}
 .seam-1{width:min(440px,46vw);left:6%;top:-170px}
@@ -949,6 +949,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
    тот уходит вглубь, объект на стыке поднимается быстрее фона */
 (function(){
   const hero=$('#about'), about=$('#course'), learn=$('#learn');
+  return; // эффект наезда блоков при прокрутке отключён
   if(!hero||!about||!learn) return;
   const HDR=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hdr'))||72, cl=v=>Math.max(0,Math.min(1,v));
   const heroIn=[...hero.querySelectorAll(':scope>.wrap')], aboutIn=about.querySelector(':scope>.wrap');

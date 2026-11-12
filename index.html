@@ -1336,6 +1336,19 @@ body{padding-bottom:40px}
 
 /* плашки ЕГЭ/ОГЭ: одинаковый отступ сверху и снизу от букв */
 .hx-title .tg{padding:.095em .2em .045em}
+
+/* карточки обучения чуть меньше: уже и ниже */
+@media (min-width:1101px){
+  .lc-slot{flex:0 0 calc(23% + 10px)}
+  .lc{aspect-ratio:380/400}
+}
+/* закреплённые кнопки ближе к нижнему краю */
+.dock-cta{bottom:24px}
+@media (max-width:640px){.dock-cta{bottom:calc(16px + env(safe-area-inset-bottom))}}
+
+/* плашка описания под меньшую карточку: текст помещается целиком */
+@media (min-width:1101px){.lc-pop{padding:16px;gap:8px}}
+@media (min-width:1101px) and (max-width:1360px){.lc{aspect-ratio:380/440}}
 </style>
 </head>
 <body>

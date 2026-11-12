@@ -49,7 +49,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .header .logo img{height:32px;width:auto}
 .nav{display:flex;gap:26px;font-size:15px;color:rgba(58,58,58,.8)}
 .nav a:hover{color:var(--apricot)}
-.header .btn{height:46px;padding:0 22px;font-size:15px;font-weight:500;margin-left:auto}
+.header .btn{height:46px;padding:0 22px;font-size:15px;font-weight:700;margin-left:auto}
+.header .btn-a{background:var(--orange);color:#fff;box-shadow:0 12px 26px -10px rgba(255,112,45,.75)}
 
 /* ================= 1. О КУРСЕ — светлый экран с пиньятой ================= */
 .stack{display:contents;--peek:0px}
@@ -402,6 +403,116 @@ section.about .ac-blob{left:-220px;top:-200px;width:640px;height:640px}
 }
 @media (prefers-reduced-motion:reduce){.h-tape .row,.fx-burst svg{animation:none}}
 
+
+/* ===== первый экран с танцующим персонажем ===== */
+.hero.hero-m{padding:0 0 64px;justify-content:center}   /* снизу на 56 px заезжает следующий блок — центрируем по видимой части */
+.hero-m>.wrap{width:100%}
+.hm-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;max-width:1080px;margin:0 auto}
+.hm-text{position:relative}
+.hm-title{font-family:var(--f);font-weight:700;font-size:clamp(40px,4.9vw,70px);line-height:1.06;letter-spacing:-.035em;color:var(--graphite)}
+.hm-title .tg{display:inline-block;padding:.03em .18em .08em;border-radius:.2em;line-height:1;vertical-align:.02em;margin-top:.12em}
+.hm-title .t1{background:var(--orange);color:#fff;transform:rotate(-3deg)}
+.hm-title .t2{background:var(--turq);color:var(--graphite);transform:rotate(3deg)}
+.hm-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.hm-cta .btn{height:58px;padding:0 34px;font-size:17px;font-weight:600}
+.hm-art{position:relative;justify-self:center;width:min(100%,420px);aspect-ratio:472/508;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.dancer{position:relative;z-index:1;width:100%;height:100%;overflow:visible}
+.d-shadow{position:absolute;left:28%;right:14%;bottom:-1%;height:5%;border-radius:50%;background:radial-gradient(closest-side,rgba(58,58,58,.18),rgba(58,58,58,0));animation:dShadow .9s ease-in-out infinite}
+.dancer *{transform-box:view-box}
+/* правая нога чуть приподнимается, брови в этот же момент поднимаются */
+.m-foot-r{transform-origin:334px 503px;animation:mFoot 1.6s ease-in-out infinite}
+.m-hand-l{transform-origin:27px 252px;animation:mHandL 1.6s ease-in-out infinite}
+.m-hand-r{transform-origin:446px 238px;animation:mHandR 1.6s ease-in-out infinite}
+.m-brows{animation:mBrows 1.6s ease-in-out infinite}
+@keyframes mFoot{0%,55%,100%{transform:none}22%,34%{transform:rotate(-14deg)}}
+@keyframes mHandL{0%,100%{transform:rotate(0)}25%{transform:rotate(-16deg)}50%{transform:rotate(6deg)}75%{transform:rotate(-10deg)}}
+@keyframes mHandR{0%,100%{transform:rotate(0)}25%{transform:rotate(16deg)}50%{transform:rotate(-6deg)}75%{transform:rotate(10deg)}}
+@keyframes mBrows{0%,55%,100%{transform:none}22%,34%{transform:translateY(-9px)}}
+.d-shadow{animation:none}
+.hm-art.jump .dancer{animation:dJump .7s cubic-bezier(.3,1.4,.5,1)}
+@keyframes dJump{0%{transform:none}30%{transform:translateY(-50px) scale(1.03)}60%{transform:none}100%{transform:none}}
+@media (max-width:980px){
+  .hm-grid{grid-template-columns:1fr;gap:8px;text-align:left}
+  .hm-art{order:-1;width:min(70vw,360px)}
+  .hm-cta{margin-top:28px}
+}
+@media (max-width:640px){
+  .hm-title{font-size:clamp(34px,10vw,44px)}
+  .hm-art{width:min(66vw,250px)}
+  .hm-cta{flex-direction:column;gap:10px;margin-top:22px}
+  .hm-cta .btn{width:100%;height:56px;padding:0 24px}
+}
+@media (prefers-reduced-motion:reduce){.dancer *,.d-shadow{animation:none!important}}
+
+
+/* ===== вариант по макету: декор первого экрана, лента, карточка, лёгкий блок обучения ===== */
+.hm-grid{position:relative;max-width:1120px}
+.hm-sun{position:absolute;z-index:0;width:66px;height:66px;pointer-events:none;animation:spin 18s linear infinite}
+.hm-sun.s1{left:33%;top:-6%}
+.hm-sun.s2{right:-3%;top:16%;animation-direction:reverse}
+.hm-sun.s3{left:50%;top:72%;width:60px;height:60px;animation-duration:22s}
+.hm-swirl{position:absolute;z-index:0;left:44%;top:9%;width:132px;pointer-events:none;animation:hfloat 5s ease-in-out infinite}
+.hm-text,.hm-art{z-index:1}
+.hero.hero-m{height:auto;min-height:0;padding:84px 0 160px}
+.hm-tape{position:absolute;left:0;right:0;bottom:36px;z-index:2;overflow:hidden;white-space:nowrap;background:var(--turq);padding:12px 0;font-weight:800;font-size:20px;letter-spacing:.01em;text-transform:uppercase;color:var(--ink)}
+.hm-tape .row{display:inline-flex;animation:run 34s linear infinite}
+.hm-tape .row span{padding-right:24px}
+/* оранжевый блок — карточка со скруглениями и полями по бокам */
+section.about{background:#fff;box-shadow:none;border-radius:0;overflow:visible;padding:24px 0 40px;margin-top:0}
+section.about>.wrap{max-width:none;padding:0 60px}
+section.about .ac{background:linear-gradient(120deg,#FF8A3D 0%,#FF702D 55%,#FF6A2A 100%);border-radius:44px;overflow:hidden;min-height:560px;padding:64px 0 60px 64px}
+section.about .ac-photo{right:40px;height:94%}
+section.about .ac-arrow{left:50%;top:-140px;width:560px}
+/* лёгкий блок «Как проходит обучение» */
+section.learn.learn-lite{background:#fff;color:var(--ink);border-radius:0;box-shadow:none;margin-top:0;padding:90px 0 110px}
+.ll-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:56px}
+.ll-head h2{font-weight:700;font-size:clamp(40px,4.6vw,66px);line-height:1.02;letter-spacing:-.035em;color:var(--graphite)}
+.ll-head p{max-width:360px;font-size:17px;line-height:1.5;color:#6B6B6B}
+.ll-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px 36px}
+.lf{position:relative}
+.lf i{display:grid;place-items:center;width:64px;height:64px;border-radius:20px;background:var(--bg);color:var(--graphite);transition:transform .4s cubic-bezier(.3,1.8,.5,1)}
+.lf i svg{width:28px;height:28px}
+.lf:hover i{transform:rotate(-8deg) scale(1.1)}
+.lf h3{margin-top:20px;font-weight:900;font-size:22px;line-height:26px;color:#20242B}
+.lf p{margin-top:8px;font-size:16px;line-height:1.45;color:#6B6B6B}
+.anim .lf:not(.in){opacity:0;transform:translateY(24px)}
+.lf.in{transition:opacity .6s var(--d),transform .6s cubic-bezier(.3,1.3,.5,1) var(--d)}
+.ll-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:64px;padding:22px 22px 22px 36px;border-radius:28px;background:var(--cream)}
+.ll-foot b{font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--graphite)}
+.ll-foot .row{display:flex;gap:10px;flex-wrap:wrap}
+.ll-foot .btn{height:54px;padding:0 26px;font-size:16px;font-weight:600}
+@media (max-width:1200px){
+  .ll-grid{grid-template-columns:repeat(2,1fr)}
+  section.about .ac-photo{height:76%;right:-20px}
+}
+@media (max-width:980px){
+  .hm-sun.s1{left:4%;top:2%}.hm-sun.s2{right:4%;top:4%}.hm-sun.s3{left:auto;right:8%;top:38%}
+  .hm-swirl{display:none}
+  section.about>.wrap{padding:0 24px}
+  section.about .ac{padding:0 0 32px;border-radius:32px}
+  section.about .ac-photo{right:auto}
+  section.about .ac-body{padding:24px 28px 0}
+  .ll-head{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:640px){
+  .hero.hero-m{padding:24px 0 110px}
+  .hm-tape{font-size:15px;padding:9px 0;bottom:24px}
+  .hm-sun{width:44px;height:44px}.hm-sun.s3{width:40px;height:40px}
+  section.about>.wrap{padding:0 12px}
+  section.about .ac-body{padding:20px 18px 0}
+  section.learn.learn-lite{padding:64px 0 80px}
+  .ll-head{margin-bottom:36px}
+  .ll-grid{grid-template-columns:1fr;gap:32px}
+  .lf{display:grid;grid-template-columns:52px 1fr;column-gap:16px;align-items:start}
+  .lf i{width:52px;height:52px;border-radius:16px;grid-row:span 2}
+  .lf i svg{width:24px;height:24px}
+  .lf h3{margin-top:2px;font-size:19px;line-height:23px}
+  .lf p{margin-top:4px;font-size:15px}
+  .ll-foot{flex-direction:column;align-items:stretch;padding:22px;text-align:left}
+  .ll-foot .row{flex-direction:column}
+  .ll-foot .btn{width:100%}
+}
+
 /* ================= 2. КАК ПРОХОДИТ ОБУЧЕНИЕ ================= */
 .learn{background:var(--cream);color:var(--ink);padding:120px 0 110px;position:relative;border-radius:56px 56px 0 0;margin-top:-56px;z-index:6;box-shadow:0 -28px 60px -34px rgba(58,58,58,.35)}
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:44px}
@@ -618,7 +729,7 @@ body.tz-on .sw::after{transform:translateX(18px)}
 <header class="header">
   <div class="wrap">
     <a class="logo" href="#"><img src="img/logo.svg" alt="СМИТАП"></a>
-    <nav class="nav"><a href="#about">О курсе</a><a href="#learn">Обучение</a><a href="#">Тарифы</a><a href="#">Отзывы</a></nav>
+    <nav class="nav"><a href="#about">О курсе</a><a href="#learn">Обучение</a><a href="#learn">Фишки</a><a href="#">Тарифы</a><a href="#">Отзывы</a></nav>
     <a class="btn btn-a" href="#" data-toast="Переход к тарифам">Выбрать тариф</a>
   </div>
 </header>
@@ -626,46 +737,39 @@ body.tz-on .sw::after{transform:translateX(18px)}
 <main>
 <!-- ================= БЛОК 1 · ПЕРВЫЙ ЭКРАН ================= -->
 <div class="stack">
-<section class="hero" id="about">
-  <div class="h-bg" aria-hidden="true"><span class="h-glow g1"></span><span class="h-glow g2"></span><img class="h-arrow" src="img/arrow.svg" alt=""></div>
-
-  <!-- брендовые фигуры и блёстки -->
-  <div class="h-fx" aria-hidden="true">
-    <div class="fx-shape fx-burst" data-depth="30"><svg viewBox="0 0 200 200"><path fill="#FF702D" d="M100 0l14 30 30-16 2 34 34-2-16 30 30 14-30 14 16 30-34-2-2 34-30-16-14 30-14-30-30 16-2-34-34 2 16-30L0 100l30-14-16-30 34 2 2-34 30 16z"/></svg><div><b>100</b><span>баллов</span></div></div>
-    <span class="fx-shape fx-dot" data-depth="20"></span>
-    <span class="fx-shape fx-pill" data-depth="24"></span>
-    <svg class="fx-shape fx-wave" data-depth="14" viewBox="0 0 132 30"><path d="M4 15 Q 20 0 36 15 T 68 15 T 100 15 T 128 15" fill="none" stroke="#B6D67D" stroke-width="8" stroke-linecap="round"/></svg>
-    <span class="spark" style="left:31%;top:24%;animation-delay:-.4s"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#FFAA44"/></svg></span><span class="spark" style="right:31%;top:20%;animation-delay:-1.3s;width:16px;height:16px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#9AE0F1"/></svg></span><span class="spark" style="left:16%;top:38%;animation-delay:-.9s;width:14px;height:14px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#EB99A9"/></svg></span><span class="spark" style="right:13%;top:36%;animation-delay:-1.8s"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#FFAA44"/></svg></span><span class="spark" style="left:47%;top:63%;animation-delay:-.2s;width:14px;height:14px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#B6D67D"/></svg></span>
-  </div>
-
-  <!-- предметы-стикеры вдоль «маршрута» стрелки -->
-  <div class="h-subj" aria-hidden="true">
-    <span class="sj s1" data-depth="18" style="--c:#FF9B4C;--r:-8deg;--d:0s"><i>🏛️</i>История</span>
-    <span class="sj s2" data-depth="10" style="--c:#B8D5FF;--r:6deg;--d:-1.2s"><i>⚖️</i>Обществознание</span>
-    <span class="sj s3" data-depth="22" style="--c:#B6D67D;--r:7deg;--d:-.6s"><i>✍️</i>Русский язык</span>
-    <span class="sj s4" data-depth="12" style="--c:#DBB9EE;--r:-6deg;--d:-2s"><i>📐</i>Математика</span>
-    <span class="sj s5" data-depth="26" style="--c:#EB99A9;--r:-4deg;--d:-1.6s"><i>💬</i>Английский</span>
-    <span class="sj s6" data-depth="16" style="--c:#9AE0F1;--r:5deg;--d:-.3s"><i>🧬</i>Биология</span>
-    <span class="sj s7 dash" data-depth="8" style="--r:-3deg;--d:-2.4s">+ ещё предметы</span>
-  </div>
-
+<section class="hero hero-m" id="about">
   <div class="wrap">
-    <div class="h-head">
-      <h1 class="h-title">Онлайн-школа<br> для подготовки к <b class="tg t1">ЕГЭ</b> и <b class="tg t2">ОГЭ</b></h1>
-      <div class="h-cta">
-        <a class="btn btn-a" href="#" data-toast="Переход к выбору предмета">Выбрать предмет →</a>
-        <a class="btn btn-o" href="#" data-toast="Форма бесплатного доступа">Попробовать бесплатно</a>
+    <div class="hm-grid">
+      <div class="hm-text">
+        <h1 class="hm-title">Онлайн-школа<br> для подготовки<br> к <b class="tg t1">ЕГЭ</b> и <b class="tg t2">ОГЭ</b></h1>
+        <div class="hm-cta">
+          <a class="btn btn-a" href="#" data-toast="Переход к выбору предмета">Выбрать предмет →</a>
+          <a class="btn btn-o" href="#" data-toast="Форма бесплатного доступа">Попробовать бесплатно</a>
+        </div>
+        <span class="tz" style="left:0;top:-30px">Заголовок + кнопки «Выбрать предмет» и «Попробовать бесплатно»</span>
       </div>
-      <div class="h-proofline"><span><b>120 000+</b> выпускников</span><i></i><span><b>4.9</b> ★ на отзовиках</span></div>
-      <span class="tz" style="left:50%;top:-8px;transform:translateX(-50%)">Заголовок + кнопки «Выбрать предмет» и «Попробовать бесплатно»</span>
+      <svg class="hm-sun s1" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#FFAA44"/></svg><svg class="hm-sun s2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#FFAA44"/></svg><svg class="hm-sun s3" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#B0F2EB"/></svg>
+      <svg class="hm-swirl" viewBox="0 0 150 96" aria-hidden="true"><path d="M140 88 C 138 40, 98 14, 40 22" fill="none" stroke="#DBB9EE" stroke-width="13" stroke-linecap="round"/><path d="M52 2 L 20 24 L 50 48" fill="none" stroke="#DBB9EE" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="hm-art" id="dancer" title="Потанцуем?">
+        <svg class="dancer" viewBox="0 0 472 508" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs><mask id="mEye" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="130" y="205" width="90" height="55">
+<path d="M174.462 205.21H130.466C130.438 205.965 130.417 206.727 130.417 207.489C130.417 236.049 150.293 259.197 174.812 259.197C199.331 259.197 219.207 236.049 219.207 207.489C219.207 206.727 219.186 205.965 219.158 205.21H174.462Z" fill="white"/>
+</mask></defs>
+  <path d="M421.253 311.821L381.92 311.695C378.648 311.695 374.306 314.513 372.23 317.994L349.578 355.922C347.501 359.404 348.466 362.229 351.738 362.229L408.137 362.243C411.409 362.243 415.751 359.425 417.827 355.943C417.827 355.943 425.874 330.383 428.244 320.91C429.643 315.317 424.525 311.821 421.253 311.821Z" fill="#B8D5FF"/><path d="M357.89 278.654L364.231 293.133C365.476 295.971 368.993 298.32 372.09 298.39L416.191 299.32C419.288 299.383 420.791 297.139 419.547 294.3L413.206 279.821C411.961 276.983 408.445 274.634 405.348 274.564L361.246 273.634C358.149 273.571 356.646 275.815 357.89 278.654Z" fill="#9AE0F1"/><path d="M330.302 206.531L348.808 253.108C350.269 256.785 353.975 259.826 357.093 259.91L401.439 261.071C404.55 261.155 405.892 258.239 404.431 254.562L385.925 207.986C384.464 204.308 380.758 201.267 377.64 201.183L333.294 200.022C330.183 199.939 328.841 202.854 330.302 206.531Z" fill="#B6D67D"/><path d="M392.079 167.624L340.958 166.478C337.372 166.401 333.177 168.946 331.597 172.169L325.172 185.256C323.592 188.479 325.221 191.157 328.808 191.241L379.928 192.388C383.515 192.464 387.71 189.92 389.29 186.697L395.715 173.609C397.295 170.386 395.666 167.708 392.079 167.624Z" fill="#EB99A9"/>
+  <path d="M333.228 501.202C331.48 501.202 329.844 500.097 329.256 498.35L285.617 369.199C284.875 367.003 286.05 364.626 288.245 363.878C290.441 363.137 292.818 364.312 293.566 366.507L337.206 495.658C337.947 497.853 336.772 500.23 334.577 500.978C334.129 501.125 333.675 501.202 333.235 501.202H333.228Z" fill="#FFAA44"/><g class="m-foot-r"><path d="M360.406 489.254C351.723 489.093 339.117 493.512 334.098 495.421C332.462 496.043 331.133 497.287 330.455 498.825C329.84 500.238 329.812 501.79 330.378 503.195C331.504 506.012 332.972 507.439 334.727 507.439H373.375C376.968 507.439 382.778 507.327 383.631 499.923C383.834 498.133 383.289 496.448 382.051 495.036C377.877 490.275 366.705 489.366 360.413 489.254H360.406Z" fill="#FFAA44"/></g>
+  <path d="M362.915 391.025C357.434 398.485 347.611 401.31 337.725 401.31L142.988 381.035C132.599 381.035 126.3 369.995 128.607 360.753C131.851 347.749 146.176 335.975 145.799 314.617C145.002 269.075 111.297 247.996 107.717 204.979C104.145 161.961 110.262 144.07 116.386 125.872C120.315 114.161 128.677 102.584 134.123 95.816C137.262 91.9148 142.331 89.8174 147.652 89.8174L348.289 98.9062C357.909 98.9062 367.068 102.64 367.396 111.379C367.613 117.154 366.634 125.431 363.055 137.198C353.232 169.442 341.137 170.148 343.276 204.972C345.423 239.796 373.528 255.904 382.043 315.449C387.133 351.014 371.004 380.007 362.915 391.018V391.025Z" fill="#FFAA44"/>
+  <path d="M200.91 497.609C197.191 496.211 187.857 492.974 181.46 493.107C176.713 493.19 168.282 493.883 165.08 497.539C164.08 498.679 163.646 500.042 163.807 501.489C164.478 507.362 169.204 507.446 171.84 507.446H200.54C201.966 507.446 203.147 506.39 204.042 504.3C204.553 503.104 204.553 501.783 204.035 500.566C203.469 499.224 202.329 498.147 200.903 497.609H200.91Z" fill="#FFAA44"/><path d="M202.843 507.578C201.535 507.578 200.242 506.97 199.424 505.823C178.52 476.53 157.476 433.924 166.97 410.266C176.73 385.943 197.858 382.58 208.009 380.958C209.715 380.685 211.841 380.35 212.414 380.091C214.469 379.021 216.986 379.832 218.056 381.888C219.126 383.943 218.308 386.481 216.252 387.551C214.609 388.404 212.4 388.753 209.331 389.243C199.389 390.823 182.75 393.472 174.758 413.384C167.096 432.477 185.714 472.153 206.254 500.943C207.597 502.831 207.163 505.446 205.276 506.795C204.535 507.319 203.689 507.578 202.843 507.578Z" fill="#FFAA44"/><path d="M418.342 257.505C417.034 257.505 415.734 257.421 414.44 257.26C405.75 256.149 400.22 251.674 394.865 247.34C390.313 243.655 386.021 240.18 379.512 238.237C368.221 234.867 354.511 237.796 338.773 246.934C336.767 248.095 334.201 247.417 333.04 245.41C331.88 243.403 332.558 240.838 334.564 239.677C352.385 229.33 368.312 226.142 381.917 230.197C390.013 232.616 395.396 236.971 400.15 240.817C404.995 244.739 409.183 248.13 415.51 248.934C424.844 250.129 435.219 245.333 446.335 234.685C448.006 233.084 450.663 233.14 452.264 234.811C453.865 236.482 453.809 239.139 452.138 240.74C440.511 251.877 429.164 257.498 418.349 257.498L418.342 257.505Z" fill="#FFAA44"/><path d="M52.9364 272.187C42.1208 272.187 30.7809 266.566 19.1473 255.429C17.4764 253.828 17.4204 251.171 19.0214 249.5C20.6225 247.829 23.2792 247.766 24.9501 249.374C36.0663 260.022 46.4415 264.818 55.7749 263.622C62.1021 262.818 66.2829 259.428 71.1349 255.506C75.889 251.66 81.2723 247.305 89.3683 244.886C102.966 240.831 118.9 244.019 136.721 254.366C138.727 255.527 139.405 258.099 138.245 260.099C137.084 262.105 134.518 262.784 132.512 261.623C116.774 252.485 103.064 249.556 91.7733 252.926C85.2644 254.869 80.9717 258.344 76.4203 262.028C71.072 266.356 65.5348 270.838 56.8446 271.949C55.5512 272.117 54.2508 272.194 52.9434 272.194L52.9364 272.187Z" fill="#FFAA44"/><g class="m-hand-l"><path d="M28.2657 244.956C27.1121 241.782 25.0217 239.419 22.372 238.314C18.5128 236.699 16.737 237.972 15.8701 239.111C12.5841 236.699 4.55806 231.386 1.76153 232.001C1.17426 232.134 0.719819 232.476 0.482114 232.987C-1.58033 237.314 3.43945 240.132 6.75334 241.992C7.57832 242.453 8.35436 242.893 8.92765 243.285C11.8081 245.256 12.2695 246.368 12.0807 246.718C10.0672 250.493 9.51492 251.668 9.11642 253.031C7.92789 257.086 9.0465 258.54 10.8922 260.309C12.4233 261.77 15.4995 262.686 18.5198 262.686C19.2818 262.686 20.0369 262.63 20.764 262.504C23.8192 261.994 26.0844 260.477 27.3149 258.107C29.4193 254.045 29.7758 249.137 28.2657 244.97V244.956Z" fill="#FFAA44"/></g><g class="m-hand-r"><path d="M471.278 218.297C471.04 217.794 470.586 217.444 469.999 217.312C467.202 216.689 459.169 222.01 455.89 224.422C455.023 223.282 453.248 222.01 449.388 223.625C446.739 224.729 444.648 227.092 443.495 230.267C441.984 234.433 442.341 239.341 444.445 243.403C445.676 245.773 447.941 247.29 450.996 247.801C451.723 247.92 452.478 247.983 453.241 247.983C456.261 247.983 459.337 247.074 460.868 245.606C462.714 243.844 463.832 242.382 462.644 238.335C462.245 236.978 461.693 235.797 459.68 232.021C459.498 231.679 459.952 230.567 462.833 228.596C463.406 228.204 464.189 227.764 465.007 227.302C468.328 225.442 473.341 222.632 471.278 218.297Z" fill="#FFAA44"/></g>
+  <path d="M174.464 205.21H130.468C130.44 205.965 130.419 206.727 130.419 207.489C130.419 236.049 150.295 259.197 174.814 259.197C199.333 259.197 219.209 236.049 219.209 207.489C219.209 206.727 219.188 205.965 219.16 205.21H174.464Z" fill="white"/>
+  <g mask="url(#mEye)"><path d="M184.012 234.957C194.634 234.957 203.245 225.964 203.245 214.871C203.245 203.778 194.634 194.785 184.012 194.785C173.389 194.785 164.778 203.778 164.778 214.871C164.778 225.964 173.389 234.957 184.012 234.957Z" fill="black"/></g>
+  <path d="M201.647 234.077C203.038 220.472 220.447 221.933 228.983 224.366L226.697 246.802C217.769 248.228 200.263 247.689 201.647 234.077Z" fill="#FFAA44"/><path d="M220.215 249.479C214.014 249.479 207.442 248.2 203.541 244.515C200.709 241.845 199.5 238.272 199.947 233.909C200.395 229.533 202.324 226.156 205.68 223.884C212.119 219.514 222.781 220.353 229.947 222.395C231.059 222.709 231.709 223.87 231.387 224.988C231.073 226.1 229.912 226.75 228.793 226.429C223.725 224.982 213.643 223.548 208.029 227.352C205.715 228.918 204.436 231.204 204.121 234.336C203.813 237.377 204.561 239.712 206.421 241.467C210.525 245.34 219.586 245.921 226.752 244.774C227.892 244.585 228.968 245.368 229.157 246.515C229.339 247.661 228.563 248.731 227.416 248.92C225.221 249.269 222.746 249.486 220.215 249.486V249.479Z" fill="black"/><path d="M222.894 273.942C206.5 273.942 198.523 265.273 198.103 264.797C197.334 263.93 197.404 262.609 198.271 261.833C199.131 261.064 200.452 261.134 201.228 261.994C201.704 262.518 213.086 274.648 237.562 267.475C262.235 260.246 265.688 242.823 265.723 242.649C265.933 241.509 267.024 240.754 268.163 240.964C269.303 241.173 270.058 242.264 269.848 243.404C269.701 244.222 265.87 263.553 238.744 271.502C232.78 273.25 227.509 273.935 222.894 273.935V273.942Z" fill="black"/><path d="M307.952 225.625C307.392 225.149 294.074 214.138 272.226 214.634C291.557 212.222 304.806 220.584 304.938 220.668C305.91 221.297 307.211 221.024 307.84 220.053C308.469 219.081 308.196 217.78 307.225 217.151C306.602 216.746 291.739 207.293 269.772 210.74C251.797 213.565 242.82 223.758 239.884 227.848C239.038 228.757 238.577 229.365 238.493 229.477C237.808 230.407 238.003 231.714 238.933 232.406C239.311 232.686 239.744 232.819 240.178 232.819C240.499 232.819 240.821 232.742 241.107 232.602C241.646 232.469 242.128 232.127 242.422 231.609C242.436 231.588 242.667 231.197 243.121 230.561C246.295 227.275 255.566 219.367 271.709 218.843C292.242 218.193 305.12 228.736 305.246 228.841C306.134 229.589 307.455 229.47 308.203 228.589C308.951 227.701 308.84 226.38 307.952 225.632V225.625Z" fill="black"/>
+  <g class="m-brows"><path d="M292.645 169.351C292.205 169.351 291.757 169.211 291.38 168.925C287.793 166.198 280.215 161.577 269.749 161.206C259.513 160.857 251.725 164.779 248.013 167.149C247.034 167.771 245.74 167.484 245.118 166.513C244.496 165.541 244.783 164.241 245.754 163.618C249.879 160.983 258.514 156.62 269.895 157.018C281.522 157.424 289.94 162.563 293.925 165.583C294.848 166.282 295.029 167.596 294.323 168.519C293.911 169.065 293.281 169.344 292.652 169.344L292.645 169.351Z" fill="black"/><path d="M202.272 160.374C201.783 160.374 201.293 160.207 200.895 159.857C197.497 156.907 190.233 151.789 179.809 150.74C169.602 149.713 161.596 153.124 157.73 155.25C156.716 155.809 155.437 155.439 154.885 154.425C154.325 153.411 154.696 152.132 155.71 151.579C160.002 149.223 168.888 145.434 180.228 146.574C191.806 147.741 199.867 153.418 203.642 156.697C204.516 157.459 204.607 158.78 203.852 159.654C203.44 160.13 202.852 160.374 202.265 160.374H202.272Z" fill="black"/></g>
+  <path d="M315.542 22.8062C314.661 23.8759 313.703 25.0574 312.669 26.3368C306.202 34.3209 296.938 45.7657 286.157 54.2742C280.473 45.2973 273.251 38.0333 265.351 33.447C244.412 21.2891 227.157 27.5183 219.984 38.4528C213.531 48.2896 213.888 64.2648 229.926 76.0732C240.427 83.8056 256.151 90.4124 275.803 83.9874C276.565 87.8746 276.81 91.8037 276.39 95.621C275.195 106.576 268.511 114.078 256.528 117.902C236.4 124.327 221.089 115.763 213.755 110.093C205.659 103.829 201.73 97.0192 200.66 93.5585H200.674C200.583 93.3907 200.709 93.167 200.919 93.181L235.177 93.9431C229.877 86.0988 221.557 76.6395 210.735 73.3466C202.793 70.9276 194.662 72.0951 187.209 76.7164C180.553 80.8483 175.771 90.3215 182.322 104.521C190.159 121.517 213.077 141.316 242.301 141.316C248.894 141.316 255.815 140.31 262.946 138.03C283.032 131.619 295.26 117.371 297.385 97.9141C298.217 90.3006 297.392 82.1137 295.05 73.9968C309.606 63.6845 321.205 49.3523 329.077 39.6343C330.07 38.4108 330.986 37.2713 331.839 36.2435L315.535 22.8132L315.542 22.8062ZM242.455 59.0563C237.707 55.5606 236.442 51.8692 237.651 50.0305C238.435 48.8349 240.322 47.954 243.084 47.954C246.055 47.954 250.033 48.9678 254.745 51.7084C259.262 54.3301 263.778 58.8465 267.525 64.4046C258.667 66.7677 250.502 64.9779 242.462 59.0563H242.455Z" fill="#B0F2EB"/><path d="M324.027 43.5141L321.972 62.6424L338.898 75.4715L348.056 10.7177L346.574 9.59911L346.602 9.57813C343.785 7.47374 338.136 3.20902 335.339 1.08366V1.11861L333.85 0L272.99 25.7491L289.979 38.5013L308.688 30.9227L308.723 30.9507" fill="#B0F2EB"/>
+</svg>
+        <span class="d-shadow" aria-hidden="true"></span>
+      </div>
     </div>
   </div>
-
-  <!-- бегущие ленты -->
-  <div class="h-tapes" aria-hidden="true">
-    <div class="h-tape t1"><div class="row"><span>история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ </span><span>история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ история ✦ ЕГЭ-2027 ✦ 9 месяцев ✦ старт 1 сентября ✦ от 4 290 ₽/мес ✦ </span></div></div>
-    <div class="h-tape t2"><div class="row"><span>120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ </span><span>120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ </span></div></div>
-  </div>
+  <div class="hm-tape" aria-hidden="true"><div class="row"><span>120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ </span><span>120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ 120 000+ выпускников ✦ 603 стобалльника ✦ каждый 3-й — 80+ ✦ </span></div></div>
 </section>
 
 </div>
@@ -676,10 +780,7 @@ body.tz-on .sw::after{transform:translateX(18px)}
     <div class="ac">
       <img class="ac-arrow" src="img/arrow-white.svg" alt="" aria-hidden="true">
       <span class="ac-blob" aria-hidden="true"></span>
-      <span class="ac-stk k1" style="--r:-6deg;--d:-.8s">⚡ живые вебинары</span>
-      <span class="ac-stk k2" style="--r:5deg;--d:-2s">🔥 мемы и карты</span>
-      <span class="ac-stk k3" style="--r:-3deg;--d:-3.1s">🎯 ОС по критериям</span>
-      <span class="spark" style="left:44%;top:16%;animation-delay:-.5s"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#fff"/></svg></span><span class="spark" style="left:56%;top:70%;animation-delay:-1.4s;width:16px;height:16px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#FFE27A"/></svg></span><span class="spark" style="right:6%;top:58%;animation-delay:-2s;width:14px;height:14px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#fff"/></svg></span><span class="spark" style="left:38%;bottom:12%;animation-delay:-1s;width:16px;height:16px"><svg viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.7 12 12-7 1.3-11.3 5.7-12 12-.7-6.3-5-10.7-12-12 7-1.3 11.3-5.7 12-12z" fill="#B0F2EB"/></svg></span>
+      
       <img class="ac-photo" src="img/elya.png" alt="Эля Смит — преподаватель истории" width="760" height="792" loading="lazy">
       <div class="ac-body">
         <h2 class="ac-title">Подготовка к ЕГЭ<span class="ac-badge">120 000+ выпускников</span><br> по истории с Элей Смит</h2>
@@ -699,76 +800,55 @@ body.tz-on .sw::after{transform:translateX(18px)}
 </section>
 
 <!-- ================= БЛОК 2 · КАК ПРОХОДИТ ОБУЧЕНИЕ ================= -->
-<section class="learn" id="learn">
+<section class="learn learn-lite" id="learn">
   <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <h2 class="disp">Как проходит <span class="hl">обучение</span></h2>
-      </div>
+    <div class="ll-head">
+      <h2>Как проходит<br> обучение</h2>
       <p>Год подготовки без хаоса: вебинары, практика, платформа, геймификация и комьюнити — в одном курсе</p>
     </div>
-
-    <div class="bento" id="bento">
-      <article class="tile t-dark w2 h2">
-        <h3>Уроки с опытным преподавателем</h3>
-        <p>На вебинарах разбираем всю теорию и закрепляем на практике. Записи — в любое время</p>
-        <div class="player">
-          <img src="img/elya.png" alt="" width="760" height="792">
-          <span class="live"><i></i>LIVE</span><span class="viewers">👀 1 248</span>
-          <div class="reacts"><span>🔥</span><span>😂</span><span>❤️</span><span>🤯</span></div>
-          <div class="bar"><i></i></div>
-        </div>
-      </article>
-      <article class="tile t-turq">
-        <h3>Практика с ОС по критериям ЕГЭ</h3>
-        <div class="hw"><div><span>К1 · Причины</span><b>✓ 1/1</b></div><div><span>К2 · Факты</span><b>✓ 1/1</b></div><div><span>К3 · Вывод</span><b>± 0/1</b></div></div>
-        <span class="stamp">2/3</span>
-      </article>
-      <article class="tile t-apr">
-        <h3>Скрипты и материалы</h3>
-        <div class="typewrap">Отечественная война — <span class="fill" id="typeFill"></span><span class="caret"></span></div>
-      </article>
-      <article class="tile t-lil w2">
-        <h3>Образовательная платформа</h3>
-        <div class="cal">
-          <div><em>ПН</em><span class="ev-o">Вебинар</span></div>
-          <div><em>ВТ</em><span class="ev-v">ДЗ</span></div>
-          <div><em>СР</em><span class="ev-g">Квиз</span><span class="ev-o">Вебинар</span></div>
-          <div><em>ЧТ</em><span class="ev-b">Карты</span></div>
-          <div><em>ПТ</em><span class="ev-v">Зачёт</span></div>
-        </div>
-      </article>
-      <article class="tile t-pink">
-        <h3>Достижения и система жизней</h3>
-        <div class="hearts">❤️❤️❤️<span class="lost">🖤</span></div>
-        <div class="lvl"><span>LVL 7 · Летописец</span><span>720/1000</span></div>
-        <div class="xp"><i></i></div>
-      </article>
-      <article class="tile t-sky">
-        <h3>Поддержка и комьюнити</h3>
-        <div class="avas"><span style="background:#FF702D">Д</span><span style="background:#6849AA">Л</span><span style="background:#418A50">М</span><span style="background:#C44B76">А</span><span style="background:#1F1F1F">+2к</span></div>
-        <div class="mini-msg">кто идёт на разбор 19-го? 🙋‍♀️</div>
-      </article>
-      <article class="tile t-lime w2">
-        <h3>Большая база доп. материалов</h3>
-        <div class="deck"><div>Методичка</div><div>Запоминалка</div><div>Quizlet · 1812</div></div>
-      </article>
-      <article class="tile t-or w4">
-        <h3>Системное повторение и пробники</h3>
-        <p>Регулярно закрепляем пройденное, следим за прогрессом, а перед экзаменом повторяем всю программу на Финальном курсе</p>
-        <div class="chart">
-          <svg viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
-            <path class="line" pathLength="1000" d="M10 104 C 160 100, 220 84, 330 78 S 560 52, 660 44 S 880 18, 990 12" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
-          </svg>
-          <span class="pt first" style="left:1%;top:87%" data-l="сентябрь · 48"></span>
-          <span class="pt" style="left:33%;top:65%" data-l="декабрь · 62"></span>
-          <span class="pt" style="left:66%;top:37%" data-l="февраль · 71"></span>
-          <span class="pt hot" style="left:99%;top:10%" data-l="май · 89 🔥"></span>
-        </div>
-      </article>
+    <div class="ll-grid">
+        <article class="lf" style="--bg:#FFE1C7;--d:0ms">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="3"/><path d="M10 8.5v5l4.5-2.5z" fill="currentColor" stroke="none"/><path d="M8 21h8"/></svg></i>
+          <h3>Уроки с опытным преподавателем</h3>
+          <p>На вебинарах разбираем всю теорию и закрепляем на практике. Записи — в любое время</p>
+        </article>
+        <article class="lf" style="--bg:#D7F8F4;--d:70ms">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></i>
+          <h3>Практика с ОС по критериям ЕГЭ</h3>
+          <p>Проверяем домашки по критериям экзамена и показываем, где теряются баллы</p>
+        </article>
+        <article class="lf" style="--bg:#FFE9C9;--d:140ms">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/></svg></i>
+          <h3>Скрипты и материалы</h3>
+          <p>Конспекты и шпаргалки к каждому уроку — повторять удобно</p>
+        </article>
+        <article class="lf" style="--bg:#F1E3FA;--d:210ms">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></i>
+          <h3>Образовательная платформа</h3>
+          <p>Вебинары, домашки, квизы и зачёты собраны в одном расписании</p>
+        </article>
+        <article class="lf" style="--bg:#FBE1E6;--d:280ms">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.6-7-9.5A3.6 3.6 0 0 1 12 8a3.6 3.6 0 0 1 7 2.5C19 15.4 12 20 12 20z"/></svg></i>
+          <h3>Достижения и система жизней</h3>
+          <p>Уровни, жизни и награды помогают не бросить подготовку</p>
+        </article>
+        <article class="lf" style="--bg:#DDF4FA;--d:350ms">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></i>
+          <h3>Поддержка и комьюнити</h3>
+          <p>Кураторы на связи и чат с ребятами, которые готовятся вместе с тобой</p>
+        </article>
+        <article class="lf" style="--bg:#EAF3D9;--d:420ms">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l8-3 8 3-8 3z"/><path d="M4 11l8 3 8-3M4 16l8 3 8-3"/></svg></i>
+          <h3>Большая база доп. материалов</h3>
+          <p>Методички, запоминалки и Quizlet по всем темам курса</p>
+        </article>
+        <article class="lf" style="--bg:#E3EDFF;--d:490ms">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg></i>
+          <h3>Системное повторение и пробники</h3>
+          <p>Регулярно закрепляем пройденное, а перед экзаменом повторяем всю программу</p>
+        </article>
     </div>
-
-    <div class="learn-foot">
+    <div class="ll-foot">
       <b>Вся программа — по месяцам</b>
       <div class="row">
         <a class="btn btn-line" href="#" data-toast="Здесь ссылка на программу в Google Диске">Программа курса ↗</a>
@@ -871,12 +951,12 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const hero=$('#about'), about=$('#course'), learn=$('#learn');
   if(!hero||!about||!learn) return;
   const HDR=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hdr'))||72, cl=v=>Math.max(0,Math.min(1,v));
-  const heroIn=[...hero.querySelectorAll(':scope>.wrap,:scope>.h-bg,:scope>.h-subj,:scope>.h-fx,:scope>.h-tapes')], aboutIn=about.querySelector(':scope>.wrap');
+  const heroIn=[...hero.querySelectorAll(':scope>.wrap')], aboutIn=about.querySelector(':scope>.wrap');
   function setTop(){ about.style.setProperty('--abTop',Math.min(HDR,innerHeight-about.offsetHeight)+'px'); }
   function frame(){
     const H=innerHeight;
     // насколько карточка накрыла первый экран и насколько «Обучение» накрыло карточку
-    const pa=cl((H-about.getBoundingClientRect().top)/(H-HDR));
+    const pa=cl((H-120-about.getBoundingClientRect().top)/(H-120-HDR));   // пока блок только выглядывает — первый экран не тускнеет
     const pl=cl((H-learn.getBoundingClientRect().top)/(H-HDR));
     heroIn.forEach(el=>{ el.style.transform=`translateY(${(-pa*60).toFixed(1)}px) scale(${(1-pa*.08).toFixed(3)})`; el.style.opacity=(1-pa*.55).toFixed(3); });
     aboutIn.style.transform=`scale(${(1-pl*.07).toFixed(3)})`; aboutIn.style.filter=`brightness(${(1-pl*.25).toFixed(3)})`;
@@ -1287,9 +1367,10 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) retu
   io.unobserve(el);
 }),{threshold:.25});
 document.documentElement.classList.add('anim');
+$$('.lf').forEach(t=>io.observe(t));
 $$('.tile').forEach((t,i)=>{ t.style.transitionDelay=(i%4)*80+'ms'; io.observe(t); });
 /* подстраховка: если наблюдатель не сработал, показываем плитки всё равно */
-addEventListener('scroll',function chk(){ $$('.tile:not(.in)').forEach(t=>{ const r=t.getBoundingClientRect(); if(r.top<innerHeight*.9&&r.bottom>0){ t.classList.add('in'); if(t.querySelector('#typeFill')&&!typed) typeIt(); } }); },{passive:true});
+addEventListener('scroll',function chk(){ $$('.lf:not(.in)').forEach(t=>{ const r=t.getBoundingClientRect(); if(r.top<innerHeight*.92&&r.bottom>0) t.classList.add('in'); }); $$('.tile:not(.in)').forEach(t=>{ const r=t.getBoundingClientRect(); if(r.top<innerHeight*.9&&r.bottom>0){ t.classList.add('in'); if(t.querySelector('#typeFill')&&!typed) typeIt(); } }); },{passive:true});
 $$('.count').forEach(c=>io.observe(c));
 let typed=false;
 function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1812 год, Кутузов, Бородино'; let i=0;
@@ -1315,6 +1396,11 @@ function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1
     if(parts.length) requestAnimationFrame(tick); else { run=false; ctx.clearRect(0,0,innerWidth,innerHeight); } }
   document.addEventListener('click',e=>{ const b=e.target.closest('.btn-a,.btn-w,.btn-d'); if(!b) return;
     const r=b.getBoundingClientRect(); burst(r.left+r.width/2,r.top+r.height/2); });
+})();
+
+/* персонаж: по клику подпрыгивает */
+(function(){ const d=$('#dancer'); if(!d) return;
+  d.addEventListener('click',()=>{ d.classList.remove('jump'); void d.offsetWidth; d.classList.add('jump'); });
 })();
 
 /* ===== пометки ТЗ, тосты ===== */

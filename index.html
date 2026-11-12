@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ЕГЭ по истории с Элей Смит — СМИТАП</title>
 <meta name="description" content="Концепт лендинга курса подготовки к ЕГЭ по истории: блоки «О курсе», «Как проходит обучение», «Фишки».">
+<link rel="preconnect" href="https://kinescope.io">
+<link rel="preconnect" href="https://edge-ams-1.kinescopecdn.net" crossorigin>
+<link rel="preload" as="image" href="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp" imagesrcset="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_sm/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 640w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1280w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_lg/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1920w" imagesizes="(max-width:980px) 110vw, 1010px" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1049,6 +1052,15 @@ body.tz-on .sw::after{transform:translateX(18px)}
   .lc-slot:nth-child(2n){margin-left:-14px}
 }
 @media (max-width:640px){.lc-slot,.lc-slot:nth-child(2n){margin-left:0}}
+
+/* новая розовая стрелка: в зазоре между заголовком и видео, указывает на карточку */
+.hx-swirl{left:-27%;top:-7%;width:118px;height:auto;z-index:2;transform:none;rotate:4deg;animation:hfloat 5s ease-in-out infinite}
+@media (max-width:1200px){.hx-swirl{display:block;left:-20%;top:-9%;width:88px}}
+@media (max-width:980px){.hx-swirl{display:none}}
+
+/* видео: сначала мгновенно показывается лёгкая обложка (webp), плеер грузится после страницы и проявляется, когда уже играет */
+.hx-video{opacity:0;transition:opacity .6s ease}
+.hx-card.ready .hx-video{opacity:1}
 </style>
 </head>
 <body>
@@ -1088,14 +1100,14 @@ body.tz-on .sw::after{transform:translateX(18px)}
         <span class="hx-glow" aria-hidden="true" data-depth="-.35"></span>
         <span class="hx-tri" aria-hidden="true" data-depth=".5"></span>
         <svg class="hx-d sun-o" data-depth="1.2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50.0 0.0 L58.0 9.8 L69.1 3.8 L72.8 15.9 L85.4 14.6 L84.1 27.2 L96.2 30.9 L90.2 42.0 L100.0 50.0 L90.2 58.0 L96.2 69.1 L84.1 72.8 L85.4 85.4 L72.8 84.1 L69.1 96.2 L58.0 90.2 L50.0 100.0 L42.0 90.2 L30.9 96.2 L27.2 84.1 L14.6 85.4 L15.9 72.8 L3.8 69.1 L9.8 58.0 L0.0 50.0 L9.8 42.0 L3.8 30.9 L15.9 27.2 L14.6 14.6 L27.2 15.9 L30.9 3.8 L42.0 9.8Z" fill="#FFAA44"/></svg>
-        <svg class="hx-d hx-swirl" data-depth="1.1" viewBox="0 0 150 96" aria-hidden="true"><path d="M140 88 C 138 40, 98 14, 40 22" fill="none" stroke="#DBB9EE" stroke-width="12" stroke-linecap="round"/><path d="M52 2 L 20 24 L 50 48" fill="none" stroke="#DBB9EE" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="hx-d hx-swirl" data-depth="1.1" viewBox="0 0 506 553" aria-hidden="true"><path d="M67.8595 506.55C40.1822 391.195 80.0106 275.385 178.7 205.28C238.351 164.265 313.044 147.878 384.014 154.162L333.838 184.679L333.126 248.639L505.063 151.686L505.124 146.102L505.219 146.137C505.255 135.559 505.448 114.239 505.588 103.653L505.49 103.687L505.528 98.1065L335.254 0L334.864 63.9569L385.611 94.2657C303.117 89.3858 217.313 109.621 148.114 157.055C88.7191 198.492 42.0615 258.875 18.5042 327.247C-7.75928 402.101 -3.60458 477.156 15.6137 552.21L74.8733 538.274L67.9193 506.49L67.8595 506.55Z" fill="#F1B4E0"/></svg>
         <span class="hx-chip c1" data-depth=".7"><i style="--c:#FF702D"></i>603 стобалльника</span>
         <span class="hx-chip c2" data-depth=".9"><i style="--c:#3A3A3A"></i>Каждый 3-й — 80+</span>
         <i class="hx-d ring" data-depth="1.5" aria-hidden="true"></i>
         <svg class="hx-d spk k3" data-depth="1.3" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#B6D67D"/></svg>
         <div class="hx-card">
-          <img class="hx-poster" src="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_lg/019e8e5f-621b-773c-bfb3-c0e23fe36900.jpg" alt="" aria-hidden="true">
-          <iframe class="hx-video" src="https://kinescope.io/embed/rwCkE6ezEfagxHfXcmDTup?autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;playsinline=1" title="Видео СМИТАП" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" frameborder="0" loading="eager" tabindex="-1"></iframe>
+          <img class="hx-poster" src="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp" srcset="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_sm/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 640w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1280w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_lg/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1920w" sizes="(max-width:980px) 110vw, 1010px" width="1280" height="720" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+          <iframe class="hx-video" data-src="https://kinescope.io/embed/rwCkE6ezEfagxHfXcmDTup?autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;playsinline=1" title="Видео СМИТАП" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" frameborder="0" tabindex="-1"></iframe>
           <a class="hx-sound" href="https://kinescope.io/rwCkE6ezEfagxHfXcmDTup" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Смотреть со звуком</a>
         </div>
       </div>
@@ -1763,6 +1775,19 @@ function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1
   hero.addEventListener('pointermove',e=>{ const r=hero.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
     els.forEach(el=>{ const k=+el.dataset.depth; el.style.setProperty('--px',(x*k*44).toFixed(1)+'px'); el.style.setProperty('--py',(y*k*34).toFixed(1)+'px'); }); });
   hero.addEventListener('pointerleave',()=>els.forEach(el=>{ el.style.setProperty('--px','0px'); el.style.setProperty('--py','0px'); }));
+})();
+
+/* видео на первом экране: плеер Kinescope подключается после загрузки страницы и только когда карточка на экране */
+(function(){ const card=document.querySelector('.hx-card'), fr=card&&card.querySelector('.hx-video'); if(!fr) return;
+  const c=navigator.connection; if(c&&(c.saveData||/2g/.test(c.effectiveType||''))) return;
+  let started=false;
+  function start(){ if(started) return; started=true;
+    fr.addEventListener('load',()=>setTimeout(()=>card.classList.add('ready'),1200),{once:true});
+    fr.src=fr.dataset.src; }
+  function whenIdle(){ setTimeout(()=>{ const r=card.getBoundingClientRect();
+    if(r.top<innerHeight*1.5) return start();
+    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); start(); } },{rootMargin:'300px'}); io.observe(card); },250); }
+  if(document.readyState==='complete') whenIdle(); else addEventListener('load',whenIdle,{once:true});
 })();
 
 /* «Я ученик / Я родитель»: подменяем обращение в текстах */

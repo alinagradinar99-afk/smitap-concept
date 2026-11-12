@@ -1379,6 +1379,36 @@ body{padding-bottom:40px}
 /* карточки «Как проходит обучение»: текст меньше */
 .lc-title,.lc-pop b{font-size:20px;line-height:1.2}
 .lc-pop p{font-size:14px;line-height:1.45}
+
+/* шапка: отступ между логотипом и меню */
+@media (min-width:1181px){.header .nav{margin-left:24px}}
+
+/* первый экран: заголовок выше, звёздочка в свободном месте под подзаголовком */
+@media (min-width:981px){
+  .hx-title{margin-top:120px}
+  .hx-d.spk.k4{left:300px;top:468px;width:44px;height:44px;animation-delay:-.9s}
+  .hx-d.spk.k2{top:520px}
+}
+@media (max-width:980px){.hx-d.spk.k4{display:none}}
+
+/* стрелки на карточке преподавателя: появляются при наведении, в правом верхнем углу */
+.tc-arrows{position:absolute;right:16px;top:16px;z-index:6;display:flex;gap:8px;opacity:0;transform:translateY(-4px);transition:opacity .25s,transform .3s}
+.hx-art:hover .tc-arrows,.tc-arrows:focus-within{opacity:1;transform:none}
+.tc-a{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.92);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .2s,transform .2s}
+.tc-a:hover{background:#fff;transform:scale(1.06)}
+.tc-a svg{width:20px;height:20px;fill:none;stroke:var(--graphite);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:none){.tc-arrows{opacity:1;transform:none}}
+
+/* первый экран: карточка не выше свободного места над кнопками внизу */
+@media (min-width:981px){.hx-art{width:min(100%,520px,calc((100vh - 248px) * .915))}}
+
+/* закреплённый блок обучения: содержимое над кнопками внизу, карточки под высоту экрана */
+.pinned .lc-pin{height:calc(100vh - 72px - var(--dockH,96px));align-items:center}
+@media (min-width:1101px){
+  .pinned .lc-slot{flex-basis:min(calc(23% + 10px), calc(var(--cardMaxH,9999px) * 0.95))}
+  .pinned .lc-row{margin-top:40px}
+  .pinned .lc-steps{margin-top:24px}
+}
 </style>
 </head>
 <body>
@@ -1408,6 +1438,7 @@ body{padding-bottom:40px}
         <svg class="hx-d spk k1" data-depth="1.4" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#EB99A9"/></svg>
         <svg class="hx-d spk k2" data-depth="1.8" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#9AE0F1"/></svg>
         <div class="aud" role="radiogroup" aria-label="Для кого"><span class="aud-k" aria-hidden="true"></span><button type="button" role="radio" aria-checked="true" data-aud="s"><span class="lg">Я </span>ученик</button><button type="button" role="radio" aria-checked="false" data-aud="p"><span class="lg">Я </span>родитель</button></div>
+        <svg class="hx-d spk k4" data-depth="1.2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#FFAA44"/></svg>
         <h1 class="hx-title">Онлайн-школа<br> для подготовки<br> к <b class="tg t1">ЕГЭ</b> и <b class="tg t2">ОГЭ</b></h1>
         <p class="hx-sub" data-p="Познакомьтесь с преподавателем вашего ребёнка — выберите экзамен и предмет">Познакомься со своим преподавателем — выбери экзамен и предмет</p>
       </div>
@@ -1421,6 +1452,7 @@ body{padding-bottom:40px}
         <svg class="hx-d spk k3" data-depth="1.3" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 36 64 45 100 50 C64 55 55 64 50 100 C45 64 36 55 0 50 C36 45 45 36 50 0Z" fill="#B6D67D"/></svg>
         <div class="hx-card">
           <div class="tc-stack" id="tcStack" aria-live="polite"></div>
+          <div class="tc-arrows"><button type="button" class="tc-a prev" aria-label="Предыдущий преподаватель"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="tc-a next" aria-label="Следующий преподаватель"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
           <div class="tc-vid">
           <img class="hx-poster" src="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp" srcset="https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_sm/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 640w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_md/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1280w, https://edge-ams-1.kinescopecdn.net/6c041f5c-d11d-4983-9cea-ba3955033fd6/posters/8403b5bc-a864-4a30-834e-ebc40b5fadf3/poster_lg/019e8e5f-621b-773c-bfb3-c0e23fe36900.webp 1920w" sizes="(max-width:980px) 110vw, 1010px" width="1280" height="720" alt="" aria-hidden="true" loading="lazy" decoding="async">
           <iframe class="hx-video" data-src="https://kinescope.io/embed/rwCkE6ezEfagxHfXcmDTup?autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;playsinline=1" title="Видео СМИТАП" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" frameborder="0" tabindex="-1"></iframe>
@@ -2118,6 +2150,8 @@ window.hxVideo=function(){ const card=document.querySelector('.hx-card'), fr=car
   art.addEventListener('wheel',e=>{ const v=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
     e.preventDefault(); acc+=v; if(Math.abs(acc)>40){ step(acc>0?1:-1); acc=0; } },{passive:false});
   stack.addEventListener('click',()=>step(1));
+  document.querySelector('.tc-a.prev').addEventListener('click',e=>{ e.stopPropagation(); step(-1); });
+  document.querySelector('.tc-a.next').addEventListener('click',e=>{ e.stopPropagation(); step(1); });
   let x0=null,y0=null; stack.addEventListener('pointerdown',e=>{ x0=e.clientX; y0=e.clientY; });
   stack.addEventListener('pointerup',e=>{ if(x0===null) return; const dx=e.clientX-x0, dy=e.clientY-y0; x0=null;
     if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){ e.stopPropagation(); step(dx<0?1:-1); } },true);
@@ -2152,11 +2186,18 @@ window.hxVideo=function(){ const card=document.querySelector('.hx-card'), fr=car
   cards.forEach(c=>c.addEventListener('click',()=>{ const o=c.classList.contains('open'); cards.forEach(x=>x.classList.remove('open')); if(!o) c.classList.add('open'); }));
   if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   const cl=v=>Math.max(0,Math.min(1,v)), ease=t=>1-Math.pow(1-t,3);
-  const canPin=()=>innerWidth>1100&&innerHeight>=640;
+  const canPin=()=>innerWidth>1100&&innerHeight>=600;
+  // высота карточек в закреплённом блоке не больше свободного места между шапкой и кнопками внизу
+  let lastFit='';
+  function fit(){ const dock=document.querySelector('.dock-cta'), head=sec.querySelector('.lc-head'), stepsEl=sec.querySelector('.lc-steps');
+    const dockH=dock?(innerHeight-dock.getBoundingClientRect().top)+16:0;
+    const avail=innerHeight-72-dockH-head.offsetHeight-40-(stepsEl?stepsEl.offsetHeight+24:0)-24;
+    const key=innerWidth+'x'+innerHeight; if(key===lastFit) return; lastFit=key;
+    sec.style.setProperty('--dockH',dockH+'px'); sec.style.setProperty('--cardMaxH',Math.max(200,avail)+'px'); }
   let tick=false;
   function upd(){ tick=false; const H=innerHeight, W=innerWidth, pin=canPin();
     sec.classList.toggle('pinned',pin);
-    if(pin){ const r=sec.getBoundingClientRect(), span=r.height-(H-72), p=cl(-r.top/span), N=cards.length, A=.42;
+    if(pin){ fit(); const r=sec.getBoundingClientRect(), span=r.height-(H-72), p=cl(-r.top/span), N=cards.length, A=.42;
       const row=sec.querySelector('.lc-row'), shift=N>4?slots[4].offsetLeft-slots[0].offsetLeft:0;
       const pa=cl(p/A), pb=cl((p-A)/(.96-A));
       row.style.setProperty('--tx',(-shift*(pb*pb*(3-2*pb))).toFixed(1)+'px');

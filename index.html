@@ -551,6 +551,22 @@ section.learn.learn-cards{background:#fff;color:var(--ink);border-radius:0;box-s
   .lc-pop{inset:10px;padding:18px}
 }
 
+
+/* переключатель «Я ученик / Я родитель» */
+.aud{position:relative;display:flex;margin-left:auto;padding:4px;border-radius:999px;background:#F2F2F2}
+.aud button{position:relative;z-index:1;height:38px;padding:0 16px;border:0;background:none;border-radius:999px;font:inherit;font-size:14px;font-weight:600;color:rgba(58,58,58,.7);cursor:pointer;transition:color .25s}
+.aud button[aria-checked="true"]{color:var(--graphite)}
+.aud-k{position:absolute;top:4px;bottom:4px;left:4px;border-radius:999px;background:var(--turq);transition:transform .45s cubic-bezier(.3,1.5,.5,1),width .45s cubic-bezier(.3,1.5,.5,1)}
+.header .aud + .btn{margin-left:0}
+[data-p]{transition:opacity .25s}
+[data-p].swap{opacity:0}
+@media (max-width:640px){
+  .header .wrap{gap:12px}
+  .aud .lg{display:none}
+  .aud button{height:34px;padding:0 12px;font-size:13px}
+  .header .aud + .btn{display:none}
+}
+
 /* ================= 2. КАК ПРОХОДИТ ОБУЧЕНИЕ ================= */
 .learn{background:var(--cream);color:var(--ink);padding:120px 0 110px;position:relative;border-radius:56px 56px 0 0;margin-top:-56px;z-index:6;box-shadow:0 -28px 60px -34px rgba(58,58,58,.35)}
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:44px}
@@ -768,6 +784,7 @@ body.tz-on .sw::after{transform:translateX(18px)}
   <div class="wrap">
     <a class="logo" href="#"><img src="img/logo.svg" alt="СМИТАП"></a>
     <nav class="nav"><a href="#about">О курсе</a><a href="#learn">Обучение</a><a href="#learn">Фишки</a><a href="#">Тарифы</a><a href="#">Отзывы</a></nav>
+    <div class="aud" role="radiogroup" aria-label="Для кого"><span class="aud-k" aria-hidden="true"></span><button type="button" role="radio" aria-checked="true" data-aud="s"><span class="lg">Я </span>ученик</button><button type="button" role="radio" aria-checked="false" data-aud="p"><span class="lg">Я </span>родитель</button></div>
     <a class="btn btn-a" href="#" data-toast="Переход к тарифам">Выбрать тариф</a>
   </div>
 </header>
@@ -822,7 +839,7 @@ body.tz-on .sw::after{transform:translateX(18px)}
       <img class="ac-photo" src="img/elya.png" alt="Эля Смит — преподаватель истории" width="760" height="792" loading="lazy">
       <div class="ac-body">
         <h2 class="ac-title">Подготовка к ЕГЭ<span class="ac-badge">120 000+ выпускников</span><br> по истории с Элей Смит</h2>
-        <p class="ac-lead">Годовой онлайн-курс: живые вебинары с Элей, практика по критериям ЕГЭ, домашки с проверкой и пробники в формате экзамена</p>
+        <p class="ac-lead" data-p="Годовой онлайн-курс для вашего ребёнка: живые вебинары с Элей, практика по критериям ЕГЭ, проверка домашних заданий и пробники в формате экзамена">Годовой онлайн-курс: живые вебинары с Элей, практика по критериям ЕГЭ, домашки с проверкой и пробники в формате экзамена</p>
         <div class="ac-facts">
           <div><span>Длительность</span><b>9 месяцев</b></div>
           <div><span>Старт</span><b>1 сентября</b></div>
@@ -842,7 +859,7 @@ body.tz-on .sw::after{transform:translateX(18px)}
   <div class="wrap">
     <div class="lc-head">
       <h2>Как проходит обучение</h2>
-      <p>Год подготовки без хаоса: вебинары, практика, платформа, геймификация и комьюнити — в одном курсе</p>
+      <p data-p="Год спокойной и системной подготовки: вебинары, практика, платформа, геймификация и поддержка наставника — в одном курсе">Год подготовки без хаоса: вебинары, практика, платформа, геймификация и комьюнити — в одном курсе</p>
     </div>
     <div class="lc-row">
       <div class="lc-slot">
@@ -861,14 +878,14 @@ body.tz-on .sw::after{transform:translateX(18px)}
 <circle cx="62" cy="130" r="26" fill="#DBB9EE"/><circle cx="262" cy="372" r="25" fill="#B6D67D"/>
 <path d="M-10 372 Q 190 452 400 360 V 440 H -10 Z" fill="#FFAA44"/></svg>
           <h3 class="lc-title">Практика<br> с обратной связью<br> по критериям ЕГЭ</h3>
-          <div class="lc-pop"><b>Практика с обратной связью по критериям ЕГЭ</b><p>По каждой теме предусмотрены задания в формате первой и второй части. Проверим по критериям экзамена и дадим подробную обратную связь, чтобы ты был готов к самому строгому эксперту!</p></div>
+          <div class="lc-pop"><b>Практика с обратной связью по критериям ЕГЭ</b><p data-p="По каждой теме предусмотрены задания в формате первой и второй части. Проверим по критериям экзамена и дадим подробную обратную связь, чтобы ребёнок был готов к самому строгому эксперту!">По каждой теме предусмотрены задания в формате первой и второй части. Проверим по критериям экзамена и дадим подробную обратную связь, чтобы ты был готов к самому строгому эксперту!</p></div>
         </article>
       </div>
       <div class="lc-slot">
         <article class="lc" tabindex="0" style="--c:#43894F;--r:-1.4deg;--oy:4px">
           <svg class="lc-art" viewBox="0 0 380 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#9AE0F1" stroke-width="44"><circle cx="40" cy="20" r="92"/><circle cx="250" cy="-40" r="82"/><circle cx="350" cy="440" r="92"/><circle cx="170" cy="490" r="78"/></g></svg>
           <h3 class="lc-title">Скрипты<br> и материалы</h3>
-          <div class="lc-pop"><b>Скрипты и материалы</b><p>К каждому уроку — рабочая тетрадь: заполняешь пропуски и получаешь конспект со всей информацией, нужной для ЕГЭ.</p></div>
+          <div class="lc-pop"><b>Скрипты и материалы</b><p data-p="К каждому уроку — рабочая тетрадь: ребёнок заполняет пропуски и получает конспект со всей информацией, нужной для ЕГЭ.">К каждому уроку — рабочая тетрадь: заполняешь пропуски и получаешь конспект со всей информацией, нужной для ЕГЭ.</p></div>
         </article>
       </div>
       <div class="lc-slot">
@@ -1421,6 +1438,21 @@ function typeIt(){ if(typed) return; typed=true; const el=$('#typeFill'), txt='1
     if(parts.length) requestAnimationFrame(tick); else { run=false; ctx.clearRect(0,0,innerWidth,innerHeight); } }
   document.addEventListener('click',e=>{ const b=e.target.closest('.btn-a,.btn-w,.btn-d'); if(!b) return;
     const r=b.getBoundingClientRect(); burst(r.left+r.width/2,r.top+r.height/2); });
+})();
+
+/* «Я ученик / Я родитель»: подменяем обращение в текстах */
+(function(){ const box=document.querySelector('.aud'); if(!box) return;
+  const knob=box.querySelector('.aud-k'), btns=[...box.querySelectorAll('button')];
+  const els=[...document.querySelectorAll('[data-p]')]; els.forEach(e=>e.dataset.s=e.innerHTML); let cur;
+  const ty=t=>t.replace(/(^|[\s(«])([а-яё]{1,2}) /gi,'$1$2\u00a0');
+  function set(a,anim){ btns.forEach(b=>b.setAttribute('aria-checked',b.dataset.aud===a));
+    const on=btns.find(b=>b.dataset.aud===a); knob.style.width=on.offsetWidth+'px'; knob.style.transform=`translateX(${on.offsetLeft-4}px)`;
+    els.forEach(e=>{ const txt=a==='p'?ty(e.dataset.p):e.dataset.s; if(e.innerHTML===txt) return;
+      if(!anim){ e.innerHTML=txt; return; } e.classList.add('swap'); setTimeout(()=>{ e.innerHTML=txt; e.classList.remove('swap'); },250); });
+    cur=a; try{ localStorage.setItem('smitap-aud',a); }catch(_){} }
+  btns.forEach(b=>b.addEventListener('click',()=>set(b.dataset.aud,true)));
+  cur='s'; try{ cur=localStorage.getItem('smitap-aud')||'s'; }catch(_){}
+  const init=()=>set(cur,false); init(); addEventListener('load',init); addEventListener('resize',init);
 })();
 
 /* персонаж: по клику подпрыгивает */

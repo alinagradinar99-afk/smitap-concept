@@ -2157,7 +2157,7 @@ window.hxVideo=function(){ const card=document.querySelector('.hx-card'), fr=car
   const stack=document.getElementById('tcStack'); if(!stack) return;
   const art=document.querySelector('.hx-art'), c1=document.querySelector('.hx-chip.c1'), c2=document.querySelector('.hx-chip.c2');
   const N=D.length, DUR=5000; let idx=0, timer=null, paused=false, lock=0, acc=0;
-  stack.innerHTML=D.map((t,i)=>`<article class="tc" style="--c:${COL[t.c]}"><img src="${t.img}" srcset="${t.img.replace('-1040','-560')} 560w, ${t.img} 1040w" sizes="(max-width:640px) 92vw, 540px" width="1040" height="1137" alt="${t.name} — ${t.subj}" ${i?'loading="lazy"':'fetchpriority="high"'} decoding="async">${t.vid?`<video class="tc-v" src="${t.vid}" muted loop playsinline preload="auto" aria-hidden="true"></video>`:''}<div class="tc-info"><small>${t.subj}, ${t.ex}</small><b>${t.name}</b><p>«${t.quote}»</p></div></article>`).join('');
+  stack.innerHTML=D.map((t,i)=>`<article class="tc" style="--c:${COL[t.c]}"><img src="${t.img}" srcset="${t.img.replace('-1040','-560')} 560w, ${t.img} 1040w" sizes="(max-width:640px) 92vw, 540px" width="1040" height="1137" alt="${t.name} — ${t.subj}" ${i?'loading="lazy"':'fetchpriority="high"'} decoding="async"><video class="tc-v" src="${t.img.replace('-1040.webp','-live.mp4')}" muted loop playsinline preload="${i?'none':'auto'}" aria-hidden="true"></video><div class="tc-info"><small>${t.subj}, ${t.ex}</small><b>${t.name}</b><p>«${t.quote}»</p></div></article>`).join('');
   const slides=[...stack.children];
   function chip(el,s){ if(!el) return; el.classList.add('swap'); setTimeout(()=>{ el.innerHTML=`<b>${s[0]}</b><span>${s[1]}</span>`; el.classList.remove('swap'); },220); }
   function show(i,dir){ const old=idx; idx=(i+N)%N;
@@ -2166,6 +2166,7 @@ window.hxVideo=function(){ const card=document.querySelector('.hx-card'), fr=car
   const touch=matchMedia('(hover:none)').matches; let hov=false;
   function live(){ slides.forEach((s,k)=>{ const v=s.querySelector('.tc-v'); if(!v) return;
       const on=k===idx&&(hov||touch);
+      if(k===idx&&v.preload!=='auto') v.preload='auto';
       if(on){ v.play().then(()=>s.classList.add('live')).catch(()=>{}); }
       else { s.classList.remove('live'); setTimeout(()=>{ if(!s.classList.contains('live')){ v.pause(); v.currentTime=0; } },350); } }); }
   art.addEventListener('mouseenter',()=>{ hov=true; live(); }); art.addEventListener('mouseleave',()=>{ hov=false; live(); });

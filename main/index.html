@@ -170,6 +170,7 @@ h1 em{font-style:normal;color:var(--cta)}
 .pre-card{position:fixed;z-index:101;background:#FFC23F;border-radius:8px;pointer-events:none}
 body.pre-on{overflow:hidden}
 body.pre-on .hero>*,body.pre-on .hdr,body.pre-on .stats{opacity:0}
+body.pre-on.pre-v2 .hero>*,body.pre-on.pre-v2 .hdr,body.pre-on.pre-v2 .stats{opacity:1;transition:none}
 .hero>*,.hdr,.stats{transition:opacity .5s ease}
 @media (max-width:1240px){
   .nav{display:none}
@@ -181,7 +182,8 @@ body.pre-on .hero>*,body.pre-on .hdr,body.pre-on .stats{opacity:0}
 @media (max-width:980px){
   .hero{grid-template-columns:1fr;min-height:0}
   .h-txt{padding-top:40px}
-  .h-vis img{position:relative;top:auto;right:auto;width:100%;max-width:640px;margin:24px auto 0}
+  .hero{padding-bottom:0}
+  .h-vis img{position:relative;top:auto;right:auto;transform:none;width:100%;max-width:640px;margin:24px auto 0}
   .stats{flex-wrap:wrap;margin-top:32px;gap:24px 16px}.st{width:calc(50% - 8px)}
 }
 @media (max-width:640px){
@@ -348,8 +350,8 @@ if(!/[?&]nopre/.test(location.search)&&!matchMedia('(prefers-reduced-motion:redu
    за хвостом каждой полосы проявляется главный экран */
 function pre2(pre){
   const NS='http://www.w3.org/2000/svg', svg=document.getElementById('preSvg');
-  const W=innerWidth, H=innerHeight, mob=W<700;
-  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); pre.style.background='transparent';
+  const W=document.documentElement.clientWidth, H=document.documentElement.clientHeight, mob=W<700;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('preserveAspectRatio','none'); document.body.classList.add('pre-v2');
   const el=(n,a,p)=>{ const e=document.createElementNS(NS,n); for(const k in a) e.setAttribute(k,a[k]); (p||svg).appendChild(e); return e; };
   const N=mob?7:9, bh=H/N, sw=Math.min(mob?14:24,bh*0.42), L=W*(mob?0.9:0.7), A=sw*0.9;
   const defs=el('defs',{});
@@ -369,8 +371,8 @@ function pre2(pre){
     // запуск волной от центра к краям — полосы «стремятся вперёд» клином
     rows.push({bg,cr,delay:Math.abs(i-(N-1)/2)*(mob?70:60)});
   }
-  const D=mob?1150:1250, ez=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2, t0=performance.now();
-  let shown=false;
+  const D=mob?1500:1700, ez=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2, t0=performance.now()+250;
+  let shown=false, first=true;
   (function f(t){
     let done=true;
     rows.forEach(r=>{ const k=Math.max(0,Math.min(1,(t-t0-r.delay)/D)); if(k<1) done=false;
@@ -378,6 +380,7 @@ function pre2(pre){
       r.cr.setAttribute('x',tail); r.cr.setAttribute('width',Math.max(0,head-tail));
       r.bg.setAttribute('x',head-sw*0.6); r.bg.setAttribute('width',Math.max(0,W+4-head+sw*0.6));   // фон остаётся только впереди головы
     });
+    if(first){ first=false; pre.style.background='transparent'; }
     if(!shown && t-t0>D*0.55){ shown=true; document.body.classList.remove('pre-on'); dispatchEvent(new Event('preloaded')); }
     done ? (pre.remove()) : requestAnimationFrame(f);
   })(t0);

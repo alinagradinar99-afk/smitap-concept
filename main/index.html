@@ -104,8 +104,111 @@ h1 em{font-style:normal;color:#fff}
 .done .replay{opacity:1}
 
 /* цифры доверия */
-.stats{display:flex;justify-content:space-between;gap:24px;padding:40px 4px 60px;font-size:24px;font-weight:600;letter-spacing:-.01em}
+.stats{display:flex;justify-content:space-between;gap:24px;padding:40px 4px 0;font-size:24px;font-weight:600;letter-spacing:-.01em}
 
+
+/* ===== общие для блоков ===== */
+.sec{padding:100px 0 0}
+.h2{font-size:52px;line-height:1.06;letter-spacing:-.04em;font-weight:500;max-width:860px}
+.h2 em{font-style:normal;color:var(--or2)}
+.lead{margin-top:16px;font-size:18px;line-height:1.45;color:var(--muted);max-width:560px}
+
+/* ===== блок 2: достижения ===== */
+.ach{margin-top:48px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(200px,auto);gap:16px}
+.ac{position:relative;border-radius:24px;padding:28px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.ac .num{white-space:nowrap;font-size:96px;line-height:.9;font-weight:800;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.ac .cap{font-size:20px;line-height:1.3;font-weight:500;max-width:300px}
+.ac .tag{align-self:flex-start;height:30px;padding:0 12px;border-radius:15px;background:rgba(255,255,255,.7);font-size:13px;font-weight:600;display:inline-flex;align-items:center}
+.a1{grid-column:span 5;grid-row:span 2;background:var(--or)}
+.a1 .num{font-size:104px}
+.ac>*{position:relative;z-index:1}.ac>.shp,.ac>.ar{position:absolute;z-index:0}
+.a1 .shp{position:absolute;right:-40px;top:-30px;width:230px;filter:brightness(.82) saturate(1.5)}
+.a2{grid-column:span 4;background:var(--mint)}
+.a3{grid-column:span 3;background:var(--lilac)}
+.a4{grid-column:span 3;background:#fff;border:1px solid #F2E6DA}
+.a4 .num{color:var(--or2)}
+.a5{grid-column:span 4;background:var(--lime)}
+.a5 .num{font-size:72px}
+.a2 .ar{position:absolute;right:22px;top:20px;width:56px}
+/* поступления */
+.adm{grid-column:span 12;background:#1E1B19;color:#fff;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:32px;align-items:center;padding:36px}
+.adm h3{font-size:34px;line-height:1.1;letter-spacing:-.03em;font-weight:500}
+.unis{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.unis span{height:36px;padding:0 14px;border-radius:18px;border:1px solid rgba(255,255,255,.25);font-size:14px;font-weight:500;display:inline-flex;align-items:center;transition:background .2s,color .2s,border-color .2s}
+.unis span:hover{background:var(--or);border-color:var(--or);color:var(--ink)}
+.shots{position:relative;height:300px}
+.shot{position:absolute;width:210px;height:270px;border-radius:20px;background:#FFFCF8;color:var(--ink);padding:14px;box-shadow:0 20px 40px -20px rgba(0,0,0,.6);transition:transform .4s cubic-bezier(.2,1.3,.3,1)}
+.shot:hover{transform:rotate(0) translateY(-10px) scale(1.04)!important;z-index:5}
+.shot .bar2{display:flex;gap:6px;align-items:center;font-size:12px;font-weight:600}
+.shot .bar2 i{width:26px;height:26px;border-radius:50%;background:var(--sky)}
+.shot .ln{height:9px;border-radius:5px;background:#EFE6DC;margin-top:9px}
+.shot .ok{margin-top:14px;border-radius:12px;padding:10px;font-size:13px;line-height:1.3;font-weight:600}
+.shot .ph{position:absolute;left:14px;right:14px;bottom:12px;font-size:11px;color:var(--muted);font-weight:500}
+.s1{left:0;top:20px;transform:rotate(-6deg)}
+.s2{left:30%;top:0;transform:rotate(3deg)}
+.s3{left:60%;top:26px;transform:rotate(-2deg)}
+.lic{margin-top:18px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.lic svg{flex:none}
+
+/* ===== блок 3: бинго страхов ===== */
+.bingo-wrap{margin-top:48px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:end}
+.bingo{position:relative;background:#fff;border-radius:28px;padding:20px;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.bingo-top{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 18px}
+.bingo-top b{font-size:40px;font-weight:900;letter-spacing:.12em}
+.bingo-top b i{font-style:normal;display:inline-block}
+.bingo-top b i:nth-child(1){color:var(--or2)}.bingo-top b i:nth-child(2){color:#6FC7DD}.bingo-top b i:nth-child(3){color:#B07BD0}.bingo-top b i:nth-child(4){color:#7FB03F}.bingo-top b i:nth-child(5){color:#F06A6A}
+.bingo-top span{font-size:14px;font-weight:600;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cell{position:relative;min-height:150px;border-radius:18px;background:var(--c);padding:16px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;gap:10px;
+  font-size:17px;line-height:1.3;font-weight:600;color:var(--ink);transition:transform .25s}
+.cell:hover{transform:translateY(-3px)}
+.cell img{width:52px;height:52px;object-fit:contain;align-self:flex-end;transition:transform .3s}
+.cell .face{position:relative}
+.cell .stamp{position:absolute;right:12px;bottom:18px;display:grid;pointer-events:none;opacity:0;transform:scale(1.6) rotate(-14deg);transition:opacity .2s,transform .35s cubic-bezier(.2,1.6,.4,1)}
+.cell .stamp span{border:4px solid var(--or2);color:var(--or2);background:rgba(255,252,248,.88);border-radius:14px;padding:6px 14px;font-size:20px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.cell.on .stamp{opacity:1;transform:scale(1) rotate(-10deg)}
+.cell.on{transform:none}
+.bingo-side{position:relative;padding-bottom:10px}
+.bubble{position:relative;background:var(--ink);color:#fff;border-radius:22px;padding:20px;font-size:18px;line-height:1.35;font-weight:500}
+.bubble:after{content:"";position:absolute;left:60px;bottom:-12px;border:12px solid transparent;border-top-color:var(--ink);border-bottom:0}
+.bubble b{display:block;font-size:26px;letter-spacing:-.02em;margin-bottom:6px;color:var(--or)}
+.bubble .b1{margin-top:16px;background:var(--or);color:var(--ink);height:48px;font-size:15px}
+.bubble .b1:hover{background:#ffb070}
+.masc{display:block;width:180px;margin:18px 0 0 20px;transition:transform .4s cubic-bezier(.2,1.5,.4,1)}
+.win .masc{transform:translateY(-12px) rotate(-4deg)}
+.count{margin-top:14px;font-size:14px;color:var(--muted);font-weight:500}
+.reset{margin-top:6px;font-size:14px;font-weight:600;color:var(--or2);text-decoration:underline;text-underline-offset:3px}
+
+@media (max-width:1180px){.h2{font-size:42px}.ac .num{font-size:64px}.a1 .num{font-size:96px}}
+@media (max-width:980px){
+  .ach{grid-template-columns:repeat(6,1fr)}
+  .a1{grid-column:span 6;grid-row:span 1}.a2,.a3,.a4,.a5{grid-column:span 3}
+  .adm{grid-column:span 6;grid-template-columns:1fr}
+  .bingo-wrap{grid-template-columns:1fr}
+  .bingo-side{display:flex;gap:16px;align-items:flex-end}.masc{width:120px;margin:0}
+  .bubble:after{display:none}
+}
+@media (max-width:640px){
+  .sec{padding-top:64px}
+  .h2{font-size:32px}.lead{font-size:16px}
+  .ach{grid-template-columns:1fr 1fr;grid-auto-rows:auto;gap:10px;margin-top:28px}
+  .a2{flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:12px}.a2 .ar{width:40px}
+  .ac{padding:18px;border-radius:20px;min-height:150px;gap:14px}
+  .a1{grid-column:span 2}.a1 .num{font-size:80px}.a1 .shp{width:180px}
+  .a2,.a3,.a4,.a5{grid-column:span 1}
+  .a2,.a5{grid-column:span 2}
+  .ac .num{font-size:48px}.a5 .num{font-size:44px}.ac .cap{font-size:15px}
+  .adm{grid-column:span 2;padding:22px}.adm h3{font-size:24px}
+  .shots{height:250px}.shot{width:160px;height:220px}.s2{left:26%}.s3{left:auto;right:0}
+  .bingo{padding:12px;box-shadow:5px 5px 0 var(--ink);border-radius:22px}
+  .bingo-top b{font-size:26px}
+  .grid{gap:6px}
+  .cell{min-height:118px;padding:10px;font-size:12.5px;border-radius:14px}
+  .cell img{width:34px;height:34px}
+  .cell .stamp span{font-size:12px;padding:4px 8px;border-width:3px}
+  .bingo-side{flex-direction:column-reverse;align-items:stretch}.masc{display:none}
+  .bubble{font-size:16px}.bubble b{font-size:22px}
+}
 @media (max-width:1180px){
   h1{font-size:54px}
   .nav{display:none}
@@ -219,6 +322,66 @@ h1 em{font-style:normal;color:#fff}
   </section>
 
   <div class="stats"><div>120 000+ учеников</div><div>5/5 Яндекс</div><div>4.9/5 Отзовик</div><div>4.9/5 Т-Банк</div></div>
+  <!-- блок 2: достижения -->
+  <section class="sec" id="results">
+    <h2 class="h2">Результаты, которыми мы <em>гордимся</em></h2>
+    <div class="ach">
+      <div class="ac a1">
+        <span class="tag">с 2020 года</span>
+        <div><div class="num" data-n="24000" data-f="+">24 000+</div><div class="cap">высокобалльников — сдали ЕГЭ на 80+ баллов</div></div>
+        <img class="shp" src="img/spi.webp" alt="" aria-hidden="true">
+      </div>
+      <div class="ac a2">
+        <svg class="ar" viewBox="0 0 60 80" aria-hidden="true"><path d="M30 76 C16 60 18 36 30 14" stroke="#1E1B19" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M16 22 L30 6 L44 22" stroke="#1E1B19" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="num" data-n="1254" data-f="+">1 254+</div><div class="cap">стобалльников</div>
+      </div>
+      <div class="ac a3"><span class="tag">по итогам 2026</span><div><div class="num">1 из 3</div><div class="cap">учеников сдал ЕГЭ на 80+</div></div></div>
+      <div class="ac a4"><div class="num" data-n="5" data-f="+">5+</div><div class="cap">лет в онлайн-образовании</div></div>
+      <div class="ac a5"><div class="num" data-n="120000" data-f="+">120 000+</div><div class="cap">учеников доверили нам подготовку</div></div>
+      <div class="ac adm">
+        <div>
+          <h3>Наши ученики поступают в топовые вузы страны</h3>
+          <div class="unis"><span>МГУ</span><span>ВШЭ</span><span>МГИМО</span><span>МГЮА</span><span>СПбГУ</span><span>ИТМО</span><span>МГТУ им. Баумана</span><span>МФТИ</span><span>РНИМУ им. Пирогова</span><span>МГМУ им. Сеченова</span><span>КФУ</span><span>УрФУ</span><span>Финансовый университет</span><span>РАНХиГС</span></div>
+        </div>
+        <div class="shots" aria-label="Скриншоты поступлений — место под реальные скрины">
+          <div class="shot s1"><div class="bar2"><i></i>Ученица, история</div><div class="ln"></div><div class="ln" style="width:70%"></div><div class="ok" style="background:var(--mint)">Я поступила в СПбГУ на бюджет!</div><div class="ph">Место под скрин поступления</div></div>
+          <div class="shot s2"><div class="bar2"><i style="background:var(--lime)"></i>Ученик, физика</div><div class="ln"></div><div class="ln" style="width:55%"></div><div class="ok" style="background:var(--or)">МФТИ, бюджет, ура</div><div class="ph">Место под скрин поступления</div></div>
+          <div class="shot s3"><div class="bar2"><i style="background:var(--lilac)"></i>Ученица, общество</div><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ok" style="background:var(--pink)">Прошла в ВШЭ!</div><div class="ph">Место под скрин поступления</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="lic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Работаем по лицензии на образовательную деятельность № Л035-01271-78-04032994</p>
+  </section>
+
+  <!-- блок 3: бинго страхов -->
+  <section class="sec" id="fears">
+    <h2 class="h2">Экзамены и поступление — это <em>сложный этап…</em></h2>
+    <p class="lead">Отметь, что знакомо. Спойлер: так переживает почти каждый, и с этим можно справиться</p>
+    <div class="bingo-wrap">
+      <div class="bingo">
+        <div class="bingo-top"><b><i>Б</i><i>И</i><i>Н</i><i>Г</i><i>О</i></b><span>страхов выпускника</span></div>
+        <div class="grid" id="grid">
+          <button class="cell" style="--c:#FFE1C6"><span>Хочу поступить на бюджет, но нужно много баллов…</span><span class="face"><img src="img/f-wow.webp" alt=""></span><span class="stamp"><span>Знакомо</span></span></button>
+          <button class="cell" style="--c:#DDF4FA"><span>Непонятно, за что хвататься, чтобы не утонуть в материале</span><span class="face"><img src="img/f-tender.webp" alt=""></span><span class="stamp"><span>Знакомо</span></span></button>
+          <button class="cell" style="--c:#EEDFF7"><span>А вдруг на экзамене попадётся то, что я не учил?</span><span class="face"><img src="img/f-wow.webp" alt=""></span><span class="stamp"><span>Знакомо</span></span></button>
+          <button class="cell" style="--c:#E3EFD0"><span>Я не чувствую контроля над своей подготовкой</span><span class="face"><img src="img/f-sigma.webp" alt=""></span><span class="stamp"><span>Знакомо</span></span></button>
+          <button class="cell" style="--c:#FFE0E0"><span>Все вокруг уже давно решают сложные варианты, а я нет</span><span class="face"><img src="img/f-confident.webp" alt=""></span><span class="stamp"><span>Знакомо</span></span></button>
+          <button class="cell" style="--c:#E2EDFF"><span>А вдруг я не успею подготовиться?</span><span class="face"><img src="img/f-tender.webp" alt=""></span><span class="stamp"><span>Знакомо</span></span></button>
+          <button class="cell" style="--c:#DDF4FA"><span>Я не верю в свои силы</span><span class="face"><img src="img/f-base.webp" alt=""></span><span class="stamp"><span>Знакомо</span></span></button>
+          <button class="cell" style="--c:#FFE1C6"><span>Учительница сказала, что со мной уже поздно заниматься</span><span class="face"><img src="img/f-sigma.webp" alt=""></span><span class="stamp"><span>Знакомо</span></span></button>
+          <button class="cell" style="--c:#EEDFF7"><span>Я боюсь, что родители во мне разочаруются</span><span class="face"><img src="img/f-tender.webp" alt=""></span><span class="stamp"><span>Знакомо</span></span></button>
+        </div>
+      </div>
+      <div class="bingo-side" id="side">
+        <div>
+          <div class="bubble" id="bubble"><b id="bTitle">Отмечай смело</b><span id="bText">Нажми на страхи, которые знакомы тебе — посмотрим, сколько соберётся</span></div>
+          <div class="count" id="cnt">Отмечено: 3 из 9</div>
+          <button class="reset" id="reset">Сбросить</button>
+        </div>
+        <img class="masc" id="masc" src="img/m-tender.webp" alt="Маскот СМИТАП">
+      </div>
+    </div>
+  </section>
 </div>
 
 <script>
@@ -234,6 +397,43 @@ h1 em{font-style:normal;color:#fff}
 document.querySelectorAll('.aud button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.aud button').forEach(x=>x.setAttribute('aria-pressed',x===b));
 }));
+
+
+/* блок 2: цифры считаются, когда блок появился на экране */
+(function(){
+  const els=[...document.querySelectorAll('.ac .num[data-n]')];
+  const fmt=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'\u00a0');
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; io.unobserve(e.target);
+    const el=e.target, to=+el.dataset.n, f=el.dataset.f||'', t0=performance.now(), D=1400;
+    (function step(t){ const k=Math.min(1,(t-t0)/D), v=Math.round(to*(1-Math.pow(1-k,3))); el.textContent=fmt(v)+f; if(k<1) requestAnimationFrame(step); })(t0);
+  }),{threshold:.5});
+  els.forEach(el=>{ el.textContent='0'+(el.dataset.f||''); io.observe(el); });
+})();
+
+/* блок 3: бинго — часть страхов уже отмечена, остальные отмечаются по клику, на 3 в ряд — «бинго» */
+(function(){
+  const cells=[...document.querySelectorAll('#grid .cell')], side=document.getElementById('side');
+  const T=document.getElementById('bTitle'), X=document.getElementById('bText'), C=document.getElementById('cnt'), M=document.getElementById('masc');
+  const L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  const PRE=[0,4,6];
+  const ty=t=>t.replace(/(^|[\s(«])([а-яё]{1,3}) /gi,'$1$2\u00a0').replace(/(^|[\s(«])([а-яё]{1,3}) /gi,'$1$2\u00a0').replace(/ —/g,'\u00a0—');
+  let upd=function(){ const on=cells.map(c=>c.classList.contains('on')), n=on.filter(Boolean).length;
+    C.textContent='Отмечено: '+n+' из 9';
+    const line=L.some(l=>l.every(i=>on[i]));
+    side.classList.toggle('win',line);
+    if(line){ T.textContent='Бинго!'; X.textContent='Это нормально — так переживает почти каждый. Мы знаем, как с этим справиться, и пройдём этот путь вместе';
+      M.src='img/m-point.webp';
+      if(!document.getElementById('bCta')){ const a=document.createElement('a'); a.id='bCta'; a.className='b1'; a.href='#'; a.textContent='Попробовать бесплатно'; document.getElementById('bubble').appendChild(a); } }
+    else { T.textContent=n?'Знакомо?':'Отмечай смело'; X.textContent=n?'Отметь ещё — соберёшь линию и узнаешь, что с этим делать':'Нажми на страхи, которые знакомы тебе — посмотрим, сколько соберётся';
+      M.src='img/m-tender.webp'; const a=document.getElementById('bCta'); if(a) a.remove(); } }
+  const upd0=upd; upd=function(){ upd0(); X.textContent=ty(X.textContent); };
+  cells.forEach(c=>c.addEventListener('click',()=>{ c.classList.toggle('on'); upd(); }));
+  document.getElementById('reset').addEventListener('click',()=>{ cells.forEach(c=>c.classList.remove('on')); upd(); });
+  // часть страхов «уже отмечена»: появляются по очереди, когда блок виден
+  const io=new IntersectionObserver(es=>{ if(!es[0].isIntersecting) return; io.disconnect();
+    PRE.forEach((i,k)=>setTimeout(()=>{ cells[i].classList.add('on'); upd(); },400+k*500)); },{threshold:.35});
+  io.observe(document.getElementById('grid')); upd();
+})();
 
 /* продукт: стикеры по очереди, балл растёт 42 → 91 */
 (function(){
@@ -253,5 +453,6 @@ document.querySelectorAll('.aud button').forEach(b=>b.addEventListener('click',(
   addEventListener('load',()=>setTimeout(play,250));
 })();
 </script>
+<div style="height:120px"></div>
 </body>
 </html>

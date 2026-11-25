@@ -164,7 +164,7 @@ h1 em{font-style:normal;color:var(--cta)}
   .bubble{font-size:16px}.bubble b{font-size:22px}
 }
 
-/* ===== прелоадер: пути сходятся в одну линию, линия становится баннером ===== */
+/* ===== прелоадер: пути сходятся в одну линию, линия раскрывает экран ===== */
 .pre{position:fixed;inset:0;z-index:100;background:var(--bg);pointer-events:none}
 .pre svg{position:absolute;inset:0;width:100%;height:100%}
 .pre-card{position:fixed;z-index:101;background:#FFC23F;border-radius:8px;pointer-events:none}
@@ -306,14 +306,14 @@ if(!/[?&]nopre/.test(location.search)&&!matchMedia('(prefers-reduced-motion:redu
 <script>
 
 /* прелоадер: 4 фирменных пути (пунктир, волна, точки, ступени) тянутся вперёд и сходятся в одну линию,
-   линия бежит дальше и разворачивается в оранжевый баннер первого экрана */
+   линия добегает до края и раскрывает главный экран, как шторки */
 (function(){
   const pre=document.getElementById('pre'); if(!pre){ dispatchEvent(new Event('preloaded')); return; }
   scrollTo(0,0);
-  if(!/[?&]pre=1/.test(location.search)) return pre2(pre);
+  if(/[?&]pre=2/.test(location.search)) return pre2(pre);
   const NS='http://www.w3.org/2000/svg', svg=document.getElementById('preSvg');
-  const W=innerWidth, H=innerHeight, mob=W<700;
-  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const W=document.documentElement.clientWidth, H=document.documentElement.clientHeight, mob=W<700;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('preserveAspectRatio','none');
   const cy=H*0.52, mx=W*(mob?0.72:0.62), sw=mob?10:16;
   const el=(n,a)=>{ const e=document.createElementNS(NS,n); for(const k in a) e.setAttribute(k,a[k]); return e; };
   // путь, который «сходится» в точку (mx,cy): старт y0, форма f(t) затухает к концу
@@ -335,22 +335,20 @@ if(!/[?&]nopre/.test(location.search)&&!matchMedia('(prefers-reduced-motion:redu
   (async()=>{
     await tween(1300,k=>cr.setAttribute('width',(mx+40)*k),io);                     // пути тянутся и сходятся
     await tween(520,k=>{ line.setAttribute('x',mx-(mx)*k*0); line.setAttribute('width',(W-mx+20)*k); });
-    // линия на всю ширину: прячем пути, берём линию в отдельный блок и разворачиваем в баннер
-    const card=document.createElement('div'); card.className='pre-card'; document.body.appendChild(card);
-    const set=(l,t,w,h,r,c)=>{ Object.assign(card.style,{left:l+'px',top:t+'px',width:w+'px',height:h+'px',borderRadius:r+'px',background:c}); };
+    // линия на всю ширину, пути гаснут
     await tween(380,k=>{ cr.setAttribute('width',mx+40); line.setAttribute('x',mx*(1-k)); line.setAttribute('width',W-mx*(1-k)+20); g.style.opacity=1-k; });
-    set(0,cy-sw/2,W,sw,sw/2,'#FFC23F'); svg.style.opacity=0;
-    const R=document.getElementById('hero').getBoundingClientRect();
-    const mix=(a,b,k)=>a+(b-a)*k, col=k=>`rgb(${Math.round(mix(255,255,k))},${Math.round(mix(194,155,k))},${Math.round(mix(63,76,k))})`;
-    await tween(750,k=>set(mix(0,R.left,k),mix(cy-sw/2,R.top,k),mix(W,R.width,k),mix(sw,R.height,k),mix(sw/2,24,k),col(Math.min(1,k*1.6))),io);
-    card.style.transition='opacity .35s'; card.style.opacity=0;
-    document.body.classList.remove('pre-on'); pre.style.transition='opacity .4s'; pre.style.opacity=0;
-    setTimeout(()=>{ pre.remove(); card.remove(); },450);
+    // линия раскрывает экран: верхняя и нижняя «шторки» разъезжаются от неё, под ними — главный экран
+    const top=el('rect',{x:0,y:0,width:W,height:cy,fill:'#FFFCF8'}), bot=el('rect',{x:0,y:cy,width:W,height:H-cy,fill:'#FFFCF8'});
+    svg.insertBefore(bot,line); svg.insertBefore(top,bot); g.remove();
+    pre.style.background='transparent'; document.body.classList.add('pre-v2'); document.body.classList.remove('pre-on');
     dispatchEvent(new Event('preloaded'));
+    await tween(760,k=>{ top.setAttribute('y',-cy*k); bot.setAttribute('y',cy+(H-cy)*k);
+      const h=sw*(1-k); line.setAttribute('y',cy-h/2); line.setAttribute('height',Math.max(0,h)); },io);
+    pre.remove();
   })();
 })();
 
-/* прелоадер, вариант 2 (?pre=2): фирменные пути полосами несутся слева направо,
+/* прелоадер, запасной вариант (?pre=2): фирменные пути полосами несутся слева направо,
    за хвостом каждой полосы проявляется главный экран */
 function pre2(pre){
   const NS='http://www.w3.org/2000/svg', svg=document.getElementById('preSvg');

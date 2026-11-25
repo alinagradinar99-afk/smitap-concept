@@ -67,42 +67,36 @@ h1 em{font-style:normal;color:var(--cta)}
 .h2 em{font-style:normal;color:var(--or2)}
 .lead{margin-top:16px;font-size:18px;line-height:1.45;color:var(--muted);max-width:560px}
 
-/* ===== блок 2: достижения ===== */
-.ach{margin-top:48px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(200px,auto);gap:16px}
-.ac{position:relative;border-radius:24px;padding:28px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
-.ac .num{white-space:nowrap;font-size:96px;line-height:.9;font-weight:800;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
-.ac .cap{font-size:20px;line-height:1.3;font-weight:500;max-width:300px}
-.ac .tag{align-self:flex-start;height:30px;padding:0 12px;border-radius:15px;background:rgba(255,255,255,.7);font-size:13px;font-weight:600;display:inline-flex;align-items:center}
-.a1{grid-column:span 5;grid-row:span 2;background:var(--or)}
-.a1 .num{font-size:104px}
-.ac>*{position:relative;z-index:1}.ac>.shp,.ac>.ar{position:absolute;z-index:0}
-.a1 .shp{position:absolute;right:-40px;top:-30px;width:230px;filter:brightness(.82) saturate(1.5)}
-.a2{grid-column:span 4;background:var(--mint)}
-.a3{grid-column:span 3;background:var(--lilac)}
-.a4{grid-column:span 3;background:#fff;border:1px solid #F2E6DA}
-.a4 .num{color:var(--or2)}
-.a5{grid-column:span 4;background:var(--lime)}
-.a5 .num{font-size:72px}
-.a2 .ar{position:absolute;right:22px;top:20px;width:56px}
-/* поступления */
-.adm{grid-column:span 12;background:#1E1B19;color:#fff;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:32px;align-items:center;padding:36px}
-.adm h3{font-size:34px;line-height:1.1;letter-spacing:-.03em;font-weight:500}
-.unis{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
-.unis span{height:36px;padding:0 14px;border-radius:18px;border:1px solid rgba(255,255,255,.25);font-size:14px;font-weight:500;display:inline-flex;align-items:center;transition:background .2s,color .2s,border-color .2s}
-.unis span:hover{background:var(--or);border-color:var(--or);color:var(--ink)}
-.shots{position:relative;height:300px}
-.shot{position:absolute;width:210px;height:270px;border-radius:20px;background:#FFFCF8;color:var(--ink);padding:14px;box-shadow:0 20px 40px -20px rgba(0,0,0,.6);transition:transform .4s cubic-bezier(.2,1.3,.3,1)}
-.shot:hover{transform:rotate(0) translateY(-10px) scale(1.04)!important;z-index:5}
-.shot .bar2{display:flex;gap:6px;align-items:center;font-size:12px;font-weight:600}
-.shot .bar2 i{width:26px;height:26px;border-radius:50%;background:var(--sky)}
-.shot .ln{height:9px;border-radius:5px;background:#EFE6DC;margin-top:9px}
-.shot .ok{margin-top:14px;border-radius:12px;padding:10px;font-size:13px;line-height:1.3;font-weight:600}
-.shot .ph{position:absolute;left:14px;right:14px;bottom:12px;font-size:11px;color:var(--muted);font-weight:500}
-.s1{left:0;top:20px;transform:rotate(-6deg)}
-.s2{left:30%;top:0;transform:rotate(3deg)}
-.s3{left:60%;top:26px;transform:rotate(-2deg)}
-.lic{margin-top:18px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
-.lic svg{flex:none}
+/* ===== блок 2: результаты — из макета Figma «СМИТАП · блоки 2–3 · 1440» ===== */
+.res{margin-top:48px}
+.res-top{display:grid;grid-template-columns:minmax(0,497fr) minmax(0,799fr);gap:20px}
+.res-photo{position:relative;background:#FFECD5;border-radius:24px;overflow:hidden;min-height:416px}
+.res-photo .blob{position:absolute;left:5.13%;top:5.29%;width:81.3%;height:auto}
+.res-photo .ph{position:absolute;left:8.05%;top:2.88%;width:88.73%;height:100.72%;object-fit:cover}
+.res-play{position:absolute;left:77.7%;top:20.7%;width:82px;height:83px;border-radius:20px;background:#FFDF50;display:grid;place-items:center;transform:rotate(-5.06deg);transition:transform .25s cubic-bezier(.2,1.4,.4,1)}
+.res-play:hover{transform:rotate(-5.06deg) scale(1.08)}
+.res-play img{width:52px;height:52px}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.rc{position:relative;border-radius:24px;overflow:hidden;min-height:198px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;background:#F0F0F0;color:#1E1B19}
+.rc>*{position:relative;z-index:1}
+.rc .num{font-size:70px;line-height:70px;font-weight:700;letter-spacing:-5.76px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rc .num.or{color:#FF702D}
+.rc .num.k{letter-spacing:-4.32px}
+.rc .cap{font-size:20px;line-height:24px;font-weight:500}
+.rc.o{background:#FF9B4C;color:#fff}.rc.o .cap{line-height:26px}
+.rc.b{border:1px solid #F2E6DA}
+.rc .tag{position:absolute;right:16px;top:18px;padding:5px 12px;border-radius:15px;background:#fff;font-size:13px;line-height:17px;font-weight:500}
+.rc .gfx{position:absolute;z-index:0;height:auto;pointer-events:none}
+.rc .g-arrow{right:0;bottom:0;width:260px}
+.rc .g-arrows{right:0;top:0;width:257px}
+.vuz{margin-top:16px;background:#F0F0F0;border-radius:24px;padding:40px}
+.vuz h3{font-size:42px;line-height:38px;font-weight:600;color:#241E1B}
+.vuz h3 em{font-style:normal;color:#FF702D}
+.vuz-list{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+.vuz-list span{height:54px;padding:0 25px;border-radius:25px;background:#fff;border:1px solid #EAD0B7;font-size:18px;line-height:29px;font-weight:500;color:#241E1B;display:inline-flex;align-items:center;transition:background .2s,border-color .2s}
+.vuz-br{flex-basis:100%;height:0}
+@media (max-width:1180px){.vuz-br{display:none}}
+.vuz-list span:hover{background:#FFF3E6;border-color:#DDB896}
 
 /* ===== блок 3: бинго страхов ===== */
 .bingo-wrap{margin-top:48px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:end}
@@ -133,11 +127,9 @@ h1 em{font-style:normal;color:var(--cta)}
 .count{margin-top:14px;font-size:14px;color:var(--muted);font-weight:500}
 .reset{margin-top:6px;font-size:14px;font-weight:600;color:var(--or2);text-decoration:underline;text-underline-offset:3px}
 
-@media (max-width:1180px){.h2{font-size:42px}.ac .num{font-size:64px}.a1 .num{font-size:96px}}
+@media (max-width:1180px){.h2{font-size:42px}.rc .num{font-size:54px;line-height:56px;letter-spacing:-4px}.rc .num.k{letter-spacing:-3px}.rc .cap{font-size:17px;line-height:21px}.rc .g-arrow{width:200px}.rc .g-arrows{width:200px}.res-play{width:66px;height:66px;border-radius:16px}.res-play img{width:42px;height:42px}.rc .tag{position:static;align-self:flex-start;margin-bottom:-2px}}
 @media (max-width:980px){
-  .ach{grid-template-columns:repeat(6,1fr)}
-  .a1{grid-column:span 6;grid-row:span 1}.a2,.a3,.a4,.a5{grid-column:span 3}
-  .adm{grid-column:span 6;grid-template-columns:1fr}
+  .res-top{grid-template-columns:1fr}.res-photo{min-height:0;aspect-ratio:497/416;max-height:560px}
   .bingo-wrap{grid-template-columns:1fr}
   .bingo-side{display:flex;gap:16px;align-items:flex-end}.masc{width:120px;margin:0}
   .bubble:after{display:none}
@@ -145,15 +137,15 @@ h1 em{font-style:normal;color:var(--cta)}
 @media (max-width:640px){
   .sec{padding-top:64px}
   .h2{font-size:32px}.lead{font-size:16px}
-  .ach{grid-template-columns:1fr 1fr;grid-auto-rows:auto;gap:10px;margin-top:28px}
-  .a2{flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:12px}.a2 .ar{width:40px}
-  .ac{padding:18px;border-radius:20px;min-height:150px;gap:14px}
-  .a1{grid-column:span 2}.a1 .num{font-size:80px}.a1 .shp{width:180px}
-  .a2,.a3,.a4,.a5{grid-column:span 1}
-  .a2,.a5{grid-column:span 2}
-  .ac .num{font-size:48px}.a5 .num{font-size:44px}.ac .cap{font-size:15px}
-  .adm{grid-column:span 2;padding:22px}.adm h3{font-size:24px}
-  .shots{height:250px}.shot{width:160px;height:220px}.s2{left:26%}.s3{left:auto;right:0}
+  .res{margin-top:28px}.res-top,.res-grid{gap:10px}.vuz{margin-top:10px;padding:22px;border-radius:20px}
+  .res-photo,.rc{border-radius:20px}
+  .res-grid{grid-template-columns:1fr}
+  .rc{min-height:150px;padding:18px}
+  .rc .num{font-size:52px;line-height:54px;letter-spacing:-3.6px}.rc .num.k{letter-spacing:-2.8px}.rc .cap{font-size:16px;line-height:20px}
+  .rc .g-arrow{width:200px}.rc .g-arrows{width:190px}
+  .res-play{width:56px;height:56px;border-radius:14px}.res-play img{width:34px;height:34px}
+  .vuz h3{font-size:26px;line-height:28px}.vuz h3 br{display:none}
+  .vuz-list{margin-top:18px;gap:8px}.vuz-list span{height:auto;min-height:42px;padding:9px 16px;border-radius:21px;font-size:15px;line-height:20px}
   .bingo{padding:12px;box-shadow:5px 5px 0 var(--ink);border-radius:22px}
   .bingo-top b{font-size:26px}
   .grid{gap:6px}
@@ -241,35 +233,28 @@ if(!/[?&]nopre/.test(location.search)&&!matchMedia('(prefers-reduced-motion:redu
     <div class="st"><b>4.9/5 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.2 6.8.83-5 4.69 1.29 6.73L12 17.37l-6.04 3.28 1.29-6.73-5-4.69 6.8-.83z" fill="#FFC23F" stroke="#F5A623" stroke-width="1" stroke-linejoin="round"/></svg></b><span>Отзовик</span></div>
     <div class="st"><b>4.9/5 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.2 6.8.83-5 4.69 1.29 6.73L12 17.37l-6.04 3.28 1.29-6.73-5-4.69 6.8-.83z" fill="#FFC23F" stroke="#F5A623" stroke-width="1" stroke-linejoin="round"/></svg></b><span>Т-Банк</span></div>
   </div>
-  <!-- блок 2: достижения -->
+  <!-- блок 2: результаты (макет Figma) -->
   <section class="sec" id="results">
     <h2 class="h2">Результаты, которыми мы <em>гордимся</em></h2>
-    <div class="ach">
-      <div class="ac a1">
-        <span class="tag">с 2020 года</span>
-        <div><div class="num" data-n="24000" data-f="+">24 000+</div><div class="cap">высокобалльников — сдали ЕГЭ на 80+ баллов</div></div>
-        <img class="shp" src="img/spi.webp" alt="" aria-hidden="true">
-      </div>
-      <div class="ac a2">
-        <svg class="ar" viewBox="0 0 60 80" aria-hidden="true"><path d="M30 76 C16 60 18 36 30 14" stroke="#1E1B19" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M16 22 L30 6 L44 22" stroke="#1E1B19" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="num" data-n="1254" data-f="+">1 254+</div><div class="cap">стобалльников</div>
-      </div>
-      <div class="ac a3"><span class="tag">по итогам 2026</span><div><div class="num">1 из 3</div><div class="cap">учеников сдал ЕГЭ на 80+</div></div></div>
-      <div class="ac a4"><div class="num" data-n="5" data-f="+">5+</div><div class="cap">лет в онлайн-образовании</div></div>
-      <div class="ac a5"><div class="num" data-n="120000" data-f="+">120 000+</div><div class="cap">учеников доверили нам подготовку</div></div>
-      <div class="ac adm">
-        <div>
-          <h3>Наши ученики поступают в топовые вузы страны</h3>
-          <div class="unis"><span>МГУ</span><span>ВШЭ</span><span>МГИМО</span><span>МГЮА</span><span>СПбГУ</span><span>ИТМО</span><span>МГТУ им. Баумана</span><span>МФТИ</span><span>РНИМУ им. Пирогова</span><span>МГМУ им. Сеченова</span><span>КФУ</span><span>УрФУ</span><span>Финансовый университет</span><span>РАНХиГС</span></div>
+    <div class="res">
+      <div class="res-top">
+        <div class="res-photo">
+          <img class="blob" src="img/r-blob.svg" width="405" height="394" alt="" aria-hidden="true">
+          <img class="ph" src="img/elya-results.webp" width="1164" height="838" alt="Эля Смит, основательница СМИТАП" loading="lazy">
+          <a class="res-play" href="#" aria-label="Смотреть видео"><img src="img/r-play.svg" alt=""></a>
         </div>
-        <div class="shots" aria-label="Скриншоты поступлений — место под реальные скрины">
-          <div class="shot s1"><div class="bar2"><i></i>Ученица, история</div><div class="ln"></div><div class="ln" style="width:70%"></div><div class="ok" style="background:var(--mint)">Я поступила в СПбГУ на бюджет!</div><div class="ph">Место под скрин поступления</div></div>
-          <div class="shot s2"><div class="bar2"><i style="background:var(--lime)"></i>Ученик, физика</div><div class="ln"></div><div class="ln" style="width:55%"></div><div class="ok" style="background:var(--or)">МФТИ, бюджет, ура</div><div class="ph">Место под скрин поступления</div></div>
-          <div class="shot s3"><div class="bar2"><i style="background:var(--lilac)"></i>Ученица, общество</div><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ok" style="background:var(--pink)">Прошла в ВШЭ!</div><div class="ph">Место под скрин поступления</div></div>
+        <div class="res-grid">
+          <div class="rc o"><img class="gfx g-arrow" src="img/r-arrow.svg" width="260" height="177" alt="" aria-hidden="true"><div class="num" data-n="1254" data-f="+">1&nbsp;254+</div><div class="cap">стобалльников</div></div>
+          <div class="rc"><span class="tag">по итогам 2026</span><div class="num">1 из&nbsp;3</div><div class="cap">учеников сдал ЕГЭ на&nbsp;80+</div></div>
+          <div class="rc"><div class="num or k" data-n="120000" data-f="+">120&nbsp;000+</div><div class="cap">учеников доверили<br> нам подготовку</div></div>
+          <div class="rc b"><img class="gfx g-arrows" src="img/r-arrows.svg" width="257" height="189" alt="" aria-hidden="true"><div class="num or" data-n="5" data-f="+">5+</div><div class="cap">лет в&nbsp;онлайн-образовании</div></div>
         </div>
+      </div>
+      <div class="vuz">
+        <h3>Наши ученики поступают<br> в&nbsp;<em>топовые вузы</em> страны</h3>
+        <div class="vuz-list"><span>МГУ</span><span>ВШЭ</span><span>МГИМО</span><span>МГЮА</span><span>СПбГУ</span><span>КФУ</span><span>ИТМО</span><span>МФТИ</span><span>УрФУ</span><i class="vuz-br"></i><span>РНИМУ им.&nbsp;Пирогова</span><span>МГТУ им.&nbsp;Баумана</span><span>РАНХиГС</span><span>Финансовый университет при&nbsp;Правительстве</span></div>
       </div>
     </div>
-    <p class="lic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Работаем по лицензии на образовательную деятельность № Л035-01271-78-04032994</p>
   </section>
 
   <!-- блок 3: бинго страхов -->
@@ -434,7 +419,7 @@ document.querySelectorAll('.aud button').forEach(b=>b.addEventListener('click',(
 
 /* блок 2: цифры считаются, когда блок появился на экране */
 (function(){
-  const els=[...document.querySelectorAll('.ac .num[data-n]')];
+  const els=[...document.querySelectorAll('.rc .num[data-n]')];
   const fmt=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'\u00a0');
   const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; io.unobserve(e.target);
     const el=e.target, to=+el.dataset.n, f=el.dataset.f||'', t0=performance.now(), D=1400;

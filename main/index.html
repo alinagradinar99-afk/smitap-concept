@@ -402,6 +402,7 @@ if(!/[?&]nopre/.test(location.search)&&!matchMedia('(prefers-reduced-motion:redu
 (function(){
   const pre=document.getElementById('pre'); if(!pre){ dispatchEvent(new Event('preloaded')); return; }
   scrollTo(0,0);
+  if(/[?&]pre=2/.test(location.search)) return pre2(pre);
   const NS='http://www.w3.org/2000/svg', svg=document.getElementById('preSvg');
   const W=innerWidth, H=innerHeight, mob=W<700;
   svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
@@ -439,6 +440,45 @@ if(!/[?&]nopre/.test(location.search)&&!matchMedia('(prefers-reduced-motion:redu
     dispatchEvent(new Event('preloaded'));
   })();
 })();
+
+/* прелоадер, вариант 2 (?pre=2): фирменные пути полосами несутся слева направо,
+   за хвостом каждой полосы проявляется главный экран */
+function pre2(pre){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('preSvg');
+  const W=innerWidth, H=innerHeight, mob=W<700;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); pre.style.background='transparent';
+  const el=(n,a,p)=>{ const e=document.createElementNS(NS,n); for(const k in a) e.setAttribute(k,a[k]); (p||svg).appendChild(e); return e; };
+  const N=mob?7:9, bh=H/N, sw=Math.min(mob?14:24,bh*0.42), L=W*(mob?0.9:0.7), A=sw*0.9;
+  const defs=el('defs',{});
+  const STY=[ // стиль пути: цвет, форма, штрих
+    {c:'#9B1F52',f:()=>0,a:{'stroke-dasharray':`${sw*1.4} ${sw*0.9}`}},
+    {c:'#F56C9B',f:x=>Math.sin(x/(sw*1.7))*A*0.6,a:{'stroke-linecap':'round'}},
+    {c:'#0B5BA6',f:()=>0,a:{'stroke-dasharray':`0 ${sw*1.9}`,'stroke-linecap':'round','stroke-width':sw*1.15}},
+    {c:'#FF7A2F',f:x=>((x/(sw*3.6))%1<.5?-1:1)*A*0.45,a:{'stroke-linejoin':'bevel'}},
+    {c:'#FFC23F',f:()=>0,a:{'stroke-linecap':'round'}}];
+  const rows=[];
+  for(let i=0;i<N;i++){
+    const y=bh*(i+.5), st=STY[(i*3)%5];
+    const bg=el('rect',{x:-2,y:Math.floor(bh*i),width:W+4,height:Math.ceil(bh)+1,fill:'#FFFCF8'});
+    const cp=el('clipPath',{id:'p2c'+i},defs), cr=el('rect',{x:0,y:0,width:0,height:H},cp);
+    let d=''; for(let x=-40;x<=W+40;x+=3) d+=(d?'L':'M')+x+' '+(y+st.f(x)).toFixed(1);
+    el('path',Object.assign({d,fill:'none',stroke:st.c,'stroke-width':sw,'clip-path':`url(#p2c${i})`},st.a));
+    // запуск волной от центра к краям — полосы «стремятся вперёд» клином
+    rows.push({bg,cr,delay:Math.abs(i-(N-1)/2)*(mob?70:60)});
+  }
+  const D=mob?1150:1250, ez=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2, t0=performance.now();
+  let shown=false;
+  (function f(t){
+    let done=true;
+    rows.forEach(r=>{ const k=Math.max(0,Math.min(1,(t-t0-r.delay)/D)); if(k<1) done=false;
+      const head=-40+(W+L+80)*ez(k), tail=head-L;
+      r.cr.setAttribute('x',tail); r.cr.setAttribute('width',Math.max(0,head-tail));
+      r.bg.setAttribute('x',head-sw*0.6); r.bg.setAttribute('width',Math.max(0,W+4-head+sw*0.6));   // фон остаётся только впереди головы
+    });
+    if(!shown && t-t0>D*0.55){ shown=true; document.body.classList.remove('pre-on'); dispatchEvent(new Event('preloaded')); }
+    done ? (pre.remove()) : requestAnimationFrame(f);
+  })(t0);
+}
 
 /* типограф: короткие слова не висят в конце строки */
 (function(){

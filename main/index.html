@@ -35,7 +35,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .cta:hover{background:#F25C14}
 
 /* первый экран — из макета Figma «СМИТАП / Десктоп / Ученик» */
-.hero{position:relative;display:grid;grid-template-columns:minmax(0,599px) minmax(0,1fr);min-height:664px}
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,599px) minmax(0,1fr);min-height:624px}
 .h-txt{position:relative;z-index:2;padding-top:66px;display:flex;flex-direction:column;align-items:flex-start}
 .aud{display:inline-flex;padding:4px;border-radius:22px;background:#FFE0BE;gap:1px}
 .aud button{height:36px;padding:0 20px;border-radius:18px;font-size:14px;line-height:18px;font-weight:500;color:#241E1B;transition:background .2s}
@@ -51,7 +51,7 @@ h1 em{font-style:normal;color:var(--cta)}
 .b2{background:#FFF9F1;border:1px solid #EAD0B7;color:#000}
 .b2:hover{background:#fff;border-color:#DDB896}
 .h-vis{position:relative}
-.h-vis img{position:absolute;right:0;top:28px;width:min(730px,calc(100% + 9px));height:auto;display:block}
+.h-vis img{position:absolute;right:-12px;top:-20px;width:min(792px,calc(100% + 71px));height:auto;display:block}
 
 /* цифры доверия */
 .stats{display:flex;justify-content:space-between;gap:24px}
@@ -177,7 +177,7 @@ body.pre-on.pre-v2 .hero>*,body.pre-on.pre-v2 .hdr,body.pre-on.pre-v2 .stats{opa
   .hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:0;padding-bottom:56px}
   h1{font-size:46px;line-height:52px;letter-spacing:-3px}
   .sub{font-size:18px;line-height:26px}
-  .h-vis img{top:50%;transform:translateY(-40%)}
+  .h-vis img{top:50%;right:-8px;transform:translateY(-46%)}
 }
 @media (max-width:980px){
   .hero{grid-template-columns:1fr;min-height:0}
@@ -231,7 +231,7 @@ if(!/[?&]nopre/.test(location.search)&&!matchMedia('(prefers-reduced-motion:redu
       <div class="btns"><a class="b1" href="#">Выбрать курс</a><a class="b2" href="#">Попробовать бесплатно</a></div>
     </div>
     <div class="h-vis" id="vis">
-      <img src="img/hero-visual.webp" srcset="img/hero-visual-sm.webp 730w, img/hero-visual.webp 1460w" sizes="(max-width:980px) 100vw, 730px" width="730" height="544" alt="Ученица СМИТАП — путь к ЕГЭ и ОГЭ" fetchpriority="high">
+      <img src="img/hero-phone.webp" srcset="img/hero-phone-sm.webp 792w, img/hero-phone.webp 1584w" sizes="(max-width:980px) 100vw, 792px" width="792" height="620" alt="Платформа СМИТАП в телефоне: урок, таймер до начала и выполненные задания" fetchpriority="high">
     </div>
   </section>
 

@@ -209,6 +209,14 @@ h1 em{font-style:normal;color:#fff}
   .bingo-side{flex-direction:column-reverse;align-items:stretch}.masc{display:none}
   .bubble{font-size:16px}.bubble b{font-size:22px}
 }
+
+/* ===== прелоадер: пути сходятся в одну линию, линия становится баннером ===== */
+.pre{position:fixed;inset:0;z-index:100;background:var(--bg);pointer-events:none}
+.pre svg{position:absolute;inset:0;width:100%;height:100%}
+.pre-card{position:fixed;z-index:101;background:#FFC23F;border-radius:8px;pointer-events:none}
+body.pre-on{overflow:hidden}
+body.pre-on .hero>*,body.pre-on .hdr,body.pre-on .stats{opacity:0}
+.hero>*,.hdr,.stats{transition:opacity .5s ease}
 @media (max-width:1180px){
   h1{font-size:54px}
   .nav{display:none}
@@ -250,6 +258,9 @@ h1 em{font-style:normal;color:#fff}
 </style>
 </head>
 <body>
+<div class="pre" id="pre" aria-hidden="true"><svg id="preSvg"></svg></div>
+<script>/* показываем прелоадер сразу, до отрисовки страницы */
+if(!/[?&]nopre/.test(location.search)&&!matchMedia('(prefers-reduced-motion:reduce)').matches){document.body.classList.add('pre-on');}else{document.getElementById('pre').remove();}</script>
 <div class="wrap">
   <header class="hdr">
     <a class="logo" href="#"><img src="logo.svg" alt="СМИТАП"></a>
@@ -385,6 +396,50 @@ h1 em{font-style:normal;color:#fff}
 </div>
 
 <script>
+
+/* прелоадер: 4 фирменных пути (пунктир, волна, точки, ступени) тянутся вперёд и сходятся в одну линию,
+   линия бежит дальше и разворачивается в оранжевый баннер первого экрана */
+(function(){
+  const pre=document.getElementById('pre'); if(!pre){ dispatchEvent(new Event('preloaded')); return; }
+  scrollTo(0,0);
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('preSvg');
+  const W=innerWidth, H=innerHeight, mob=W<700;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const cy=H*0.52, mx=W*(mob?0.72:0.62), sw=mob?10:16;
+  const el=(n,a)=>{ const e=document.createElementNS(NS,n); for(const k in a) e.setAttribute(k,a[k]); return e; };
+  // путь, который «сходится» в точку (mx,cy): старт y0, форма f(t) затухает к концу
+  function conv(y0,f,steps=900){ let d=''; for(let i=0;i<=steps;i++){ const t=i/steps, x=-30+(mx+30)*t;
+      const base=y0+(cy-y0)*(1-Math.pow(1-t,1.8)); const y=base+f(t,x)*(1-t);
+      d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1); } return d; }
+  const clip=el('clipPath',{id:'preClip'}), cr=el('rect',{x:-40,y:0,width:0,height:H}); clip.appendChild(cr);
+  const defs=el('defs',{}); defs.appendChild(clip); svg.appendChild(defs);
+  const g=el('g',{'clip-path':'url(#preClip)',fill:'none','stroke-width':sw}); svg.appendChild(g);
+  const A=mob?14:22;
+  g.appendChild(el('path',{d:conv(H*0.12,()=>0),stroke:'#9B1F52','stroke-dasharray':`${sw*1.4} ${sw*0.9}`}));                    // пунктир
+  g.appendChild(el('path',{d:conv(H*0.3,(t,x)=>Math.sin(x/(mob?18:26))*A*0.7),stroke:'#F56C9B','stroke-linecap':'round'}));     // волна
+  g.appendChild(el('path',{d:conv(H*0.86,()=>0),stroke:'#0B5BA6','stroke-dasharray':`0 ${sw*1.9}`,'stroke-linecap':'round','stroke-width':sw*1.15})); // точки
+  g.appendChild(el('path',{d:conv(H*1.05,(t,x)=>{ const k=(x/(mob?40:60))%1; return (k<.5?-1:1)*A*0.55; }),stroke:'#FF7A2F','stroke-linejoin':'bevel'})); // ступени
+  // единая линия, которая бежит дальше
+  const line=el('rect',{x:mx,y:cy-sw/2,width:0,height:sw,fill:'#FFC23F'}); svg.appendChild(line);
+  const ease=t=>1-Math.pow(1-t,3), io=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  function tween(D,fn,ez=ease){ return new Promise(r=>{ const t0=performance.now(); (function f(t){ const k=Math.min(1,(t-t0)/D); fn(ez(k)); k<1?requestAnimationFrame(f):r(); })(t0); }); }
+  (async()=>{
+    await tween(1300,k=>cr.setAttribute('width',(mx+40)*k),io);                     // пути тянутся и сходятся
+    await tween(520,k=>{ line.setAttribute('x',mx-(mx)*k*0); line.setAttribute('width',(W-mx+20)*k); });
+    // линия на всю ширину: прячем пути, берём линию в отдельный блок и разворачиваем в баннер
+    const card=document.createElement('div'); card.className='pre-card'; document.body.appendChild(card);
+    const set=(l,t,w,h,r,c)=>{ Object.assign(card.style,{left:l+'px',top:t+'px',width:w+'px',height:h+'px',borderRadius:r+'px',background:c}); };
+    await tween(380,k=>{ cr.setAttribute('width',mx+40); line.setAttribute('x',mx*(1-k)); line.setAttribute('width',W-mx*(1-k)+20); g.style.opacity=1-k; });
+    set(0,cy-sw/2,W,sw,sw/2,'#FFC23F'); svg.style.opacity=0;
+    const R=document.getElementById('hero').getBoundingClientRect();
+    const mix=(a,b,k)=>a+(b-a)*k, col=k=>`rgb(${Math.round(mix(255,255,k))},${Math.round(mix(194,155,k))},${Math.round(mix(63,76,k))})`;
+    await tween(750,k=>set(mix(0,R.left,k),mix(cy-sw/2,R.top,k),mix(W,R.width,k),mix(sw,R.height,k),mix(sw/2,24,k),col(Math.min(1,k*1.6))),io);
+    document.body.classList.remove('pre-on'); pre.style.transition='opacity .4s'; pre.style.opacity=0;
+    setTimeout(()=>{ pre.remove(); card.remove(); },450);
+    dispatchEvent(new Event('preloaded'));
+  })();
+})();
+
 /* типограф: короткие слова не висят в конце строки */
 (function(){
   const rx=/(^|[\s(«"])(в|во|с|со|к|ко|о|об|у|и|а|но|да|на|по|за|из|от|до|для|без|при|про|над|под|не|ни|же|ли|бы|что|как|или|это|я|ты|мы|вы|он|она|их|все|всё|уже|так)\s+/gi;
@@ -450,7 +505,8 @@ document.querySelectorAll('.aud button').forEach(b=>b.addEventListener('click',(
     stk.forEach((s,i)=>timers.push(setTimeout(()=>{ s.classList.add('on'); count(+s.dataset.to); },900+i*1100)));
     timers.push(setTimeout(()=>vis.classList.add('done'),900+stk.length*1100+400)); }
   document.getElementById('replay').addEventListener('click',play);
-  addEventListener('load',()=>setTimeout(play,250));
+  let started=false; const go=()=>{ if(started) return; started=true; setTimeout(play,150); };
+  addEventListener('preloaded',go); if(!document.getElementById('pre')) addEventListener('load',go);
 })();
 </script>
 <div style="height:120px"></div>
